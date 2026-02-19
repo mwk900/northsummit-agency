@@ -18,7 +18,7 @@ export default function Portfolio() {
     <>
       <SEOHead
         title="Portfolio"
-        description="Browse our portfolio of websites built for trades and local businesses across the UK & Europe."
+        description="Live demo builds showcasing our design style, speed and conversion-first layouts for trades and local businesses."
         path="/portfolio"
       />
 
@@ -28,7 +28,7 @@ export default function Portfolio() {
             <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">Portfolio</h1>
             <div className="w-20 h-1 rounded-full bg-accent mb-4" />
             <p className="text-text-secondary max-w-lg">
-              Real websites we&apos;ve built for real businesses. Every project is live and generating results.
+              Live demo builds showcasing our design style, speed, and conversion-first layouts for trades and local businesses.
             </p>
           </motion.div>
 
