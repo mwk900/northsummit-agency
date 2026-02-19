@@ -22,6 +22,7 @@ export function generateSEO({
   const fullTitle = title
     ? `${title} | ${siteConfig.agency.domain}`
     : `${siteConfig.agency.domain} — ${siteConfig.agency.tagline}`;
+
   const url = `${baseUrl}${path}`;
 
   return {
@@ -34,6 +35,8 @@ export function generateSEO({
       url,
       image: `${baseUrl}${image}`,
       type,
+      siteName: siteConfig.agency.domain,
+      locale: 'en_GB',
       ...(publishedTime && { publishedTime }),
     },
     twitter: {
@@ -41,6 +44,8 @@ export function generateSEO({
       title: fullTitle,
       description,
       image: `${baseUrl}${image}`,
+      // optional: set this later if you have a brand handle, e.g. "@northsummitagency"
+      site: '',
     },
   };
 }

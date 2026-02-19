@@ -26,6 +26,7 @@ export default function SEOHead({
     <Head>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
+      <meta name="robots" content="index,follow" />
       <link rel="canonical" href={seo.url} />
 
       {/* Open Graph */}
@@ -34,6 +35,8 @@ export default function SEOHead({
       <meta property="og:url" content={seo.openGraph.url} />
       <meta property="og:image" content={seo.openGraph.image} />
       <meta property="og:type" content={seo.openGraph.type} />
+      <meta property="og:site_name" content={seo.openGraph.siteName} />
+      <meta property="og:locale" content={seo.openGraph.locale} />
       {seo.openGraph.publishedTime && (
         <meta property="article:published_time" content={seo.openGraph.publishedTime} />
       )}
@@ -43,8 +46,10 @@ export default function SEOHead({
       <meta name="twitter:title" content={seo.twitter.title} />
       <meta name="twitter:description" content={seo.twitter.description} />
       <meta name="twitter:image" content={seo.twitter.image} />
+      {seo.twitter.site && <meta name="twitter:site" content={seo.twitter.site} />}
 
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="theme-color" content="#0a0e27" />
       <link rel="icon" href="/favicon.ico" />
 
       {/* JSON-LD */}
@@ -52,7 +57,7 @@ export default function SEOHead({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(Array.isArray(jsonLd) ? jsonLd : jsonLd),
+            __html: JSON.stringify(jsonLd),
           }}
         />
       )}
