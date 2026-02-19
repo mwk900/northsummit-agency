@@ -38,52 +38,54 @@ export const siteConfig = {
     },
   ],
 
-  pricing: [
-    {
-      name: 'Starter',
-      price: '£497',
-      popular: false,
-      description: 'Perfect for tradespeople who need a professional online presence — fast.',
-      features: [
-        'Single-page responsive website',
-        'Mobile-first design',
-        'Contact form & Google Maps',
-        'Basic SEO setup',
-        'Hosting setup included',
-        '2 rounds of revisions',
-      ],
-    },
-    {
-      name: 'Growth',
-      price: '£997',
-      popular: true,
-      description: 'For businesses ready to stand out and convert more visitors into customers.',
-      features: [
-        'Up to 5 pages',
-        'Custom design & branding',
-        'Blog or portfolio section',
-        'Advanced SEO & performance',
-        'Analytics integration',
-        'Speed optimisation',
-        '3 rounds of revisions',
-      ],
-    },
-    {
-      name: 'Premium',
-      price: '£1,997',
-      popular: false,
-      description: 'Full-service build for businesses that need dynamic features and ongoing support.',
-      features: [
-        'Up to 10 pages',
-        'CMS integration',
-        'Booking or enquiry system',
-        'E-commerce ready',
-        'Priority support (30 days)',
-        'Monthly performance report',
-        'Unlimited revisions during build',
-      ],
-    },
-  ],
+pricing: [
+  {
+    name: 'Starter',
+    price: '£249',
+    popular: false,
+    description: 'Ideal for trades and small businesses that need a professional website quickly and affordably.',
+    features: [
+      'Single-page responsive website',
+      'Mobile-optimised design',
+      'Contact form + Google Maps',
+      'Basic SEO setup',
+      'Hosting guidance included',
+      '1 round of revisions',
+      'Launch in 3–5 days',
+    ],
+  },
+  {
+    name: 'Growth',
+    price: '£599',
+    popular: true,
+    description: 'For businesses ready to stand out online and convert more visitors into enquiries.',
+    features: [
+      'Up to 4 pages',
+      'Custom design & branding',
+      'Portfolio or gallery section',
+      'SEO & performance optimisation',
+      'Analytics integration',
+      'Speed optimisation',
+      '2 rounds of revisions',
+    ],
+  },
+  {
+    name: 'Premium Business',
+    price: '£1,199',
+    popular: false,
+    description: 'A complete website designed to attract enquiries, convert visitors, and support your business growth.',
+    features: [
+      'Up to 8 pages',
+      'Advanced design & layout',
+      'Booking or enquiry system',
+      'Blog or CMS integration',
+      'Conversion-focused structure',
+      'Performance optimisation',
+      '30 days support after launch',
+    ],
+  },
+],
+
 
   projects: [
     {
