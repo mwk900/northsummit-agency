@@ -181,9 +181,10 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
               Recent work
             </h2>
-            <p className="text-text-secondary max-w-lg mx-auto">
-              Real sites we&apos;ve built for real businesses.
-            </p>
+              <p className="...">
+              Live demo builds showcasing conversion-first layouts for trades and local businesses.
+              </p>
+
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -230,6 +231,13 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
+            <div className="max-w-3xl mx-auto mb-6 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-center">
+ <p className="text-sm sm:text-base font-medium text-blue-800">
+  🚀 Launch Offer: First 5 clients get discounted pricing in exchange for feedback & a testimonial.
+</p>
+
+</div>
+
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
               Transparent pricing
             </h2>

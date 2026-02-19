@@ -1,13 +1,14 @@
 export const siteConfig = {
-  agency: {
-    name: 'NorthSummit',
-    domain: 'NorthSummit.agency',
-    email: 'north-summit@tuta.com',
-    tagline: 'Websites that work as hard as you do.',
-    description:
-      'We design and build fast, modern websites for trades and local businesses across the UK & Europe.',
-    location: 'UK & Europe',
-  },
+agency: {
+  name: 'NorthSummit',
+  domain: 'NorthSummit.agency',
+  email: 'north-summit@tuta.com',
+  tagline: 'Websites that bring you more enquiries - not just something that looks nice.',
+  description:
+    'Conversion-focused websites for trades and local businesses. Fast turnaround, clear pricing, UK-based.',
+  location: 'UK & Europe',
+},
+
 
   navigation: [
     { href: '/', label: 'Home' },
@@ -51,7 +52,7 @@ pricing: [
       'Basic SEO setup',
       'Hosting guidance included',
       '1 round of revisions',
-      'Launch in 3–5 days',
+      'Launch in 3-5 days',
     ],
   },
   {
