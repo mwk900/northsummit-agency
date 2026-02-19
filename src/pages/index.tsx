@@ -238,6 +238,62 @@ export default function Home() {
 
 </div>
 
+
+
+
+<section id="who-this-is-for" className="py-16">
+  <div className="max-w-6xl mx-auto px-4">
+    <div className="max-w-3xl mx-auto text-center">
+      <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-3">
+        Who this is for?
+      </h2>
+      <p className="text-base sm:text-lg text-text-secondary mb-10">
+        NorthSummit is a great fit if you want a clean, modern website without agency complexity - built to bring enquiries.
+      </p>
+    </div>
+
+    <div className="grid gap-4 sm:grid-cols-2 max-w-5xl mx-auto">
+      {[
+        '🔧 Trades & home services (plumbers, roofers, mechanics, etc.)',
+        '📍 Local businesses that want more enquiries',
+        '🚀 New businesses launching soon',
+        '⚡ Businesses with outdated or slow websites',
+        '💼 Teams that want clear pricing and fast turnaround',
+        '✅ Anyone who wants a professional site without agency overhead',
+      ].map((item) => (
+        <div
+          key={item}
+                className="group rounded-xl border border-border/50 bg-surface/40 px-5 py-4
+           transform-gpu will-change-transform
+           transition-all duration-500 ease-out
+           hover:-translate-y-[2px] hover:bg-surface/60 hover:border-border/80
+           hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+
+        >
+
+
+          <p className="text-text-primary/90 font-medium transition-all duration-500 ease-out group-hover:text-text-primary">
+            {item}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <div className="mt-10 text-center">
+      <p className="text-text-secondary">
+        If that sounds like you, <span className="font-semibold text-text-primary">we can help.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
               Transparent pricing
             </h2>
