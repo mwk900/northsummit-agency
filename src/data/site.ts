@@ -2,7 +2,7 @@ export const siteConfig = {
   agency: {
     name: 'NorthSummit',
     domain: 'NorthSummit.agency',
-    email: 'mwk_ai@tuta.io',
+    email: 'north-summit@tuta.com',
     tagline: 'Websites that work as hard as you do.',
     description:
       'We design and build fast, modern websites for trades and local businesses across the UK & Europe.',

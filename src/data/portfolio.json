@@ -1,0 +1,27 @@
+{
+  "personal": {
+    "name": "North Summit Agency",
+    "title": "Junior Frontend Developer & Designer",
+    "bio": "I create professional websites with a focus on user experience.",
+    "image": "/images/your-image.jpg"
+  },
+  "contact": {
+    "email": "north-summit@tuta.com"
+  },
+  "portfolio": [
+    {
+      "name": "Roofing Business",
+      "description": "Clean, professional site for a roofing contractor with service pages and quote request.",
+      "url": "https://roofing01.netlify.app"
+    },
+    {
+      "name": "Plumber",
+      "description": "Fast-loading plumber website with emergency callout info and service area coverage.",
+      "url": "https://plumber001.netlify.app"
+    }
+  ],
+  "social": {
+    "github": "https://github.com/mwk900"
+  }
+}
+

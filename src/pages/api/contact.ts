@@ -69,7 +69,7 @@ export default async function handler(
       },
       body: JSON.stringify({
         from: 'NorthSummit Contact <onboarding@resend.dev>',
-        to: 'mwk_ai@tuta.io',
+        to: process.env.CONTACT_TO_EMAIL!,
         subject: `New enquiry from ${name.trim()}`,
         reply_to: email.trim(),
         html: `
