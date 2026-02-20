@@ -1,19 +1,19 @@
 export const siteConfig = {
-agency: {
-  name: 'NorthSummit',
-  domain: 'NorthSummit.agency',
-  email: 'north-summit@tuta.com',
-  tagline: 'Websites that bring you more enquiries - not just something that looks nice.',
-  description:
-    'Conversion-focused websites for trades and local businesses. Fast turnaround, clear pricing, UK-based.',
-  location: 'UK & Europe',
-},
-
+  agency: {
+    name: 'NorthSummit',
+    domain: 'NorthSummit.agency',
+    email: 'north-summit@tuta.com',
+    tagline: 'Web Design for Trades & Local Businesses — Built to Get You More Enquiries.',
+    description:
+      'Affordable web design for tradespeople and local businesses across the UK. Fast turnaround, clear pricing, conversion-focused. Get more calls and enquiries from your website.',
+    location: 'UK & Europe',
+  },
 
   navigation: [
     { href: '/', label: 'Home' },
     { href: '/portfolio', label: 'Portfolio' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/faq', label: 'FAQ' },
+    { href: '/about', label: 'About' },
   ],
 
   process: [
@@ -39,54 +39,53 @@ agency: {
     },
   ],
 
-pricing: [
-  {
-    name: 'Starter',
-    price: '£249',
-    popular: false,
-    description: 'Ideal for trades and small businesses that need a professional website quickly and affordably.',
-    features: [
-      'Single-page responsive website',
-      'Mobile-optimised design',
-      'Contact form + Google Maps',
-      'Basic SEO setup',
-      'Hosting guidance included',
-      '1 round of revisions',
-      'Launch in 3-5 days',
-    ],
-  },
-  {
-    name: 'Growth',
-    price: '£599',
-    popular: true,
-    description: 'For businesses ready to stand out online and convert more visitors into enquiries.',
-    features: [
-      'Up to 4 pages',
-      'Custom design & branding',
-      'Portfolio or gallery section',
-      'SEO & performance optimisation',
-      'Analytics integration',
-      'Speed optimisation',
-      '2 rounds of revisions',
-    ],
-  },
-  {
-    name: 'Premium Business',
-    price: '£1,199',
-    popular: false,
-    description: 'A complete website designed to attract enquiries, convert visitors, and support your business growth.',
-    features: [
-      'Up to 8 pages',
-      'Advanced design & layout',
-      'Booking or enquiry system',
-      'Blog or CMS integration',
-      'Conversion-focused structure',
-      'Performance optimisation',
-      '30 days support after launch',
-    ],
-  },
-],
-
+  pricing: [
+    {
+      name: 'Starter',
+      price: '£249',
+      popular: false,
+      description: 'Ideal for trades and small businesses that need a professional website quickly and affordably.',
+      features: [
+        'Single-page responsive website',
+        'Mobile-optimised design',
+        'Contact form + Google Maps',
+        'Basic SEO setup',
+        'Hosting guidance included',
+        '1 round of revisions',
+        'Launch in 3-5 days',
+      ],
+    },
+    {
+      name: 'Growth',
+      price: '£599',
+      popular: true,
+      description: 'For businesses ready to stand out online and convert more visitors into enquiries.',
+      features: [
+        'Up to 4 pages',
+        'Custom design & branding',
+        'Portfolio or gallery section',
+        'SEO & performance optimisation',
+        'Analytics integration',
+        'Speed optimisation',
+        '2 rounds of revisions',
+      ],
+    },
+    {
+      name: 'Premium Business',
+      price: '£1,199',
+      popular: false,
+      description: 'A complete website designed to attract enquiries, convert visitors, and support your business growth.',
+      features: [
+        'Up to 8 pages',
+        'Advanced design & layout',
+        'Booking or enquiry system',
+        'Blog or CMS integration',
+        'Conversion-focused structure',
+        'Performance optimisation',
+        '30 days support after launch',
+      ],
+    },
+  ],
 
   projects: [
     {

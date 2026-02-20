@@ -46,7 +46,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-3.5">
           {siteConfig.navigation.map((link) => (
             <Link
               key={link.href}
@@ -70,10 +70,12 @@ export default function Header() {
           ))}
           <ThemeToggle />
           <a
-            href={`mailto:${siteConfig.agency.email}`}
+            href="https://calendly.com/north-summit-tuta/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 py-2 text-sm font-medium text-text-secondary border border-border-color rounded-lg hover:text-accent hover:border-accent transition-colors"
           >
-            Email us
+            Book a call
           </a>
           <Link
             href="/contact"
@@ -144,10 +146,12 @@ export default function Header() {
                 </Link>
               ))}
               <a
-                href={`mailto:${siteConfig.agency.email}`}
+                href="https://calendly.com/north-summit-tuta/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="py-2 px-3 rounded-lg text-sm font-medium text-text-secondary hover:text-accent hover:bg-secondary-bg transition-colors"
               >
-                Email us
+                Book a call
               </a>
               <Link
                 href="/contact"
