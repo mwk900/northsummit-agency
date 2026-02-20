@@ -34,18 +34,19 @@ export default function Home() {
     <>
       <SEOHead jsonLd={[generateOrganizationSchema(), generateWebSiteSchema()]} />
 
-      <ScrollSpyNav
-        position="right"
-        showAfterPx={250}
-        offsetTopPx={96}
-        sections={[
-          { id: "process", label: "Steps", icon: "steps" },
-          { id: "portfolio", label: "Portfolio", icon: "portfolio" },
-          { id: "who-this-is-for", label: "Fit", icon: "fit" },
-          { id: "pricing", label: "Pricing", icon: "pricing" },
-          { id: "next", label: "Begin", icon: "begin" },
-        ]}
-      />
+<ScrollSpyNav
+  position="right"
+  showAfterPx={250}
+  offsetTopPx={96}
+  sections={[
+    { id: "process", label: "Steps", icon: "steps" },
+    { id: "portfolio", label: "Portfolio", icon: "portfolio" },
+    { id: "who-this-is-for", label: "Fit", icon: "fit" },
+    { id: "audit", label: "Audit", icon: "audit" },
+    { id: "pricing", label: "Pricing", icon: "pricing" },
+    { id: "next", label: "Begin", icon: "begin" },
+  ]}
+/>
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-4rem)] flex items-center">
@@ -279,6 +280,93 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Free Audit */}
+      <section id="audit" className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="rounded-2xl border border-border-color p-8 sm:p-10"
+            style={{ backgroundColor: "var(--secondary-bg)" }}
+          >
+            <div className="grid lg:grid-cols-3 gap-8 items-start">
+              <div className="lg:col-span-2">
+                <h2 className="text-2xl sm:text-3xl font-bold text-text-primary">
+                  Get a free website audit
+                </h2>
+                <p className="mt-3 text-text-secondary max-w-2xl">
+                  I’ll review your current website and send back clear, practical improvements to help you get more calls and enquiries.
+                  No obligation - just useful feedback.
+                </p>
+
+                <ul className="mt-6 grid sm:grid-cols-3 gap-3">
+                  {[
+                    "Quick wins to improve conversions",
+                    "Mobile and speed checks",
+                    "Clear CTA + layout fixes",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-xl border border-border-color px-4 py-3 text-sm text-text-secondary"
+                      style={{ backgroundColor: "var(--primary-bg)" }}
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="mt-6 text-sm text-text-secondary">
+                  Typical turnaround: 24-48 hours. No spam, no pressure.
+                </p>
+              </div>
+
+              <div className="lg:col-span-1">
+                <div className="rounded-xl border border-border-color p-5" style={{ backgroundColor: "var(--primary-bg)" }}>
+                  <p className="text-sm font-semibold text-text-primary">Want the audit?</p>
+                  <p className="mt-1 text-sm text-text-secondary">
+                    Send your website link and what you do - I’ll do the rest.
+                  </p>
+
+<div className="mt-4 flex flex-col gap-3">
+  <a
+    href="/contact?intent=audit"
+    className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold bg-accent hover:opacity-90 transition"
+    style={{ color: "var(--primary-bg)" }}
+  >
+    Request free audit
+  </a>
+
+  <a
+    href="/contact"
+    className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold border border-border-color hover:bg-white/5 transition"
+    style={{ color: "var(--text-primary)" }}
+  >
+    Or send a message
+  </a>
+
+  <a
+    href="https://calendly.com/north-summit-tuta/30min"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold border border-border-color hover:bg-white/5 transition"
+    style={{ color: "var(--text-primary)" }}
+  >
+    Book a call
+  </a>
+</div>
+
+
+
+<p className="mt-4 text-xs text-text-secondary text-center">
+  Prefer a call? We’ll add booking next.
+</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* Pricing */}
       <section id="pricing" className="py-20">
