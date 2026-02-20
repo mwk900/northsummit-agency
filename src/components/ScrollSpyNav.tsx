@@ -130,7 +130,7 @@ export default function ScrollSpyNav({
         ].join(" ")}
         style={side}
       >
-        <div className={`${pill} bg-white/55 px-2 py-3`}>
+        <div className={`${pill} bg-white/65 px-2 py-3`}>
           <ul className="flex flex-col gap-1">
             {sections.map((s) => {
               const on = s.id === activeId;
@@ -172,7 +172,7 @@ export default function ScrollSpyNav({
         style={side}
       >
         <div
-          className={`${pill} bg-white/50 overflow-hidden`}
+          className={`${pill} bg-gradient-to-b from-white/50 via-white/28 to-white/16 border border-white/40 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.18)] overflow-hidden`}
           style={{
             width: expanded ? 170 : 46,
             transition: "width 280ms cubic-bezier(.4,0,.2,1)",
