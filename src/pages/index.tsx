@@ -39,11 +39,11 @@ export default function Home() {
         showAfterPx={250}
         offsetTopPx={96}
         sections={[
-          { id: "process", label: "Steps" },
-          { id: "portfolio", label: "Portfolio" },
-          { id: "who-this-is-for", label: "Fit" },
-          { id: "pricing", label: "Pricing" },
-          { id: "next", label: "Begin" },
+          { id: "process", label: "Steps", icon: "steps" },
+          { id: "portfolio", label: "Portfolio", icon: "portfolio" },
+          { id: "who-this-is-for", label: "Fit", icon: "fit" },
+          { id: "pricing", label: "Pricing", icon: "pricing" },
+          { id: "next", label: "Begin", icon: "begin" },
         ]}
       />
 
@@ -259,7 +259,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Launch Offer Banner (best placed near pricing) */}
+      {/* Launch Offer Banner */}
       <section className="py-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-xl border border-amber-300 bg-amber-50 px-5 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">

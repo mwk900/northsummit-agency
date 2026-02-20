@@ -1,10 +1,41 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 
-type NavSection = {
-  id: string;
-  label: string;
+/* ── Icons (14×14, currentColor) ─────────────────────────────────── */
+const I: Record<string, React.ReactNode> = {
+  steps: (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="10" y1="6" x2="21" y2="6" /><line x1="10" y1="12" x2="21" y2="12" /><line x1="10" y1="18" x2="21" y2="18" />
+      <path d="M4 6h1v4" /><path d="M4 10h2" /><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1" />
+    </svg>
+  ),
+  portfolio: (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" />
+      <rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" />
+    </svg>
+  ),
+  fit: (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  ),
+  pricing: (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+    </svg>
+  ),
+  begin: (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    </svg>
+  ),
 };
 
+/* ── Types ────────────────────────────────────────────────────────── */
+type NavSection = { id: string; label: string; icon?: string };
 type Props = {
   sections: NavSection[];
   showAfterPx?: number;
@@ -12,6 +43,7 @@ type Props = {
   position?: "right" | "left";
 };
 
+/* ── Component ───────────────────────────────────────────────────── */
 export default function ScrollSpyNav({
   sections,
   showAfterPx = 280,
@@ -20,138 +52,228 @@ export default function ScrollSpyNav({
 }: Props) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
   const [visible, setVisible] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const ids = useMemo(() => sections.map((s) => s.id), [sections]);
   const rafRef = useRef<number | null>(null);
+  const expandedRef = useRef(expanded);
+  expandedRef.current = expanded;
 
-  // Show / hide based on scroll
+  const collapseOnScroll = useCallback(() => {
+    if (expandedRef.current) setExpanded(false);
+  }, []);
+
+  /* Visibility */
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > showAfterPx);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [showAfterPx]);
+    const fn = () => { setVisible(window.scrollY > showAfterPx); collapseOnScroll(); };
+    fn();
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, [showAfterPx, collapseOnScroll]);
 
-  // Reliable active-section detection (works consistently on iOS Safari)
+  /* Active section */
   useEffect(() => {
     if (!ids.length) return;
-
-    const getActiveFromScroll = () => {
-      const anchorY = offsetTopPx + 24; // "activation line" below sticky header
-      let nextActive = ids[0] ?? "";
-
+    const detect = () => {
+      const anchor = offsetTopPx + 24;
+      let next = ids[0] ?? "";
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (!el) continue;
-        const top = el.getBoundingClientRect().top;
-
-        // If section top has passed the activation line, it becomes the active section
-        if (top <= anchorY) {
-          nextActive = id;
-        } else {
-          // ids are in page order, so once we hit a section below anchor, stop
-          break;
-        }
+        if (el && el.getBoundingClientRect().top <= anchor) next = id; else break;
       }
-
-      setActiveId(nextActive);
+      setActiveId(next);
     };
-
-    const onScroll = () => {
+    const fn = () => {
       if (rafRef.current) return;
-      rafRef.current = window.requestAnimationFrame(() => {
-        rafRef.current = null;
-        getActiveFromScroll();
-      });
+      rafRef.current = requestAnimationFrame(() => { rafRef.current = null; detect(); });
     };
-
-    // run once on mount + whenever ids change
-    getActiveFromScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
+    detect();
+    window.addEventListener("scroll", fn, { passive: true });
+    window.addEventListener("resize", fn);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", fn);
+      window.removeEventListener("resize", fn);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
     };
   }, [ids, offsetTopPx]);
 
   if (!sections.length) return null;
 
-  // Desktop gutter positioning
-  const GUTTER = "clamp(10px, calc((100vw - 72rem) / 2 - 10px), 56px)";
-
-  // Mobile alignment near the up-arrow (your chosen value)
-  const SMALL_EDGE = "calc(1.5rem + 5px)";
-
-  const sideStyle =
-    position === "left"
-      ? { left: `max(${GUTTER}, ${SMALL_EDGE})` }
-      : { right: `max(${GUTTER}, ${SMALL_EDGE})` };
-
-  // Tap handler: set active immediately + scroll with header offset
-  const scrollToId = (id: string) => {
+  const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
-
     setActiveId(id);
-
-    const y =
-      window.scrollY +
-      el.getBoundingClientRect().top -
-      (offsetTopPx + 12);
-
-    window.scrollTo({ top: y, behavior: "smooth" });
+    window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - (offsetTopPx + 12), behavior: "smooth" });
   };
 
-  return (
-    <nav
-      aria-label="Page sections"
-      className={[
-        // Lower it on mobile so it competes less with readability
-        "fixed z-50 bottom-25 lg:top-1/2 lg:-translate-y-1/2 lg:bottom-auto",
-        "transition-all duration-300",
-        visible ? "opacity-100 translate-x-0" : "opacity-0 pointer-events-none translate-x-2",
-      ].join(" ")}
-      style={sideStyle}
-    >
-      <div
-        className={[
-          "rounded-2xl border border-white/20",
-          "px-2 py-3 shadow-[0_6px_18px_rgba(0,0,0,0.12)]",
-          "bg-white/55 backdrop-blur-md",
-        ].join(" ")}
-      >
-        <ul className="flex flex-col gap-1">
-          {sections.map((s) => {
-            const isActive = s.id === activeId;
+  const icon = (s: NavSection) =>
+    s.icon && I[s.icon] ? I[s.icon] : <span className="text-[11px] font-bold">{s.label[0]}</span>;
 
-            return (
-              <li key={s.id}>
+  /* Shared pill styles */
+  const pill = "rounded-2xl border border-white/20 shadow-[0_6px_18px_rgba(0,0,0,0.12)] backdrop-blur-md";
+
+  /*
+   * Position: right-6 (24px) on all breakpoints.
+   * This aligns with the scroll-to-top button which also sits at right-6.
+   */
+  const side = position === "left" ? { left: 24 } : { right: 24 };
+
+  return (
+    <>
+      {/* ═══════════════ DESKTOP (lg+) ═══════════════════════════════ */}
+      <nav
+        aria-label="Page sections"
+        className={[
+          "hidden lg:block fixed z-50 top-1/2 -translate-y-1/2",
+          "transition-all duration-300",
+          visible ? "opacity-100 translate-x-0" : "opacity-0 pointer-events-none translate-x-4",
+        ].join(" ")}
+        style={side}
+      >
+        <div className={`${pill} bg-white/55 px-2 py-3`}>
+          <ul className="flex flex-col gap-1">
+            {sections.map((s) => {
+              const on = s.id === activeId;
+              return (
+                <li key={s.id}>
+                  <button
+                    type="button"
+                    onClick={() => scrollTo(s.id)}
+                    aria-current={on ? "true" : undefined}
+                    className={[
+                      "flex items-center gap-2 w-full text-left rounded-lg px-2 py-1.5 text-[14px] leading-5 transition-colors",
+                      on ? "font-semibold text-black bg-black/10" : "text-black/70 hover:text-black hover:bg-black/5",
+                    ].join(" ")}
+                  >
+                    <span className="shrink-0 opacity-60">{icon(s)}</span>
+                    <span className="whitespace-nowrap">{s.label}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </nav>
+
+      {/* ═══════════════ MOBILE (<lg) ════════════════════════════════ */}
+      {/*
+        Animation approach: a single container with CSS transition on
+        width. Labels use max-width + opacity transition to slide in/out.
+        The toggle crossfades between "<" and "Hide >" via opacity.
+        Everything is always in the DOM — no conditional rendering.
+      */}
+      <nav
+        aria-label="Page sections"
+        className={[
+          "lg:hidden fixed z-50 bottom-24",
+          "transition-all duration-300",
+          visible ? "opacity-100 translate-x-0" : "opacity-0 pointer-events-none translate-x-4",
+        ].join(" ")}
+        style={side}
+      >
+        <div
+          className={`${pill} bg-white/70 overflow-hidden`}
+          style={{
+            width: expanded ? 170 : 46,
+            transition: "width 280ms cubic-bezier(.4,0,.2,1)",
+          }}
+        >
+          <div className="flex flex-col items-center py-1.5">
+
+            {/* ── Toggle area ── */}
+            <div className="relative w-full flex justify-center" style={{ height: 32 }}>
+              {/* "<" button — visible when collapsed */}
+              <button
+                type="button"
+                onClick={() => setExpanded(true)}
+                aria-label="Expand navigation"
+                className="absolute inset-0 m-auto w-8 h-8 flex items-center justify-center rounded-full border border-black/10 bg-black/[0.04] text-black/35 hover:text-black/60"
+                style={{
+                  opacity: expanded ? 0 : 1,
+                  transform: expanded ? "scale(0.7)" : "scale(1)",
+                  pointerEvents: expanded ? "none" : "auto",
+                  transition: "opacity 250ms, transform 250ms",
+                }}
+              >
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+
+              {/* "Hide >" — visible when expanded */}
+              <button
+                type="button"
+                onClick={() => setExpanded(false)}
+                aria-label="Collapse navigation"
+                className="absolute inset-0 m-auto flex items-center justify-center gap-1 text-[11px] font-medium text-black/35 hover:text-black/60"
+                style={{
+                  opacity: expanded ? 1 : 0,
+                  transform: expanded ? "scale(1)" : "scale(0.7)",
+                  pointerEvents: expanded ? "auto" : "none",
+                  transition: "opacity 250ms, transform 250ms",
+                }}
+              >
+                <span>Hide</span>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+
+            {/* ── Separator ── */}
+            <div
+              className="h-px bg-black/8 my-1"
+              style={{
+                width: expanded ? "calc(100% - 16px)" : 20,
+                transition: "width 280ms cubic-bezier(.4,0,.2,1)",
+              }}
+            />
+
+            {/* ── Section buttons ── */}
+            {sections.map((s) => {
+              const on = s.id === activeId;
+              return (
                 <button
+                  key={s.id}
                   type="button"
-                  onClick={() => scrollToId(s.id)}
+                  onClick={() => { scrollTo(s.id); if (expanded) setExpanded(false); }}
+                  aria-label={s.label}
+                  aria-current={on ? "true" : undefined}
+                  title={s.label}
                   className={[
-                    "block w-full text-left rounded-lg",
-                    "px-3 py-3 lg:px-2 lg:py-1.5",
-                    "text-[16px] lg:text-[14px] leading-5",
-                    "transition-all",
-                    // Make active obvious in light mode too (your old style was too subtle)
-                    isActive
-                      ? "font-semibold text-black bg-black/10"
-                      : "text-black/70 hover:text-black hover:bg-black/5",
+                    "flex items-center rounded-lg",
+                    "transition-[padding,width,background-color,color] duration-[280ms] ease-[cubic-bezier(.4,0,.2,1)]",
+                    on ? "text-black bg-black/10 font-semibold" : "text-black/50 hover:text-black/80 hover:bg-black/5",
                   ].join(" ")}
-                  aria-current={isActive ? "true" : undefined}
+                  style={{
+                    width: expanded ? "calc(100% - 8px)" : 38,
+                    height: 38,
+                    paddingLeft: expanded ? 12 : 0,
+                    justifyContent: expanded ? "flex-start" : "center",
+                    gap: expanded ? 10 : 0,
+                    margin: "0 auto",
+                    transition: "width 280ms cubic-bezier(.4,0,.2,1), padding 280ms cubic-bezier(.4,0,.2,1), gap 280ms cubic-bezier(.4,0,.2,1), background-color 200ms, color 200ms",
+                  }}
                 >
-                  <span className="whitespace-nowrap">{s.label}</span>
+                  <span className="shrink-0" style={{ opacity: expanded ? 0.7 : 1, transition: "opacity 200ms" }}>
+                    {icon(s)}
+                  </span>
+                  <span
+                    className="whitespace-nowrap text-[13px] leading-5 overflow-hidden"
+                    style={{
+                      maxWidth: expanded ? 110 : 0,
+                      opacity: expanded ? 1 : 0,
+                      transition: "max-width 280ms cubic-bezier(.4,0,.2,1), opacity 200ms 80ms",
+                    }}
+                  >
+                    {s.label}
+                  </span>
                 </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </nav>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }
