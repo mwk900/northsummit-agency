@@ -165,14 +165,14 @@ export default function ScrollSpyNav({
       <nav
         aria-label="Page sections"
         className={[
-          "lg:hidden fixed z-50 bottom-24",
+          "lg:hidden fixed z-50 top-1/2 -translate-y-1/2",
           "transition-all duration-300",
           visible ? "opacity-100 translate-x-0" : "opacity-0 pointer-events-none translate-x-4",
         ].join(" ")}
         style={side}
       >
         <div
-          className={`${pill} bg-white/70 overflow-hidden`}
+          className={`${pill} bg-white/50 overflow-hidden`}
           style={{
             width: expanded ? 170 : 46,
             transition: "width 280ms cubic-bezier(.4,0,.2,1)",
@@ -181,20 +181,21 @@ export default function ScrollSpyNav({
           <div className="flex flex-col items-center py-1.5">
 
             {/* ── Toggle area ── */}
-            <div className="relative w-full flex justify-center" style={{ height: 32 }}>
+            <div className="relative w-full flex justify-center" style={{ height: 42, marginBottom: 6 }}>
               {/* "<" button — visible when collapsed */}
-              <button
-                type="button"
-                onClick={() => setExpanded(true)}
-                aria-label="Expand navigation"
-                className="absolute inset-0 m-auto w-8 h-8 flex items-center justify-center rounded-full border border-black/10 bg-black/[0.04] text-black/35 hover:text-black/60"
-                style={{
-                  opacity: expanded ? 0 : 1,
-                  transform: expanded ? "scale(0.7)" : "scale(1)",
-                  pointerEvents: expanded ? "none" : "auto",
-                  transition: "opacity 250ms, transform 250ms",
-                }}
-              >
+<button
+  type="button"
+  onClick={() => setExpanded(true)}
+  aria-label="Expand navigation"
+  className="absolute inset-0 m-auto w-9 h-9 flex items-center justify-center rounded-full border-2 border-black/60 bg-white/70 text-black/60 hover:bg-white hover:text-black backdrop-blur-md shadow-md"
+  style={{
+    top: -10,
+    opacity: expanded ? 0 : 1,
+    transform: expanded ? "scale(0.9)" : "scale(1)",
+    pointerEvents: expanded ? "none" : "auto",
+    transition: "opacity 250ms, transform 250ms, background 200ms",
+  }}
+>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
