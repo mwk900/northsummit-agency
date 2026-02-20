@@ -41,7 +41,7 @@ export default function Home() {
         sections={[
           { id: "process", label: "Steps" },
           { id: "portfolio", label: "Portfolio" },
-          { id: "who-this-is-for", label: "Who it's for?" },
+          { id: "who-this-is-for", label: "Fit" },
           { id: "pricing", label: "Pricing" },
           { id: "next", label: "Begin" },
         ]}
