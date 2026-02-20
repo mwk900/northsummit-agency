@@ -71,7 +71,7 @@ export default function ScrollSpyNav({
   /**
    * Mobile alignment near arrow button
    */
-  const SMALL_EDGE = "calc(1.5rem + 5px)";;
+  const SMALL_EDGE = "calc(1.5rem + 5px)";
 
   /**
    * Use max() so it moves inward on small screens
@@ -85,7 +85,7 @@ export default function ScrollSpyNav({
     <nav
       aria-label="Page sections"
       className={[
-        "fixed z-50 bottom-28 lg:top-1/2 lg:-translate-y-1/2 lg:bottom-auto",
+        "fixed z-50 bottom-40 lg:top-1/2 lg:-translate-y-1/2 lg:bottom-auto",
         "transition-all duration-300",
         visible
           ? "opacity-100 translate-x-0"
@@ -97,7 +97,7 @@ export default function ScrollSpyNav({
         className={[
           "rounded-2xl border border-white/20",
           "px-0.5 py-1 shadow-[0_6px_18px_rgba(0,0,0,0.12)]",
-          "bg-black/60 dark:bg-white/35 backdrop-blur-lg",
+          "bg-white/55 backdrop-blur-md",
         ].join(" ")}
       >
         <ul className="flex flex-col gap-0.5">
