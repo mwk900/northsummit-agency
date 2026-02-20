@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "Will I own my website?",
-    a: "Yes — 100%. Once the project is complete and paid for, everything is yours. The code, the design, the domain, the hosting account. You're never locked in to NorthSummit. You can take it anywhere.",
+    a: "Yes — 100%. Once the project is complete and paid for, the code and design are yours. We recommend registering your domain in your own name from the start and setting up hosting under your own account — we'll guide you through both. That way nothing is ever tied to us. You can move, change, or hand the site to any other developer at any time.",
   },
   {
     q: "How long does it take to build?",
@@ -26,11 +26,11 @@ const faqs = [
   },
   {
     q: "Will my website show up on Google?",
-    a: "Every site we build includes proper SEO foundations — page titles, meta descriptions, heading structure, fast load times, mobile optimisation, and clean code. This gives you the best possible starting point. However, ranking on Google takes time and depends on competition in your area. We set you up right — the results build from there.",
+    a: "Every site we build includes proper technical SEO foundations — page titles, meta descriptions, heading structure, fast load times, mobile optimisation, and clean code. This gives you the best possible starting point. However, ranking on Google typically takes 3–6 months minimum and depends on the competition in your area and how established your business is. We build it right — the rankings follow with time.",
   },
   {
     q: "What's the difference between NorthSummit and just using Wix or Squarespace?",
-    a: "Wix and Squarespace are template builders — they're fine for a basic online presence but they're slow, generic, and hard to rank on Google. We build custom sites using Next.js, which are significantly faster, cleaner in code, and built specifically around your business and your customers. The difference shows in both how it looks and how it performs.",
+    a: "Wix and Squarespace are template builders — they're fine for a basic online presence but they're slow, generic, and harder to rank on Google. We build custom sites using Next.js, which are significantly faster, cleaner in code, and built specifically around your business and your customers. The difference shows in both performance and how the site converts visitors.",
   },
   {
     q: "What if I need changes after the site goes live?",
@@ -50,7 +50,7 @@ const faqs = [
   },
   {
     q: "Do I need a domain name?",
-    a: "If you already have one, great — we'll use it. If not, we'll help you choose and register one. A domain typically costs around £10–£15/year and is registered in your name, not ours.",
+    a: "If you already have one, great — we'll use it. If not, we'll help you choose and register one. We always recommend registering it in your own name so you have full control. A domain typically costs around £10–£15/year.",
   },
 ];
 
@@ -102,7 +102,12 @@ export default function FAQ() {
             <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">Frequently asked questions</h1>
             <p className="text-text-secondary">
               Everything you need to know before getting started. Can&apos;t find your answer?{" "}
-              <a href="https://calendly.com/north-summit-tuta/30min" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              <a
+                href="https://calendly.com/north-summit-tuta/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline"
+              >
                 Book a call
               </a>{" "}
               and we&apos;ll talk it through.
@@ -124,14 +129,21 @@ export default function FAQ() {
       <section className="py-20 bg-accent/5">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Still not sure? Let&apos;s talk.</h2>
-          <p className="text-text-secondary mb-8">Book a free 30-minute call and we&apos;ll answer any questions before you commit to anything.</p>
+          <p className="text-text-secondary mb-8">
+            Book a free 30-minute call and we&apos;ll answer any questions before you commit to anything.
+          </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="https://calendly.com/north-summit-tuta/30min" target="_blank" rel="noopener noreferrer"
-              className="inline-block px-8 py-3.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all" style={{ color: "var(--primary-bg)" }}
+            <a
+              href="https://calendly.com/north-summit-tuta/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all"
+              style={{ color: "var(--primary-bg)" }}
             >
               Book a free call
             </a>
-            <Link href="/contact"
+            <Link
+              href="/contact"
               className="inline-block px-8 py-3.5 rounded-lg border border-accent text-accent text-sm font-semibold hover:bg-accent/10 transition-colors"
             >
               Send a message

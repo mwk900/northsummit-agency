@@ -52,7 +52,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Trust signals */}
+      {/* How we work */}
       <section className="py-16" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
@@ -66,12 +66,36 @@ export default function About() {
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {[
-              { icon: "⚡", title: "Fast turnaround", text: "Most sites go live in 3–7 days. No waiting weeks for a basic website." },
-              { icon: "🎯", title: "Conversion-first thinking", text: "Every element is designed to turn visitors into enquiries — not just look good." },
-              { icon: "💬", title: "Direct communication", text: "You speak directly with whoever is building your site. No middlemen, ever." },
-              { icon: "🔍", title: "SEO foundations built in", text: "Every site ships with proper SEO structure so Google can find you from day one." },
-              { icon: "📱", title: "Mobile-first by default", text: "Most of your customers are on their phones. Every site is built for that first." },
-              { icon: "💷", title: "Transparent pricing", text: "No hidden fees, no surprise invoices. You know the full cost before we start." },
+              {
+                icon: "⚡",
+                title: "Fast turnaround",
+                text: "Most sites go live in 3–7 days. No waiting weeks for a basic website.",
+              },
+              {
+                icon: "🎯",
+                title: "Conversion-first thinking",
+                text: "Every element is designed to turn visitors into enquiries — not just look good.",
+              },
+              {
+                icon: "💬",
+                title: "Direct communication",
+                text: "You speak directly with whoever is building your site. No middlemen, ever.",
+              },
+              {
+                icon: "🔍",
+                title: "Technical SEO included",
+                text: "Every site is built with proper technical SEO — fast load times, clean code, correct structure. Google rankings take months, but you'll start in the right position.",
+              },
+              {
+                icon: "📱",
+                title: "Mobile-first by default",
+                text: "Most of your customers are on their phones. Every site is built for that first.",
+              },
+              {
+                icon: "💷",
+                title: "Transparent pricing",
+                text: "No hidden fees, no surprise invoices. You know the full cost before we start.",
+              },
             ].map((item) => (
               <div key={item.title} className="p-6 rounded-xl border border-border-color" style={{ backgroundColor: "var(--primary-bg)" }}>
                 <span className="text-3xl mb-3 block">{item.icon}</span>
@@ -96,13 +120,18 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
             className="text-text-secondary leading-relaxed mb-8"
           >
-            We don&apos;t use WordPress, Wix, or Squarespace. We build with <span className="text-text-primary font-medium">Next.js and Tailwind CSS</span> —
-            modern tools that produce fast, clean, lightweight websites. This matters because Google ranks fast sites higher,
-            and fast sites convert better. Your customers notice the difference even if they can&apos;t explain why.
+            We don&apos;t use WordPress, Wix, or Squarespace. We build with{" "}
+            <span className="text-text-primary font-medium">Next.js and Tailwind CSS</span> — modern tools that
+            produce fast, clean, lightweight websites. Google rewards well-structured, fast-loading sites — and fast
+            sites convert better. Your customers notice the difference even if they can&apos;t explain why.
           </motion.p>
           <div className="flex flex-wrap justify-center gap-3">
             {["Next.js", "Tailwind CSS", "Vercel / Netlify", "TypeScript", "Mobile-first", "Core Web Vitals optimised"].map((tech) => (
-              <span key={tech} className="px-4 py-2 rounded-full border border-border-color text-sm text-text-secondary" style={{ backgroundColor: "var(--secondary-bg)" }}>
+              <span
+                key={tech}
+                className="px-4 py-2 rounded-full border border-border-color text-sm text-text-secondary"
+                style={{ backgroundColor: "var(--secondary-bg)" }}
+              >
                 {tech}
               </span>
             ))}
@@ -116,10 +145,17 @@ export default function About() {
           <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Ready to work together?</h2>
           <p className="text-text-secondary mb-8">Get in touch and we&apos;ll get back to you within 24 hours.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="inline-block px-8 py-3.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all" style={{ color: "var(--primary-bg)" }}>
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-3.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all"
+              style={{ color: "var(--primary-bg)" }}
+            >
               Get a quote
             </Link>
-            <a href="https://calendly.com/north-summit-tuta/30min" target="_blank" rel="noopener noreferrer"
+            <a
+              href="https://calendly.com/north-summit-tuta/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block px-8 py-3.5 rounded-lg border border-accent text-accent text-sm font-semibold hover:bg-accent/10 transition-colors"
             >
               Book a call
