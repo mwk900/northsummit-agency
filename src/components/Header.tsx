@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 import { siteConfig } from '@/data/site';
+import LogoMark from '@/components/LogoMark';
+
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -32,13 +34,12 @@ export default function Header() {
         aria-label="Main navigation"
       >
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <span
-            className="inline-block w-7 h-7 rounded-md bg-accent"
-            style={{
-              clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)',
-            }}
-            aria-hidden="true"
-          />
+        
+        
+        
+        <LogoMark size={73} />
+
+
           <span className="text-lg font-bold text-text-primary">
             {siteConfig.agency.name}
             <span className="text-accent">.agency</span>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { siteConfig } from '@/data/site';
+import LogoMark from '@/components/LogoMark';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,11 +12,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-flex items-center gap-2">
-              <span
-                className="inline-block w-6 h-6 rounded-md bg-accent"
-                style={{ clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)' }}
-                aria-hidden="true"
-              />
+              
+              
+              <LogoMark size={45} />
+
+
               <span className="text-lg font-bold text-text-primary">
                 {siteConfig.agency.name}
                 <span className="text-accent">.agency</span>

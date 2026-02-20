@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <!-- Double mountain peak — white for dark backgrounds -->
+  <path
+    d="M20 120 L60 48 L80 78 L100 48 L140 120 Z"
+    fill="white"
+  />
+  <!-- Dark inner valley cut — matches dark background -->
+  <path
+    d="M42 120 L60 88 L80 108 L100 88 L118 120 Z"
+    fill="#0f172a"
+  />
+  <!-- Accent arrow — same site blue, stays identical -->
+  <polyline
+    points="100,46 112,22 124,46"
+    stroke="#3B82F6"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <line
+    x1="112" y1="24"
+    x2="112" y2="72"
+    stroke="#3B82F6"
+    stroke-width="5.5"
+    stroke-linecap="round"
+  />
+</svg>
