@@ -39,11 +39,11 @@ export default function Home() {
         showAfterPx={250}
         offsetTopPx={96}
         sections={[
-          { id: "process", label: "Process" },
-          { id: "portfolio", label: "Work" },
-          { id: "who-this-is-for", label: "Fit" },
+          { id: "process", label: "Steps" },
+          { id: "portfolio", label: "Portfolio" },
+          { id: "who-this-is-for", label: "Who it's for?" },
           { id: "pricing", label: "Pricing" },
-          { id: "next", label: "Next" },
+          { id: "next", label: "Begin" },
         ]}
       />
 
