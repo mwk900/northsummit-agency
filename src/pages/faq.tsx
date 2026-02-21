@@ -6,8 +6,8 @@ import SEOHead from "@/components/SEOHead";
 const faqs = [
   {
     q: "How much does a website cost?",
-    a: "Our packages start from £249 for a single-page site, £599 for up to 4 pages, and £1,199 for a full multi-page build. All prices are fixed - you'll know the exact cost before we start. No hidden fees, no surprise invoices.",
-  },
+    a: "We currently have a limited launch offer while we build our portfolio.\n\nLaunch prices:\n- £99 - single-page site\n- £299 - up to 4 pages\n- £599 - full multi-page build\n\nStandard pricing is higher (£249 / £599 / £1,199), but the launch offer is available for a small number of businesses in exchange for honest feedback and permission to show the finished site in our portfolio.\n\nAll prices are fixed - you'll know the exact cost before we start. No hidden fees, no surprise invoices.",
+},
   {
     q: "Is hosting included in the price?",
     a: "Hosting is not included in the build price - it's a separate ongoing cost. We'll guide you through the best options for your site (typically £5-£20/month depending on your needs), help you get set up, and make sure everything is configured correctly. The hosting account is always in your name - it's never tied to us.",

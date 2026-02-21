@@ -43,9 +43,17 @@ function SpotsCounter() {
           />
         ))}
       </div>
-      <span className="text-sm text-text-secondary">
-        <span className="font-semibold text-text-primary">{remaining}</span> of {totalSpots} spots left
-      </span>
+        <span className="text-sm text-text-secondary">
+  {remaining === totalSpots ? (
+    <span className="font-semibold text-text-primary">
+      {remaining} spots remaining
+    </span>
+  ) : (
+    <span className="font-semibold text-text-primary">
+      Only {remaining} spots remaining
+    </span>
+  )}
+</span>
     </div>
   );
 }
@@ -102,20 +110,44 @@ export default function Home() {
               Every site is hand-built and personally checked before it goes live.
             </motion.p>
 
-            <motion.div custom={4} initial="hidden" animate="visible" variants={fadeIn} className="flex flex-wrap gap-4 mt-8">
-              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-                <Link href="/contact" className="inline-block px-6 py-3 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all" style={{ color: "var(--primary-bg)" }}>
-                  Get a free quote
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-                <a href="https://calendly.com/north-summit-tuta/30min" target="_blank" rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 rounded-lg border border-accent text-accent text-sm font-semibold hover:bg-accent/10 transition-colors"
-                >
-                  Book a call
-                </a>
-              </motion.div>
-            </motion.div>
+<motion.div custom={4} initial="hidden" animate="visible" variants={fadeIn} className="flex flex-wrap gap-4 mt-8">
+
+  {/* Quote */}
+  <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+    <Link
+      href="/contact"
+      className="inline-block px-6 py-3 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all"
+      style={{ color: "var(--primary-bg)" }}
+    >
+      Get a free quote
+    </Link>
+  </motion.div>
+
+  {/* Buy Starter */}
+  <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+    <a
+      href="https://buy.stripe.com/4gM8wO38i0vO4itgeN8ww01"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block px-6 py-3 rounded-lg border border-accent text-accent text-sm font-semibold hover:bg-accent/10 transition-colors"
+    >
+      Buy starter — £99
+    </a>
+  </motion.div>
+
+  {/* Book call */}
+  <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+    <a
+      href="https://calendly.com/north-summit-tuta/30min"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block px-6 py-3 rounded-lg border border-border-color text-text-primary text-sm font-semibold hover:bg-white/5 transition-colors"
+    >
+      Book a call
+    </a>
+  </motion.div>
+
+</motion.div>
 
             <motion.p custom={5} initial="hidden" animate="visible" variants={fadeIn} className="mt-4 text-xs text-text-secondary">
               We respond within 24 hours - usually much sooner.
@@ -315,7 +347,7 @@ export default function Home() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="py-20">
+      <section id="pricing" className="pb-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">What you see is what you pay</h2>
@@ -360,14 +392,43 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-                  <Link href="/contact"
-                    className={`block text-center py-3 rounded-lg text-sm font-semibold transition-all ${pkg.popular ? "bg-accent hover:opacity-90" : "border border-accent text-accent hover:bg-accent/10"}`}
-                    style={pkg.popular ? { color: "var(--primary-bg)" } : undefined}
-                  >
-                    Get a free quote
-                  </Link>
-                </motion.div>
+
+
+
+<div className="flex flex-col gap-3">
+
+
+{/* Buy */}
+<motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+  <a
+    href={
+      pkg.name === "Starter"
+        ? "https://buy.stripe.com/4gM8wO38i0vO4itgeN8ww01"
+        : pkg.name === "Growth"
+        ? "https://buy.stripe.com/cNi3cuaAK92kdT3bYx8ww02"
+        : "https://buy.stripe.com/3cI3cu8sC92k8yJfaJ8ww03"
+    }
+    target="_blank"
+    rel="noopener noreferrer"
+    className="block text-center py-3 rounded-lg text-sm font-semibold bg-accent hover:opacity-90 transition-all"
+    style={{ color: "var(--primary-bg)" }}
+  >
+    Buy now
+  </a>
+</motion.div>
+
+{/* Quote */}
+<motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+  <Link
+    href="/contact"
+    className="block text-center py-3 rounded-lg text-sm font-semibold border border-accent text-accent hover:bg-accent/10 transition-all"
+  >
+    Any questions?
+  </Link>
+</motion.div>
+
+
+</div>
               </motion.div>
             ))}
           </motion.div>
@@ -377,6 +438,80 @@ export default function Home() {
             </div>
           )}
         </div>
+
+{/* Payment trust strip — under pricing */}
+<div className="mt-8 flex flex-col items-center gap-3">
+  <div className="flex items-center gap-3 flex-wrap justify-center">
+    {/* Lock icon + text */}
+    <span className="flex items-center gap-1.5 text-xs text-text-secondary">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+      Secure checkout via Stripe
+    </span>
+
+    <span className="text-border-color text-xs">·</span>
+
+    {/* Card logos SVG row */}
+    <div className="flex items-center gap-2">
+
+      {/* Visa */}
+      <svg width="38" height="24" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visa" className="shrink-0">
+        <rect width="38" height="24" rx="4" fill="#1A1F71"/>
+        <path d="M16.5 16.5H14.1L15.6 7.5H18L16.5 16.5Z" fill="white"/>
+        <path d="M23.4 7.7C22.9 7.5 22.1 7.3 21.2 7.3C18.9 7.3 17.3 8.5 17.3 10.2C17.3 11.5 18.4 12.2 19.3 12.6C20.2 13 20.5 13.3 20.5 13.7C20.5 14.3 19.8 14.6 19.1 14.6C18.1 14.6 17.6 14.4 16.8 14.1L16.5 13.9L16.2 16C16.8 16.3 17.9 16.5 19 16.5C21.5 16.5 23 15.3 23 13.5C23 12.5 22.4 11.8 21.1 11.2C20.3 10.8 19.8 10.6 19.8 10.1C19.8 9.7 20.2 9.3 21.1 9.3C21.9 9.3 22.4 9.5 22.8 9.7L23 9.8L23.4 7.7Z" fill="white"/>
+        <path d="M26.4 13.4C26.6 12.9 27.4 10.8 27.4 10.8C27.4 10.8 27.6 10.3 27.7 10L27.9 10.7C27.9 10.7 28.4 13 28.5 13.4H26.4ZM29.3 7.5H27.4C26.8 7.5 26.3 7.7 26.1 8.3L22.9 16.5H25.4C25.4 16.5 25.8 15.4 25.9 15.1H28.9C29 15.5 29.2 16.5 29.2 16.5H31.5L29.3 7.5Z" fill="white"/>
+        <path d="M14.1 7.5L11.8 13.4L11.6 12.4C11.1 11 9.8 9.4 8.4 8.6L10.5 16.5H13L16.6 7.5H14.1Z" fill="white"/>
+        <path d="M9.7 7.5H5.8L5.8 7.7C8.8 8.5 10.8 10.4 11.6 12.4L10.7 8.3C10.6 7.7 10.2 7.5 9.7 7.5Z" fill="#F9A533"/>
+      </svg>
+
+      {/* Mastercard */}
+      <svg width="38" height="24" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mastercard" className="shrink-0">
+        <rect width="38" height="24" rx="4" fill="#252525"/>
+        <circle cx="15" cy="12" r="6" fill="#EB001B"/>
+        <circle cx="23" cy="12" r="6" fill="#F79E1B"/>
+        <path d="M19 7.8C20.3 8.8 21.2 10.3 21.2 12C21.2 13.7 20.3 15.2 19 16.2C17.7 15.2 16.8 13.7 16.8 12C16.8 10.3 17.7 8.8 19 7.8Z" fill="#FF5F00"/>
+      </svg>
+
+{/* Apple Pay */}
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-apple" viewBox="0 0 16 16">
+  <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282" />
+</svg>
+
+      {/* Google Pay */}
+      <svg width="38" height="24" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Google Pay" className="shrink-0">
+        <rect width="38" height="24" rx="4" fill="#fff" stroke="#E0E0E0" strokeWidth="0.5"/>
+        <g transform="translate(5.5, 5.5)">
+          <path d="M6.5 0.2C5 0.2 3.6 0.8 2.5 1.8L4.2 3.5C4.8 2.9 5.6 2.5 6.5 2.5C7.4 2.5 8.1 2.8 8.7 3.3L10.3 1.7C9.2 0.8 7.9 0.2 6.5 0.2Z" fill="#EA4335"/>
+          <path d="M2.5 1.8C1.6 2.8 1 4.1 1 5.5C1 6.9 1.6 8.2 2.5 9.2L4.2 7.5C3.8 7 3.5 6.3 3.5 5.5C3.5 4.7 3.8 4 4.2 3.5L2.5 1.8Z" fill="#FBBC05"/>
+          <path d="M2.5 9.2C3.6 10.2 5 10.8 6.5 10.8C8 10.8 9.2 10.4 10.1 9.5L8.4 7.9C7.9 8.3 7.3 8.5 6.5 8.5C5.2 8.5 4.1 7.7 3.7 6.5L2.5 9.2Z" fill="#34A853"/>
+          <path d="M12 5.5C12 5 11.9 4.5 11.8 4H6.5V6.5H9.6C9.4 7.3 8.9 7.7 8.4 7.9L10.1 9.5C11.2 8.5 12 7.1 12 5.5Z" fill="#4285F4"/>
+        </g>
+        <text x="20" y="16" fontFamily='system-ui, -apple-system, "Segoe UI", sans-serif' fontSize="8.5" fontWeight="500" fill="#5F6368">Pay</text>
+      </svg>
+
+      {/* Klarna */}
+      <svg width="38" height="24" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Klarna" className="shrink-0">
+        <rect width="38" height="24" rx="4" fill="#FFB3C7"/>
+        <text x="19" y="15" fontFamily='system-ui, -apple-system, "Segoe UI", sans-serif' fontSize="9" fontWeight="800" fill="#0A0B09" textAnchor="middle">Klarna</text>
+      </svg>
+
+      {/* Revolut Pay */}
+      <svg width="38" height="24" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Revolut Pay" className="shrink-0">
+        <rect width="38" height="24" rx="4" fill="#191C1F"/>
+        <text x="19" y="15" fontFamily='system-ui, -apple-system, "Segoe UI", sans-serif' fontSize="7.5" fontWeight="600" fill="#fff" textAnchor="middle">Revolut</text>
+      </svg>
+
+    </div>
+  </div>
+  <p className="text-xs text-text-secondary">No card details stored by us — all payments handled securely by Stripe</p>
+</div>
+
+
+
+
+
       </section>
 
       {/* What Happens Next - Friendly, inviting, conversion-focused */}
@@ -403,32 +538,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-20 bg-accent/5">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
-            Let&apos;s get your site sorted.
-          </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-text-secondary mb-8">
-            Send us a message or book a call - we&apos;ll get back to you within 24 hours.
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="flex flex-wrap justify-center gap-4">
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <Link href="/contact" className="inline-block px-8 py-3.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all" style={{ color: "var(--primary-bg)" }}>
-                Get a free quote
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <a href="https://calendly.com/north-summit-tuta/30min" target="_blank" rel="noopener noreferrer"
-                className="inline-block px-8 py-3.5 rounded-lg border border-accent text-accent text-sm font-semibold hover:bg-accent/10 transition-colors"
-              >
-                Book a call
-              </a>
-            </motion.div>
-          </motion.div>
-          <p className="mt-4 text-xs text-text-secondary">No obligation. We typically respond within a few hours during business hours.</p>
-        </div>
-      </section>
+{/* Final CTA — mobile balanced */}
+<section className="py-20 bg-accent/5">
+  <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-2xl sm:text-3xl font-bold text-text-primary mb-4"
+    >
+      Let&apos;s get your site sorted.
+    </motion.h2>
+
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 }}
+      className="text-text-secondary mb-8"
+    >
+      Send us a message or book a call — we&apos;ll get back to you within 24 hours.
+    </motion.p>
+
+{/* Buttons */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.2 }}
+  className="w-full"
+>
+  {/* Row 1: primary + secondary */}
+  <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 w-full">
+    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
+      <Link
+        href="/contact"
+        className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-accent text-sm font-semibold shadow-sm hover:opacity-90 transition"
+        style={{ color: "var(--primary-bg)" }}
+      >
+        Get a free quote
+      </Link>
+    </motion.div>
+
+    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
+      <a
+        href="https://calendly.com/north-summit-tuta/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-lg border border-accent text-accent text-sm font-semibold hover:bg-accent/10 transition"
+      >
+        Book a call
+      </a>
+    </motion.div>
+  </div>
+
+  {/* Row 2: pricing underneath on desktop, still full-width on mobile */}
+  <div className="mt-4 flex justify-center w-full">
+    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
+      <button
+        onClick={() => {
+          const el = document.getElementById("pricing");
+          if (!el) return;
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
+        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-accent/30 bg-accent/5 text-sm font-medium text-accent hover:bg-accent/10 hover:border-accent transition"
+      >
+        View pricing instead →
+      </button>
+    </motion.div>
+  </div>
+</motion.div>
+</div>
+</section>
     </>
   );
 }
