@@ -6,51 +6,51 @@ import SEOHead from "@/components/SEOHead";
 const faqs = [
   {
     q: "How much does a website cost?",
-    a: "Our packages start from £249 for a single-page site, £599 for up to 4 pages, and £1,199 for a full multi-page build. All prices are fixed — you'll know the exact cost before we start. No hidden fees, no surprise invoices.",
+    a: "Our packages start from £249 for a single-page site, £599 for up to 4 pages, and £1,199 for a full multi-page build. All prices are fixed - you'll know the exact cost before we start. No hidden fees, no surprise invoices.",
   },
   {
-    q: "What about hosting — is that included?",
-    a: "Hosting is not included in the build price and is an ongoing cost paid separately. We'll guide you through the best options for your site (typically £5–£20/month depending on your needs), help you get set up, and make sure everything is configured correctly. You own your hosting account — it's never tied to us.",
+    q: "Is hosting included in the price?",
+    a: "Hosting is not included in the build price - it's a separate ongoing cost. We'll guide you through the best options for your site (typically £5-£20/month depending on your needs), help you get set up, and make sure everything is configured correctly. The hosting account is always in your name - it's never tied to us.",
   },
   {
-    q: "Will I own my website?",
-    a: "Yes — 100%. Once the project is complete and paid for, the code and design are yours. We recommend registering your domain in your own name from the start and setting up hosting under your own account — we'll guide you through both. That way nothing is ever tied to us. You can move, change, or hand the site to any other developer at any time.",
+    q: "Do I own the website?",
+    a: "Yes - 100%. Once the project is complete and paid for, the code and design are yours. We recommend registering your domain in your own name from the start and setting up hosting under your own account - we'll guide you through both. That way nothing is ever tied to us. You can move, change, or hand the site to any other developer at any time.",
   },
   {
-    q: "How long does it take to build?",
-    a: "Starter single-page sites typically go live in 3–5 days. Growth packages (up to 4 pages) usually take 7–10 days. Premium builds are typically 2–3 weeks. Timelines depend on how quickly you can provide content, feedback, and approvals — we'll keep things moving from our end.",
+    q: "How long until my site is live?",
+    a: "Starter single-page sites typically go live in 3-5 days. Growth packages (up to 4 pages) usually take 7-10 days. Premium builds are typically 2-3 weeks. Timelines depend on how quickly you can provide content, feedback, and approvals - we'll keep things moving from our end.",
   },
   {
-    q: "Do I need to provide content and photos?",
-    a: "Ideally yes — you know your business better than anyone. We'll tell you exactly what we need (a short description of your services, your contact details, your service area, etc). If you don't have photos, we can use high-quality stock images that suit your trade. We can also help with basic copywriting if needed.",
+    q: "Do I need to provide my own photos and text?",
+    a: "Ideally yes - you know your business better than anyone. We'll tell you exactly what we need: a short description of your services, your contact details, your service area, and so on. If you don't have photos, we can use high-quality stock images that suit your trade. We can also help with basic copywriting if needed.",
   },
   {
-    q: "Will my website show up on Google?",
-    a: "Every site we build includes proper technical SEO foundations — page titles, meta descriptions, heading structure, fast load times, mobile optimisation, and clean code. This gives you the best possible starting point. However, ranking on Google typically takes 3–6 months minimum and depends on the competition in your area and how established your business is. We build it right — the rankings follow with time.",
+    q: "Will my site show up on Google straight away?",
+    a: "Every site we build includes proper technical SEO foundations - page titles, meta descriptions, heading structure, fast load times, mobile optimisation, and clean code. This gives you the best possible starting point. However, ranking on Google typically takes 3-6 months minimum and depends on the competition in your area and how established your business is. We build it right - the rankings follow with time.",
   },
   {
-    q: "What's the difference between NorthSummit and just using Wix or Squarespace?",
-    a: "Wix and Squarespace are template builders — they're fine for a basic online presence but they're slow, generic, and harder to rank on Google. We build custom sites using Next.js, which are significantly faster, cleaner in code, and built specifically around your business and your customers. The difference shows in both performance and how the site converts visitors.",
+    q: "Why not just use Wix or Squarespace?",
+    a: "Wix and Squarespace are template builders - they're fine for a basic online presence but they're slow, generic, and harder to rank on Google. We build custom sites that are significantly faster, cleaner in code, and built specifically around your business and your customers. The difference shows in both performance and how the site converts visitors.",
   },
   {
-    q: "What if I need changes after the site goes live?",
-    a: "All packages include at least one round of revisions before launch. After that, we offer ongoing support — whether that's a quick text change, a new service page, or a full update. Just get in touch and we'll sort it. We don't lock you into expensive monthly retainers for basic changes.",
+    q: "What if I want changes after launch?",
+    a: "All packages include at least one round of revisions before launch. After that, we offer ongoing support - whether that's a quick text change, a new service page, or a full update. Just get in touch and we'll sort it. We don't lock you into expensive monthly retainers for basic changes.",
   },
   {
-    q: "How do I get in touch and what happens next?",
-    a: "Just hit 'Get a quote' or 'Book a call' — tell us a bit about your business and what you need, and we'll get back to you within 24 hours (usually the same day). From there we'll send a clear quote, agree on a timeline, and get started. No lengthy contracts, no complicated onboarding.",
+    q: "How do I get started?",
+    a: "Just hit 'Get a quote' or 'Book a call' - tell us a bit about your business and what you need, and we'll get back to you within 24 hours (usually the same day). From there we'll send a clear quote, agree on a timeline, and get started. No lengthy contracts, no complicated onboarding.",
   },
   {
     q: "Do you work with businesses outside the UK?",
-    a: "Yes — we work with businesses across the UK and Europe. Everything is handled remotely so location is never an issue. We communicate via email, video call, or whatever works best for you.",
+    a: "Yes - we work with businesses across the UK and Europe. Everything is handled remotely so location is never an issue. We communicate via email, video call, or whatever works best for you.",
   },
   {
-    q: "What if I already have a website — can you redesign it?",
-    a: "Absolutely. Redesigns are one of the most common projects we take on. Whether your current site is slow, outdated, not mobile-friendly, or simply not bringing in enquiries — we can assess what's wrong and rebuild it properly. We also offer free website audits if you want an honest assessment first.",
+    q: "Can you redesign my existing website?",
+    a: "Absolutely. Redesigns are one of the most common projects we take on. Whether your current site is slow, outdated, not mobile-friendly, or simply not bringing in enquiries - we can assess what's wrong and rebuild it properly. We also offer free website audits if you want an honest assessment first.",
   },
   {
-    q: "Do I need a domain name?",
-    a: "If you already have one, great — we'll use it. If not, we'll help you choose and register one. We always recommend registering it in your own name so you have full control. A domain typically costs around £10–£15/year.",
+    q: "What about domain names?",
+    a: "If you already have one, great - we'll use it. If not, we'll help you choose and register one. We always recommend registering it in your own name so you have full control. A domain typically costs around £10-£15/year.",
   },
 ];
 
@@ -88,8 +88,8 @@ export default function FAQ() {
   return (
     <>
       <SEOHead
-        title="FAQ — Web Design for Trades & Local Businesses | NorthSummit"
-        description="Common questions about NorthSummit web design services — pricing, hosting, timelines, ownership, SEO, and more. Clear answers, no jargon."
+        title="FAQ - Web Design for Trades & Local Businesses | NorthSummit"
+        description="Common questions about NorthSummit web design services - pricing, hosting, timelines, ownership, SEO, and more. Clear answers, no jargon."
         path="/faq"
       />
 
@@ -101,14 +101,14 @@ export default function FAQ() {
             </motion.p>
             <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">Frequently asked questions</h1>
             <p className="text-text-secondary">
-              Everything you need to know before getting started. Can&apos;t find your answer?{" "}
+              Straight answers to the questions we get asked most. If yours isn&apos;t here,{" "}
               <a
                 href="https://calendly.com/north-summit-tuta/30min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent hover:underline"
               >
-                Book a call
+                book a quick call
               </a>{" "}
               and we&apos;ll talk it through.
             </p>
@@ -128,9 +128,9 @@ export default function FAQ() {
       {/* CTA */}
       <section className="py-20 bg-accent/5">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Still not sure? Let&apos;s talk.</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Still got questions?</h2>
           <p className="text-text-secondary mb-8">
-            Book a free 30-minute call and we&apos;ll answer any questions before you commit to anything.
+            Book a free call and ask us anything. No pressure, no commitment.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

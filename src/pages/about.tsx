@@ -6,8 +6,8 @@ export default function About() {
   return (
     <>
       <SEOHead
-        title="About NorthSummit | UK Web Design Agency for Trades & Local Businesses"
-        description="NorthSummit builds conversion-focused websites for tradespeople and local businesses across the UK. Fast turnaround, clear pricing, and direct communication from start to finish."
+        title="About NorthSummit | UK Web Design for Trades & Local Businesses"
+        description="NorthSummit builds websites for tradespeople and local businesses across the UK. Fast turnaround, clear pricing, and direct communication from start to finish."
         path="/about"
       />
 
@@ -22,30 +22,29 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
               className="text-4xl sm:text-5xl font-bold text-text-primary leading-tight mb-6"
             >
-              Built for businesses that want results — not just a pretty website.
+              Built for businesses that want results - not just a pretty website.
             </motion.h1>
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
               className="space-y-4 text-text-secondary leading-relaxed text-lg"
             >
               <p>
-                NorthSummit was built on a simple frustration: too many small businesses and tradespeople were paying
-                good money for websites that looked fine but did nothing. No calls. No enquiries. Just a digital
-                business card collecting dust.
+                NorthSummit exists because too many tradespeople and small businesses were getting a raw deal. Paying good
+                money for a website that looked fine but did nothing. No calls. No enquiries. Just an expensive page sitting
+                on the internet collecting dust.
               </p>
               <p>
-                We do things differently. Every site we build starts with one question —{" "}
-                <span className="text-text-primary font-medium">what does this business need to achieve?</span> From
-                there, every design decision, every headline, every button placement is made with conversion in mind.
+                We took a different approach. Before anything gets designed, we ask one question -{" "}
+                <span className="text-text-primary font-medium">what does this business actually need the website to do?</span>{" "}
+                Every layout, every headline, every button is there for a reason - to get your phone ringing.
               </p>
               <p>
-                We work with a focused roster of clients at any one time — which means you get real attention,
-                fast turnaround, and direct communication with the people actually building your site. No account
-                managers, no hand-offs, no fluff.
+                We only take on a handful of clients at a time. That means you get proper attention, fast turnaround,
+                and you speak directly with whoever is building your site. No project managers passing messages. No waiting
+                a week for a reply.
               </p>
               <p>
-                Mati leads every project from brief to launch, combining modern tooling with a sharp focus on
-                what actually moves the needle for trades and local businesses across the UK.
+                Mati leads every project from the first conversation to launch day. One point of contact, start to finish.
               </p>
             </motion.div>
           </div>
@@ -59,7 +58,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="text-2xl sm:text-3xl font-bold text-text-primary mb-10 text-center"
           >
-            How we work
+            What you can expect
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
@@ -69,31 +68,31 @@ export default function About() {
               {
                 icon: "⚡",
                 title: "Fast turnaround",
-                text: "Most sites go live in 3–7 days. No waiting weeks for a basic website.",
+                text: "Most sites go live in 3-7 days. No waiting weeks for a basic website.",
               },
               {
                 icon: "🎯",
-                title: "Conversion-first thinking",
-                text: "Every element is designed to turn visitors into enquiries — not just look good.",
+                title: "Built to bring in work",
+                text: "Every element on your site is there to turn visitors into enquiries - not just look good.",
               },
               {
                 icon: "💬",
-                title: "Direct communication",
-                text: "You speak directly with whoever is building your site. No middlemen, ever.",
+                title: "You talk to the person building it",
+                text: "No middlemen, no account managers. You speak directly with whoever is working on your site.",
               },
               {
                 icon: "🔍",
                 title: "Technical SEO included",
-                text: "Every site is built with proper technical SEO — fast load times, clean code, correct structure. Google rankings take months, but you'll start in the right position.",
+                text: "Every site is built with proper technical SEO - fast load times, clean code, correct structure. Google rankings take months, but you'll start in the right position.",
               },
               {
                 icon: "📱",
-                title: "Mobile-first by default",
-                text: "Most of your customers are on their phones. Every site is built for that first.",
+                title: "Mobile-first",
+                text: "Most of your customers are searching on their phones. Every site is built for that first.",
               },
               {
                 icon: "💷",
-                title: "Transparent pricing",
+                title: "You know the price upfront",
                 text: "No hidden fees, no surprise invoices. You know the full cost before we start.",
               },
             ].map((item) => (
@@ -114,16 +113,15 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="text-2xl sm:text-3xl font-bold text-text-primary mb-4"
           >
-            Why our sites perform better
+            Why we don&apos;t use Wix or WordPress
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
             className="text-text-secondary leading-relaxed mb-8"
           >
-            We don&apos;t use WordPress, Wix, or Squarespace. We build with{" "}
-            <span className="text-text-primary font-medium">Next.js and Tailwind CSS</span> — modern tools that
-            produce fast, clean, lightweight websites. Google rewards well-structured, fast-loading sites — and fast
-            sites convert better. Your customers notice the difference even if they can&apos;t explain why.
+            Most cheap websites are built on WordPress or Wix. They&apos;re bloated, slow, and full of plugins that break.
+            We build with modern tools that produce fast, clean sites with nothing unnecessary weighing them down.
+            Google rewards sites like this - and your customers notice the speed even if they can&apos;t explain why.
           </motion.p>
           <div className="flex flex-wrap justify-center gap-3">
             {["Next.js", "Tailwind CSS", "Vercel / Netlify", "TypeScript", "Mobile-first", "Core Web Vitals optimised"].map((tech) => (
@@ -142,15 +140,15 @@ export default function About() {
       {/* CTA */}
       <section className="py-20 bg-accent/5">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Ready to work together?</h2>
-          <p className="text-text-secondary mb-8">Get in touch and we&apos;ll get back to you within 24 hours.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Want to see what we&apos;d build for you?</h2>
+          <p className="text-text-secondary mb-8">Get in touch and we&apos;ll get back to you within 24 hours - usually sooner.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
               className="inline-block px-8 py-3.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all"
               style={{ color: "var(--primary-bg)" }}
             >
-              Get a quote
+              Get a free quote
             </Link>
             <a
               href="https://calendly.com/north-summit-tuta/30min"

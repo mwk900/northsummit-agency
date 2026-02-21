@@ -10,19 +10,19 @@ export default function Contact() {
 
   const isAudit = intent === "audit";
 
-  const title = isAudit ? "Request a free website audit" : "Get a quote";
+  const title = isAudit ? "Request a free website audit" : "Get a free quote";
   const description = isAudit
-    ? "Send your website link and what you do. I’ll reply with clear improvements to help you get more enquiries."
+    ? "Send your website link and what you do. We'll reply with clear improvements to help you get more enquiries."
     : "Tell us about your project and we'll get back to you within 24 hours.";
 
   return (
     <>
       <SEOHead
-        title={isAudit ? "Free Website Audit" : "Contact"}
+        title={isAudit ? "Free Website Audit" : "Get a Free Quote"}
         description={
           isAudit
             ? "Request a free website audit. Get clear, practical improvements to help your business get more enquiries."
-            : "Get in touch for a free quote. We build websites for trades and local businesses across the UK & Europe."
+            : "Get in touch for a free quote. We build websites for trades and local businesses across the UK."
         }
         path="/contact"
       />
@@ -40,21 +40,22 @@ export default function Contact() {
               </p>
             )}
           </motion.div>
-<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-  <ContactForm />
 
-  <div className="mt-4">
-    <a
-      href="https://calendly.com/north-summit-tuta/30min"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block w-full text-center py-3 rounded-lg text-sm font-semibold border border-border-color hover:bg-white/5 transition"
-      style={{ color: "var(--text-primary)" }}
-    >
-     Prefer a call? Book a time
-    </a>
-  </div>
-</motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+            <ContactForm />
+
+            <div className="mt-4">
+              <a
+                href="https://calendly.com/north-summit-tuta/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center py-3 rounded-lg text-sm font-semibold border border-border-color hover:border-accent hover:text-accent transition-colors"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Prefer a call? Book a time
+              </a>
+            </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -74,8 +75,6 @@ export default function Contact() {
               </svg>
               {siteConfig.agency.email}
             </a>
-
-            
           </motion.div>
         </div>
       </section>
