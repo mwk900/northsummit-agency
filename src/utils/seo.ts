@@ -15,7 +15,7 @@ export function generateSEO({
   title,
   description = siteConfig.agency.description,
   path = '',
-  image = '/images/og-image.jpg',
+  image = '/logo.svg',
   type = 'website',
   publishedTime,
 }: SEOProps = {}) {
@@ -44,7 +44,6 @@ export function generateSEO({
       title: fullTitle,
       description,
       image: `${baseUrl}${image}`,
-      // optional: set this later if you have a brand handle, e.g. "@northsummitagency"
       site: '',
     },
   };
@@ -58,6 +57,11 @@ export function generateOrganizationSchema() {
     description: siteConfig.agency.description,
     url: baseUrl,
     email: siteConfig.agency.email,
+    logo: `${baseUrl}/logo.svg`,
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'GB',
+    },
   };
 }
 

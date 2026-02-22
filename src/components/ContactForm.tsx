@@ -1,11 +1,19 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+
+type Intent = 'quote' | 'audit';
 
 interface FormData {
+  intent: Intent;
   name: string;
   email: string;
+  phone: string;
+  websiteUrl: string;
+  trade: string;
+  serviceArea: string;
   message: string;
-  website: string; // honeypot
+  company: string; // honeypot
 }
 
 interface FormErrors {
@@ -14,12 +22,17 @@ interface FormErrors {
   message?: string;
 }
 
-export default function ContactForm() {
+export default function ContactForm({ intent = 'quote' }: { intent?: Intent }) {
   const [formData, setFormData] = useState<FormData>({
+    intent,
     name: '',
     email: '',
+    phone: '',
+    websiteUrl: '',
+    trade: '',
+    serviceArea: '',
     message: '',
-    website: '',
+    company: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -35,7 +48,7 @@ export default function ContactForm() {
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
+      newErrors.message = 'Please add a bit more detail (at least 10 characters)';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -44,24 +57,18 @@ export default function ContactForm() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-
     setStatus('submitting');
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          website: formData.website,
-        }),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', message: '', website: '' });
+        setFormData({ intent, name: '', email: '', phone: '', websiteUrl: '', trade: '', serviceArea: '', message: '', company: '' });
       } else {
         const data = await response.json().catch(() => null);
         if (data?.error === 'rate_limit') {
@@ -83,6 +90,12 @@ export default function ContactForm() {
     }
   };
 
+  const inputClass = (hasError?: string) =>
+    `w-full px-4 py-3 rounded-lg border text-text-primary placeholder-text-secondary text-sm transition-colors focus:border-accent focus:ring-0 ${
+      hasError ? 'border-red-500' : 'border-border-color'
+    }`;
+  const inputStyle = { backgroundColor: 'var(--secondary-bg)' };
+
   if (status === 'success') {
     return (
       <motion.div
@@ -96,9 +109,11 @@ export default function ContactForm() {
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h3 className="text-xl font-semibold text-text-primary mb-2">Message sent!</h3>
+        <h3 className="text-xl font-semibold text-text-primary mb-2">
+          {intent === 'audit' ? 'Audit requested!' : 'Message sent!'}
+        </h3>
         <p className="text-text-secondary">
-          Thanks for reaching out. We&apos;ll get back to you soon.
+          Thanks for reaching out. We&apos;ll get back to you within 24 hours.
         </p>
         <button
           onClick={() => setStatus('idle')}
@@ -111,74 +126,76 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-      {/* Honeypot - hidden from real users */}
-      <div className="absolute opacity-0 h-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
-        <label htmlFor="website">Website</label>
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      {/* Honeypot — truly hidden */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="company">Company</label>
         <input
           type="text"
-          id="website"
-          name="website"
-          value={formData.website}
-          onChange={(e) => handleChange('website', e.target.value)}
+          id="company"
+          name="company"
+          value={formData.company}
+          onChange={(e) => handleChange('company', e.target.value)}
           autoComplete="off"
           tabIndex={-1}
         />
       </div>
 
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-1.5">
-          Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={(e) => handleChange('name', e.target.value)}
-          placeholder="Your name"
-          className={`w-full px-4 py-3 rounded-lg border text-text-primary placeholder-text-secondary text-sm transition-colors focus:border-accent focus:ring-0 ${
-            errors.name ? 'border-red-500' : 'border-border-color'
-          }`}
-          style={{ backgroundColor: 'var(--secondary-bg)' }}
-        />
-        {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+      {/* Name + Email */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-1.5">Name</label>
+          <input type="text" id="name" name="name" value={formData.name} onChange={(e) => handleChange('name', e.target.value)} placeholder="Your name" className={inputClass(errors.name)} style={inputStyle} />
+          {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-1.5">Email</label>
+          <input type="email" id="email" name="email" value={formData.email} onChange={(e) => handleChange('email', e.target.value)} placeholder="your@email.com" className={inputClass(errors.email)} style={inputStyle} />
+          {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+        </div>
       </div>
 
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-1.5">
-          Email
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={(e) => handleChange('email', e.target.value)}
-          placeholder="your@email.com"
-          className={`w-full px-4 py-3 rounded-lg border text-text-primary placeholder-text-secondary text-sm transition-colors focus:border-accent focus:ring-0 ${
-            errors.email ? 'border-red-500' : 'border-border-color'
-          }`}
-          style={{ backgroundColor: 'var(--secondary-bg)' }}
-        />
-        {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+      {/* Phone + Website */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-text-primary mb-1.5">Phone <span className="text-text-secondary font-normal">(optional)</span></label>
+          <input type="tel" id="phone" name="phone" value={formData.phone} onChange={(e) => handleChange('phone', e.target.value)} placeholder="07xxx xxx xxx" className={inputClass()} style={inputStyle} />
+        </div>
+        <div>
+          <label htmlFor="websiteUrl" className="block text-sm font-medium text-text-primary mb-1.5">
+            {intent === 'audit' ? 'Website to audit' : 'Current website'} <span className="text-text-secondary font-normal">(optional)</span>
+          </label>
+          <input type="url" id="websiteUrl" name="websiteUrl" value={formData.websiteUrl} onChange={(e) => handleChange('websiteUrl', e.target.value)} placeholder="https://..." className={inputClass()} style={inputStyle} />
+        </div>
       </div>
 
+      {/* Trade + Service area */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="trade" className="block text-sm font-medium text-text-primary mb-1.5">Trade / service <span className="text-text-secondary font-normal">(optional)</span></label>
+          <input type="text" id="trade" name="trade" value={formData.trade} onChange={(e) => handleChange('trade', e.target.value)} placeholder="e.g. Plumbing, Roofing, Cleaning" className={inputClass()} style={inputStyle} />
+        </div>
+        <div>
+          <label htmlFor="serviceArea" className="block text-sm font-medium text-text-primary mb-1.5">Service area <span className="text-text-secondary font-normal">(optional)</span></label>
+          <input type="text" id="serviceArea" name="serviceArea" value={formData.serviceArea} onChange={(e) => handleChange('serviceArea', e.target.value)} placeholder="e.g. Nottingham + 20 miles" className={inputClass()} style={inputStyle} />
+        </div>
+      </div>
+
+      {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-1.5">
-          Message
-        </label>
+        <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-1.5">Message</label>
         <textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={(e) => handleChange('message', e.target.value)}
-          placeholder="Tell us about your project..."
+          placeholder={intent === 'audit'
+            ? "What should we focus on? (e.g. not getting calls, unclear services, slow on mobile)"
+            : "Tell us about your project — what does your business do, and what do you need the site to do?"
+          }
           rows={5}
-          className={`w-full px-4 py-3 rounded-lg border text-text-primary placeholder-text-secondary text-sm transition-colors focus:border-accent focus:ring-0 resize-y ${
-            errors.message ? 'border-red-500' : 'border-border-color'
-          }`}
-          style={{ backgroundColor: 'var(--secondary-bg)' }}
+          className={`${inputClass(errors.message)} resize-y`}
+          style={inputStyle}
         />
         {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
       </div>
@@ -188,6 +205,12 @@ export default function ContactForm() {
           Something went wrong. Please try again or email us directly.
         </div>
       )}
+
+      {/* Privacy microcopy */}
+      <p className="text-xs text-text-secondary">
+        We&apos;ll only use your details to reply to your message. No mailing lists.{' '}
+        <Link href="/privacy" className="underline hover:text-accent">Privacy policy</Link>.
+      </p>
 
       <motion.button
         type="submit"
@@ -205,9 +228,7 @@ export default function ContactForm() {
             </svg>
             Sending...
           </span>
-        ) : (
-          'Send message'
-        )}
+        ) : intent === 'audit' ? 'Request audit' : 'Send message'}
       </motion.button>
     </form>
   );
