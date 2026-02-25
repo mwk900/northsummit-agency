@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { motion, AnimatePresence } from 'framer-motion';
-import ThemeToggle from './ThemeToggle';
-import { siteConfig } from '@/data/site';
-import LogoMark from '@/components/LogoMark';
-
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
+import { siteConfig } from "@/data/site";
+import LogoMark from "@/components/LogoMark";
+import MobileContactWidget from "@/components/MobileContactWidget";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,32 +14,29 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [router.pathname]);
 
+  const isActive = (href: string) =>
+    router.pathname === href || (href !== "/" && router.pathname.startsWith(href));
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-shadow ${
-        scrolled ? 'shadow-lg shadow-black/10' : ''
-      }`}
-      style={{ backgroundColor: 'var(--primary-bg)' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-shadow ${scrolled ? "shadow-lg shadow-black/10" : ""}`}
+      style={{ backgroundColor: "var(--primary-bg)" }}
     >
       <nav
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
         aria-label="Main navigation"
       >
+        {/* Brand */}
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        
-        
-        
-        <LogoMark size={73} />
-
-
+          <LogoMark size={73} />
           <span className="text-lg font-bold text-text-primary">
             {siteConfig.agency.name}
             <span className="text-accent">.agency</span>
@@ -53,23 +50,21 @@ export default function Header() {
               key={link.href}
               href={link.href}
               className={`relative py-1 text-sm font-medium transition-colors hover:text-accent ${
-                router.pathname === link.href ||
-                (link.href !== '/' && router.pathname.startsWith(link.href))
-                  ? 'text-accent'
-                  : 'text-text-secondary'
+                isActive(link.href) ? "text-accent" : "text-text-secondary"
               }`}
             >
               {link.label}
-              {(router.pathname === link.href ||
-                (link.href !== '/' && router.pathname.startsWith(link.href))) && (
-                <motion.div
-                  layoutId="nav-underline"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
-                />
+              {isActive(link.href) && (
+                <motion.div layoutId="nav-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent" />
               )}
             </Link>
           ))}
+
+          {/* Contact widget shows on desktop too */}
+          <MobileContactWidget />
+
           <ThemeToggle />
+
           <a
             href="https://calendly.com/north-summit-tuta/30min"
             target="_blank"
@@ -78,10 +73,11 @@ export default function Header() {
           >
             Book a call
           </a>
+
           <Link
             href="/contact"
             className="px-4 py-2 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-opacity"
-            style={{ color: 'var(--primary-bg)' }}
+            style={{ color: "var(--primary-bg)" }}
           >
             Get a quote
           </Link>
@@ -89,11 +85,12 @@ export default function Header() {
 
         {/* Mobile Controls */}
         <div className="flex md:hidden items-center gap-3">
+          <MobileContactWidget />
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary-bg border border-border-color"
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
           >
             <svg
@@ -127,10 +124,10 @@ export default function Header() {
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden border-t border-border-color overflow-hidden"
-            style={{ backgroundColor: 'var(--primary-bg)' }}
+            style={{ backgroundColor: "var(--primary-bg)" }}
           >
             <div className="px-4 py-4 flex flex-col gap-3">
               {siteConfig.navigation.map((link) => (
@@ -139,13 +136,14 @@ export default function Header() {
                   href={link.href}
                   className={`py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
                     router.pathname === link.href
-                      ? 'bg-secondary-bg text-accent'
-                      : 'text-text-secondary hover:text-accent hover:bg-secondary-bg'
+                      ? "bg-secondary-bg text-accent"
+                      : "text-text-secondary hover:text-accent hover:bg-secondary-bg"
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
+
               <a
                 href="https://calendly.com/north-summit-tuta/30min"
                 target="_blank"
@@ -154,10 +152,11 @@ export default function Header() {
               >
                 Book a call
               </a>
+
               <Link
                 href="/contact"
                 className="py-2 px-3 rounded-lg bg-accent text-sm font-semibold text-center"
-                style={{ color: 'var(--primary-bg)' }}
+                style={{ color: "var(--primary-bg)" }}
               >
                 Get a quote
               </Link>

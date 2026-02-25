@@ -60,6 +60,7 @@ export default function Footer() {
                 >
                   Get a quote
                 </Link>
+
               </div>
 
               {/* Payment logos */}
@@ -104,13 +105,37 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="text-sm text-text-secondary">
-                <a href={`mailto:${siteConfig.agency.email}`} className="hover:text-accent transition-colors">{siteConfig.agency.email}</a>
-                <span className="mx-2">&bull;</span>
-                <span>{siteConfig.agency.location}</span>
-              </div>
-            </div>
+<div className="text-sm text-text-secondary flex flex-col gap-1">
+  <a
+    href={`tel:${siteConfig.agency.phone}`}
+    className="hover:text-accent transition-colors font-medium"
+  >
+    Call me on {siteConfig.agency.phone}
+  </a>
+
+  <a
+    href={`https://wa.me/${(siteConfig.agency.whatsapp || siteConfig.agency.phone).replace(/[^\d]/g, "")}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-accent transition-colors"
+  >
+    Message on WhatsApp
+  </a>
+
+  <a
+    href={`mailto:${siteConfig.agency.email}`}
+    className="hover:text-accent transition-colors"
+  >
+    Email me {siteConfig.agency.email}
+  </a>
+
+  <span className="mt-1 text-xs text-text-secondary">
+    UK Based • Usually replies within a few hours
+  </span>
+</div>    </div>
           </div>
+            
+                
 
           {/* Legal */}
           <div>

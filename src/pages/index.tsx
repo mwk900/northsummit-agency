@@ -388,8 +388,13 @@ export default function Home() {
               <svg width="38" height="24" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" className="shrink-0"><rect width="38" height="24" rx="4" fill="#FFB3C7"/><text x="19" y="15" fontFamily="system-ui" fontSize="9" fontWeight="800" fill="#0A0B09" textAnchor="middle">Klarna</text></svg>
               <svg width="38" height="24" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" className="shrink-0"><rect width="38" height="24" rx="4" fill="#191C1F"/><text x="19" y="15" fontFamily="system-ui" fontSize="7.5" fontWeight="600" fill="#fff" textAnchor="middle">Revolut</text></svg>
             </div>
-            <p className="text-xs text-text-secondary max-w-xs">No card details stored by us – all payments handled securely by Stripe</p>
+            <p className="text-xs text-text-secondary max-w-xs">No card details stored by us</p>
           </div>
+          <p className="mt-2 text-sm text-text-secondary text-center">
+  Questions before paying? Call <a href={`tel:${siteConfig.agency.phone}`} className="text-accent hover:underline">
+    {siteConfig.agency.phone}
+  </a>
+</p>
 
           <p className="mt-4 text-center text-xs text-text-secondary">
             {siteConfig.depositPolicy}
