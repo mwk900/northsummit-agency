@@ -23,7 +23,7 @@ export default function Terms() {
 
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-2">Payment</h2>
-              <p>All prices are quoted excluding VAT unless otherwise stated. Payment terms are agreed per project — typically a deposit before work begins and the remainder on completion.</p>
+              <p>All prices are in GBP (£).</p>
             </div>
 
             <div>
