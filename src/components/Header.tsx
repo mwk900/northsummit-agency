@@ -35,9 +35,9 @@ export default function Header() {
         aria-label="Main navigation"
       >
         {/* Brand */}
-        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <LogoMark size={73} />
-          <span className="text-lg font-bold text-text-primary">
+        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity shrink-0">
+          <LogoMark size={55} />
+          <span className="text-base sm:text-lg font-bold text-text-primary">
             {siteConfig.agency.name}
             <span className="text-accent">.agency</span>
           </span>
@@ -84,7 +84,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Controls */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-2 ml-1">
           <MobileContactWidget />
           <ThemeToggle />
           <button
