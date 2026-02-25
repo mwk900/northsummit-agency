@@ -84,7 +84,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Controls */}
-        <div className="flex md:hidden items-center gap-2 ml-1">
+        <div className="flex md:hidden items-center gap-3 ml-1">
           <MobileContactWidget />
           <ThemeToggle />
           <button
