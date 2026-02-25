@@ -9,11 +9,10 @@ export const siteConfig = {
     location: 'UK-based',
   },
 
-  // Founding client programme — no scarcity, just honest framing
   launch: {
     active: true,
     programmeNote:
-      'Our rates are lower right now while we build our portfolio. This pricing reflects where we are, not the quality of the work — and it won\'t stay this way. Once our portfolio speaks for itself, pricing will reflect that.',
+      "Our rates are lower right now while we build our portfolio. This pricing reflects where we are, not the quality of the work - and it will not stay this way. Once our portfolio speaks for itself, pricing will reflect that.",
   },
 
   navigation: [
@@ -23,13 +22,18 @@ export const siteConfig = {
     { href: '/about', label: 'About' },
   ],
 
+  calendly: 'https://calendly.com/north-summit-tuta/30min',
+
   pricing: [
     {
       name: 'Starter',
       price: '£149',
+      priceLabel: '£149',
       stripeLink: 'https://buy.stripe.com/7sYcN4eR05Q87uFbYx8ww04',
+      depositLink: null,
       popular: false,
-      description: 'A professional single-page site to get your business online properly.',
+      description:
+        'A professional single-page site to get your business online properly.',
       features: [
         'Single-page responsive website',
         'Mobile-first design',
@@ -38,14 +42,24 @@ export const siteConfig = {
         'Hosting setup guidance',
         '1 round of revisions',
       ],
+      cta: {
+        primary: { label: 'Get started — £149', type: 'stripe' as const },
+        secondary: { label: 'Talk to us', type: 'question' as const },
+        microcopy: 'Prefer to chat first? Send a quick question.',
+      },
     },
+
     {
       name: 'Growth',
-      price: '£349',
+      price: 'From £349',
+      priceLabel: 'From £349',
       stripeLink: 'https://buy.stripe.com/3cI14mbEO2DW9CNgeN8ww05',
+      depositLink: 'https://buy.stripe.com/7sY5kC7oy92k9CN0fP8ww07',
       popular: true,
-      description: 'For businesses that need more than one page — with branding, gallery, and analytics built in.',
+      description:
+        'For businesses that need more than one page - with branding, gallery, and analytics built in.',
       features: [
+        'Everything from a Starter',
         'Up to 4 pages',
         'Custom design & branding',
         'Portfolio or gallery section',
@@ -54,14 +68,25 @@ export const siteConfig = {
         'Speed optimisation',
         '2 rounds of revisions',
       ],
+      cta: {
+        primary: { label: 'Start the project', type: 'contact' as const },
+        secondary: { label: 'Pay £100 deposit', type: 'deposit' as const },
+        microcopy:
+          "We confirm scope first. You will receive a written quote before work starts.",
+      },
     },
+
     {
       name: 'Premium',
-      price: '£699',
+      price: 'From £699',
+      priceLabel: 'From £699',
       stripeLink: 'https://buy.stripe.com/bJe7sK9wGa6o6qB7Ih8ww06',
+      depositLink: 'https://buy.stripe.com/7sY5kC7oy92k9CN0fP8ww07',
       popular: false,
-      description: 'A full website with booking, blog, and everything set up to bring in work. 30 days of support included.',
+      description:
+        'A full website with booking, blog, and everything set up to bring in work. 30 days of support included.',
       features: [
+        'Everything from a Starter & Growth',
         'Up to 8 pages',
         'Advanced design & layout',
         'Booking or enquiry system',
@@ -70,16 +95,27 @@ export const siteConfig = {
         'Performance optimisation',
         '30 days support after launch',
       ],
+      cta: {
+        primary: { label: 'Discuss your project', type: 'contact' as const },
+        secondary: { label: 'Book a call', type: 'calendly' as const },
+        microcopy:
+          'Best for larger or more complex websites. We will confirm everything on a quick call.',
+      },
     },
   ],
+
+  depositPolicy:
+    'Deposits are refundable until work begins. Once design work starts, deposits are non-refundable.',
 
   projects: [
     {
       id: 'roofing01',
       title: 'Summit Roofing Co.',
       category: 'Trades',
-      hook: 'When a storm hits and someone needs a roofer, they are not browsing. They need your number, now.',
-      description: 'Phone number and emergency callout info right at the top. Service areas clearly listed so people know you cover their postcode. Quote request form that takes 30 seconds to fill in.',
+      hook:
+        'When a storm hits and someone needs a roofer, they are not browsing. They need your number, now.',
+      description:
+        'Phone number and emergency callout info right at the top. Service areas clearly listed so people know you cover their postcode. Quote request form that takes 30 seconds to fill in.',
       image: '/projects/roofing01.png',
       link: 'https://roofing01.netlify.app/',
     },
@@ -87,8 +123,10 @@ export const siteConfig = {
       id: 'plumber001',
       title: 'FlowFix Plumbing',
       category: 'Trades',
-      hook: 'A burst pipe at 11pm — your customer is panicking. Your site needs to work as fast as they need you.',
-      description: 'Click-to-call button front and centre on mobile. Emergency info visible without scrolling. Service areas mapped out so Google knows where to show you.',
+      hook:
+        'A burst pipe at 11pm - your customer is panicking. Your site needs to work as fast as they need you.',
+      description:
+        'Click-to-call button front and centre on mobile. Emergency info visible without scrolling. Service areas mapped out so Google knows where to show you.',
       image: '/projects/plumber001.png',
       link: 'https://plumber001.netlify.app/',
     },
@@ -96,8 +134,10 @@ export const siteConfig = {
       id: 'digital-agency',
       title: 'Pulse Digital Agency',
       category: 'Business',
-      hook: 'First impressions count when you are selling a creative service. This site needed to feel sharp from the first scroll.',
-      description: 'Smooth animations that show attention to detail. Portfolio section that lets the work speak for itself. Contact flow that makes reaching out feel easy, not like filling in a government form.',
+      hook:
+        'First impressions count when you are selling a creative service. This site needed to feel sharp from the first scroll.',
+      description:
+        'Smooth animations that show attention to detail. Portfolio section that lets the work speak for itself. Contact flow that makes reaching out feel easy, not like filling in a government form.',
       image: '/projects/digital-agency.png',
       link: 'https://eclectic-melomakarona-8521c0.netlify.app/',
     },
@@ -105,8 +145,10 @@ export const siteConfig = {
       id: 'garagecar',
       title: 'AutoCare Garage',
       category: 'Trades',
-      hook: 'Most people pick a garage based on trust and convenience. This site was built to earn both in under 10 seconds.',
-      description: 'Service listings with clear pricing so there are no surprises. Location and opening hours impossible to miss. Online booking prompt that catches people while they are already thinking about it.',
+      hook:
+        'Most people pick a garage based on trust and convenience. This site was built to earn both in under 10 seconds.',
+      description:
+        'Service listings with clear pricing so there are no surprises. Location and opening hours impossible to miss. Online booking prompt that catches people while they are already thinking about it.',
       image: '/projects/garagecar.png',
       link: 'https://garagecar.pages.dev/',
     },
@@ -114,8 +156,10 @@ export const siteConfig = {
       id: 'gym001',
       title: 'IronPulse Fitness',
       category: 'Local Business',
-      hook: 'Signing up for a gym is an emotional decision. This site needed to make visitors feel the energy before they even walk through the door.',
-      description: 'Class schedules that are actually easy to read. Trainer profiles that build a personal connection. Membership sign-up designed to convert browsers into members while the motivation is still fresh.',
+      hook:
+        'Signing up for a gym is an emotional decision. This site needed to make visitors feel the energy before they even walk through the door.',
+      description:
+        'Class schedules that are actually easy to read. Trainer profiles that build a personal connection. Membership sign-up designed to convert browsers into members while the motivation is still fresh.',
       image: '/projects/gym001.png',
       link: 'https://gym001.vercel.app/',
     },
@@ -123,8 +167,10 @@ export const siteConfig = {
       id: 'cleaners',
       title: 'SparkClean Services',
       category: 'Local Business',
-      hook: 'People want to know one thing: how much will it cost? This site answers that question before they even have to ask.',
-      description: 'Dynamic pricing calculator that gives an instant quote. No back-and-forth emails, no waiting for a callback. Customers see the price, like it, and book — all in one visit.',
+      hook:
+        'People want to know one thing: how much will it cost? This site answers that question before they even have to ask.',
+      description:
+        'Dynamic pricing calculator that gives an instant quote. No back-and-forth emails, no waiting for a callback. Customers see the price, like it, and book - all in one visit.',
       image: '/projects/cleaners.png',
       link: 'https://cleaners-nonstatic.vercel.app/',
     },
@@ -132,8 +178,10 @@ export const siteConfig = {
       id: 'sonia-vet',
       title: 'Sonia Veterinary Practice',
       category: 'Local Business',
-      hook: 'Pet owners are protective. They need to trust you before they trust you with their dog. This site was built to feel warm from the first click.',
-      description: 'Friendly team bios that put a face to the practice. Services explained without the medical jargon. Appointment booking that is simple enough to use when you are worried about your pet.',
+      hook:
+        'Pet owners are protective. They need to trust you before they trust you with their dog. This site was built to feel warm from the first click.',
+      description:
+        'Friendly team bios that put a face to the practice. Services explained without the medical jargon. Appointment booking that is simple enough to use when you are worried about your pet.',
       image: '/projects/sonia-vet.png',
       link: 'https://sonia-e6b.pages.dev/',
     },

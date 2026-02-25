@@ -1,9 +1,17 @@
-import { motion } from "framer-motion";
-import SEOHead from "@/components/SEOHead";
-import ContactForm from "@/components/ContactForm";
-import { siteConfig } from "@/data/site";
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import SEOHead from '@/components/SEOHead';
+import ContactForm from '@/components/ContactForm';
+import { siteConfig } from '@/data/site';
 
 export default function Contact() {
+  const router = useRouter();
+  const packageParam = (router.query.package as string) || '';
+  const packageLabel =
+    packageParam === 'starter' ? 'Starter' :
+    packageParam === 'growth' ? 'Growth' :
+    packageParam === 'premium' ? 'Premium' : '';
+
   return (
     <>
       <SEOHead
@@ -15,24 +23,67 @@ export default function Contact() {
       <section className="py-20">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">Get a quote</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">
+              {packageParam === 'premium' ? 'Discuss your project' : 'Get a quote'}
+            </h1>
             <div className="w-20 h-1 rounded-full bg-accent mb-4" />
             <p className="text-text-secondary">Tell us what you need and we&apos;ll get back to you within 24 hours.</p>
           </motion.div>
 
+          {/* Package interest badge */}
+          {packageLabel && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 }}
+              className="mb-6 px-4 py-3 rounded-lg border border-accent/20 bg-accent/5"
+            >
+              <p className="text-sm text-text-secondary">
+                Interested in: <span className="font-semibold text-text-primary">{packageLabel}</span>
+              </p>
+            </motion.div>
+          )}
+
+          {/* Calendly CTA for Premium */}
+          {packageParam === 'premium' && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.08 }}
+              className="mb-6 p-5 rounded-xl border border-border-color text-center"
+              style={{ backgroundColor: 'var(--secondary-bg)' }}
+            >
+              <p className="text-sm text-text-secondary mb-3">
+                Premium projects work best with a quick conversation first.
+              </p>
+              <a
+                href={siteConfig.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-3 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all"
+                style={{ color: 'var(--primary-bg)' }}
+              >
+                Book a 30-min call
+              </a>
+              <p className="mt-2 text-xs text-text-secondary">Or fill in the form below — whichever you prefer.</p>
+            </motion.div>
+          )}
+
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
             <ContactForm intent="quote" />
 
-            <div className="mt-4">
-              <a
-                href="https://calendly.com/north-summit-tuta/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center py-3 rounded-lg text-sm font-semibold border border-border-color text-text-secondary hover:border-accent hover:text-accent transition-colors"
-              >
-                Prefer a call? Book a time
-              </a>
-            </div>
+            {packageParam !== 'premium' && (
+              <div className="mt-4">
+                <a
+                  href={siteConfig.calendly}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center py-3 rounded-lg text-sm font-semibold border border-border-color text-text-secondary hover:border-accent hover:text-accent transition-colors"
+                >
+                  Prefer a call? Book a time
+                </a>
+              </div>
+            )}
           </motion.div>
 
           <motion.div

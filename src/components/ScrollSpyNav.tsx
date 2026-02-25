@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 
-/* ── Icons (14×14, currentColor) ─────────────────────────────────── */
+/* ── Icons (14×14, currentColor) ─────────────────────────── */
 const I: Record<string, React.ReactNode> = {
   steps: (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -20,12 +20,12 @@ const I: Record<string, React.ReactNode> = {
       <path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>
   ),
-audit: (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="3" />
-    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09A1.65 1.65 0 0 0 15 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-  </svg>
-),
+  audit: (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09A1.65 1.65 0 0 0 15 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  ),
   pricing: (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
@@ -40,7 +40,7 @@ audit: (
   ),
 };
 
-/* ── Types ────────────────────────────────────────────────────────── */
+/* ── Types ──────────────────────────────────────────────── */
 type NavSection = { id: string; label: string; icon?: string };
 type Props = {
   sections: NavSection[];
@@ -49,7 +49,7 @@ type Props = {
   position?: "right" | "left";
 };
 
-/* ── Component ───────────────────────────────────────────────────── */
+/* ── Component ───────────────────────────────────────────── */
 export default function ScrollSpyNav({
   sections,
   showAfterPx = 280,
@@ -59,15 +59,35 @@ export default function ScrollSpyNav({
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
   const [visible, setVisible] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [isIdle, setIsIdle] = useState(false);
 
   const ids = useMemo(() => sections.map((s) => s.id), [sections]);
   const rafRef = useRef<number | null>(null);
   const expandedRef = useRef(expanded);
   expandedRef.current = expanded;
+  const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const collapseOnScroll = useCallback(() => {
     if (expandedRef.current) setExpanded(false);
   }, []);
+
+  /* ── Idle fade: 2s inactivity → fade out ── */
+  const resetIdleTimer = useCallback(() => {
+    setIsIdle(false);
+    if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    idleTimerRef.current = setTimeout(() => setIsIdle(true), 1000);
+  }, []);
+
+  useEffect(() => {
+    const events = ["scroll", "wheel", "touchmove", "mousemove", "keydown"];
+    const handler = () => resetIdleTimer();
+    events.forEach((evt) => window.addEventListener(evt, handler, { passive: true }));
+    resetIdleTimer();
+    return () => {
+      events.forEach((evt) => window.removeEventListener(evt, handler));
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
+  }, [resetIdleTimer]);
 
   /* Visibility */
   useEffect(() => {
@@ -115,13 +135,7 @@ export default function ScrollSpyNav({
   const icon = (s: NavSection) =>
     s.icon && I[s.icon] ? I[s.icon] : <span className="text-[11px] font-bold">{s.label[0]}</span>;
 
-  /* Shared pill styles */
   const pill = "rounded-2xl border border-white/20 shadow-[0_6px_18px_rgba(0,0,0,0.12)] backdrop-blur-md";
-
-  /*
-   * Position: right-6 (24px) on all breakpoints.
-   * This aligns with the scroll-to-top button which also sits at right-6.
-   */
   const side = position === "left" ? { left: 24 } : { right: 24 };
 
   return (
@@ -131,10 +145,13 @@ export default function ScrollSpyNav({
         aria-label="Page sections"
         className={[
           "hidden lg:block fixed z-50 top-1/2 -translate-y-1/2",
-          "transition-all duration-300",
-          visible ? "opacity-100 translate-x-0" : "opacity-0 pointer-events-none translate-x-4",
+          visible ? "translate-x-0" : "pointer-events-none translate-x-4",
         ].join(" ")}
-        style={side}
+        style={{
+          ...side,
+          opacity: visible ? 1 : 0,
+          transition: "opacity 600ms ease, transform 300ms ease",
+        }}
       >
         <div className={`${pill} bg-white/65 px-2 py-3`}>
           <ul className="flex flex-col gap-1">
@@ -162,20 +179,17 @@ export default function ScrollSpyNav({
       </nav>
 
       {/* ═══════════════ MOBILE (<lg) ════════════════════════════════ */}
-      {/*
-        Animation approach: a single container with CSS transition on
-        width. Labels use max-width + opacity transition to slide in/out.
-        The toggle crossfades between "<" and "Hide >" via opacity.
-        Everything is always in the DOM — no conditional rendering.
-      */}
       <nav
         aria-label="Page sections"
         className={[
           "lg:hidden fixed z-50 top-1/2 -translate-y-1/2",
-          "transition-all duration-300",
-          visible ? "opacity-100 translate-x-0" : "opacity-0 pointer-events-none translate-x-4",
+          visible ? "translate-x-0" : "pointer-events-none translate-x-4",
         ].join(" ")}
-        style={side}
+        style={{
+          ...side,
+          opacity: visible ? (expanded ? 1 : (isIdle ? 0.15 : 1)) : 0,
+          transition: "opacity 600ms ease, transform 300ms ease",
+        }}
       >
         <div
           className={`${pill} bg-gradient-to-b from-white/60 via-white/40 to-white/50 border border-white/40 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.18)] overflow-hidden`}
@@ -188,26 +202,24 @@ export default function ScrollSpyNav({
 
             {/* ── Toggle area ── */}
             <div className="relative w-full flex justify-center" style={{ height: 42, marginBottom: 6 }}>
-              {/* "<" button — visible when collapsed */}
-<button
-  type="button"
-  onClick={() => setExpanded(true)}
-  aria-label="Expand navigation"
-  className="absolute inset-0 m-auto w-9 h-9 flex items-center justify-center rounded-full border-2 border-black/60 bg-white/70 text-black/60 hover:bg-white hover:text-black backdrop-blur-md shadow-md"
-  style={{
-    top: -10,
-    opacity: expanded ? 0 : 1,
-    transform: expanded ? "scale(0.9)" : "scale(1)",
-    pointerEvents: expanded ? "none" : "auto",
-    transition: "opacity 250ms, transform 250ms, background 200ms",
-  }}
->
+              <button
+                type="button"
+                onClick={() => setExpanded(true)}
+                aria-label="Expand navigation"
+                className="absolute inset-0 m-auto w-9 h-9 flex items-center justify-center rounded-full border-2 border-black/60 bg-white/70 text-black/60 hover:bg-white hover:text-black backdrop-blur-md shadow-md"
+                style={{
+                  top: -10,
+                  opacity: expanded ? 0 : 1,
+                  transform: expanded ? "scale(0.9)" : "scale(1)",
+                  pointerEvents: expanded ? "none" : "auto",
+                  transition: "opacity 250ms, transform 250ms, background 200ms",
+                }}
+              >
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
 
-              {/* "Hide >" — visible when expanded */}
               <button
                 type="button"
                 onClick={() => setExpanded(false)}
