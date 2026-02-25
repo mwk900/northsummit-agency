@@ -3,54 +3,55 @@ import { useState } from "react";
 import Link from "next/link";
 import SEOHead from "@/components/SEOHead";
 
-const faqs = [
+const faqs = 
+[
   {
     q: "How much does a website cost?",
-    a: "Our current rates while we build our portfolio:\n\n- £149 — single-page site\n- £349 — up to 4 pages\n- £699 — full multi-page build\n\nThese are introductory rates and won't stay this way — once our portfolio speaks for itself, pricing will reflect that.\n\nAll prices are fixed. You'll know the exact cost before we start. No hidden fees, no surprise invoices.",
+    a: "Right now, our pricing is lower while we build our portfolio and work with our first clients:\n\n- £149 - single-page website\n- From £349 - up to 4 pages\n- From £699 - full multi-page website\n\nThe exact price depends on what you need, but we’ll always confirm the full cost with you before any work starts - so there are no surprises later.\n\nThese are introductory rates and won’t stay this way forever. As our portfolio grows, pricing will gradually increase.",
   },
   {
     q: "Is hosting included in the price?",
-    a: "Hosting is not included in the build price — it's a separate ongoing cost. We'll guide you through the best options for your site (typically £5–£20/month depending on your needs), help you get set up, and make sure everything is configured correctly. The hosting account is always in your name — it's never tied to us.",
+    a: "Hosting isn’t included in the build price - it’s a separate ongoing cost. We’ll guide you to the best option for your site (typically £5-£20/month), help you get set up, and make sure everything is configured correctly. The hosting account is always in your name, never tied to us.",
   },
   {
     q: "Do I own the website?",
-    a: "Yes — 100%. Once the project is complete and paid for, the code and design are yours. We recommend registering your domain in your own name from the start and setting up hosting under your own account — we'll guide you through both. That way nothing is ever tied to us. You can move, change, or hand the site to any other developer at any time.",
+    a: "Yes - 100%. Once the project is complete and paid for, the code and design are yours. We recommend registering your domain in your own name and setting up hosting under your own account - we’ll guide you through both. That way nothing is ever tied to us, and you can move or hand the site to another developer at any time.",
   },
   {
     q: "How long until my site is live?",
-    a: "That depends on the scope of the project and how quickly you're able to provide content and feedback. We'll agree a realistic timeline before starting so there are no surprises. You'll hear back from us within 24 hours of getting in touch, and we keep things moving from our end throughout the build.",
+    a: "That depends on the scope of the project and how quickly you’re able to provide content and feedback. We’ll agree a realistic timeline before starting so expectations are clear from the beginning. You’ll hear back from us within 24 hours of getting in touch, and we keep things moving throughout the build.",
   },
   {
     q: "Do I need to provide my own photos and text?",
-    a: "Ideally yes — you know your business better than anyone. We'll tell you exactly what we need: a short description of your services, your contact details, your service area, and so on. If you don't have photos, we can use high-quality stock images that suit your trade. We can also help with basic copywriting if needed.",
+    a: "Ideally yes - you know your business better than anyone. We’ll tell you exactly what we need, such as a short description of your services, your contact details, and your service area. If you don’t have photos, we can use high-quality stock images that suit your trade. We can also help with basic copywriting if needed.",
   },
   {
     q: "Will my site show up on Google straight away?",
-    a: "Every site we build includes proper technical SEO foundations — page titles, meta descriptions, heading structure, fast load times, mobile optimisation, and clean code. This gives you the best possible starting point. However, ranking on Google typically takes 3–6 months minimum and depends on the competition in your area and how established your business is. We build it right — the rankings follow with time.",
+    a: "Every site we build includes solid technical SEO foundations - page titles, meta descriptions, heading structure, fast load times, mobile optimisation, and clean code. This gives you the best possible starting point. Rankings take time and depend on competition in your area, but many businesses begin seeing progress within a few months. We build it properly from day one so you’re set up for long-term results.",
   },
   {
     q: "Why not just use Wix or Squarespace?",
-    a: "Wix and Squarespace can be a perfectly good fit when you only need a basic online presence. We typically work with trades and local services that need speed, clarity, and a layout built to generate calls. That's why we build lightweight, custom sites with clean code — so the site feels fast on mobile, is easy to expand later, and is built specifically around your business and your customers.",
+    a: "Platforms like Wix and Squarespace can be a good option if you only need a simple online presence. We usually work with trades and local services that need speed, clarity, and a layout designed to generate enquiries. That’s why we build lightweight, custom sites with clean code - so the site feels fast on mobile, is easy to expand later, and is built specifically around your business and your customers.",
   },
   {
     q: "What if I want changes after launch?",
-    a: "All packages include at least one round of revisions before launch. After that, we offer ongoing support — whether that's a quick text change, a new service page, or a full update. Just get in touch and we'll sort it. We don't lock you into expensive monthly retainers for basic changes.",
+    a: "All packages include at least one round of revisions before launch. After that, we offer pay-as-you-go support for updates - whether that’s a quick text change, a new service page, or something bigger. Just get in touch and we’ll sort it. We don’t lock you into expensive monthly retainers for basic changes.",
   },
   {
     q: "How do I get started?",
-    a: "Just hit 'Get a quote' or 'Book a call' — tell us a bit about your business and what you need, and we'll get back to you within 24 hours (usually the same day). From there we'll send a clear quote, agree on a timeline, and get started. No lengthy contracts, no complicated onboarding.",
+    a: "Just click ‘Get a quote’ or ‘Book a call’, tell us a bit about your business and what you need, and we’ll get back to you within 24 hours (usually the same day). From there we’ll send a clear quote, agree a timeline, and get started. No lengthy contracts or complicated onboarding.",
   },
   {
     q: "Do you work with businesses outside the UK?",
-    a: "Yes — we work with businesses across the UK and Europe. Everything is handled remotely so location is never an issue. We communicate via email, video call, or whatever works best for you.",
+    a: "Yes. We’re UK-based, and we also work with businesses across Europe. Everything is handled remotely, so location is never a problem. We communicate via email, video call, or whatever works best for you.",
   },
   {
     q: "Can you redesign my existing website?",
-    a: "Absolutely. Redesigns are one of the most common projects we take on. Whether your current site is slow, outdated, not mobile-friendly, or simply not bringing in enquiries — we can assess what's wrong and rebuild it properly. We also offer free website audits if you want an honest assessment first.",
+    a: "Absolutely. Redesigns are one of the most common projects we take on. Whether your current site is slow, outdated, not mobile-friendly, or simply not bringing in enquiries, we can assess what’s wrong and rebuild it properly. We also offer free website audits if you want an honest assessment first.",
   },
   {
     q: "What about domain names?",
-    a: "If you already have one, great — we'll use it. If not, we'll help you choose and register one. We always recommend registering it in your own name so you have full control. A domain typically costs around £10–£15/year.",
+    a: "If you already have a domain, great - we’ll use it. If not, we’ll help you choose and register one. We always recommend registering it in your own name so you have full control. A domain typically costs around £10-£15 per year.",
   },
 ];
 
