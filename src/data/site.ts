@@ -140,7 +140,7 @@ export const siteConfig = {
   description:
     'Bold visual hero, clear coaching pathways, and friction-free consultation booking - built to capture interest while motivation is highest. Includes trust elements, program clarity, and mobile-first UX to support local client acquisition. Created as a realistic demo project to showcase conversion-focused design for fitness businesses.',
   image: '/projects/gym001.png',
-  link: 'https://gym001.vercel.app/',
+  link: 'https://gym.northsummit.agency/',
 },
 {
   id: 'plumber001',
