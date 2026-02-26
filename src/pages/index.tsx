@@ -105,37 +105,61 @@ export default function Home() {
             >
               <div className="max-w-3xl mx-auto text-center">
                 <h2 className="text-xl sm:text-2xl font-bold text-text-primary mb-3">
-                  Introductory rates while we build our portfolio.
+                  Fair pricing while we build our track record.
                 </h2>
-                <p className="text-text-secondary leading-relaxed mb-3">
-                  {siteConfig.launch.programmeNote}
-                </p>
                 <p className="text-text-secondary leading-relaxed">
-                  Every project at this stage includes a <span className="text-text-primary font-medium">free audit of your current website</span> before we start – so you can see exactly what we&apos;d improve and why. No commitment after that.
-                </p>
+                We’re currently working with a small number of businesses while we grow our portfolio, so pricing is reduced for now.
+                You’ll get a full, professionally built site just without the agency-level price tag.
+              </p>
               </div>
             </motion.div>
           </div>
         </section>
       )}
 
-      {/* What We Do */}
-      <section id="services" className="py-20" style={{ backgroundColor: "var(--secondary-bg)" }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-2xl sm:text-3xl font-bold text-text-primary mb-6"
-          >
-            What we actually build
-          </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-lg text-text-secondary leading-relaxed"
-          >
-            Websites that do something for your business. Not a digital business card that sits there collecting dust –
-            a proper site that loads fast on any phone, shows up when people search for your trade, and makes it easy
-            for customers to call you or request a quote.
-          </motion.p>
-        </div>
-      </section>
+{/* What We Do */}
+<section
+  id="services"
+  className="py-20"
+  style={{ backgroundColor: "var(--secondary-bg)" }}
+>
+  <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-2xl sm:text-3xl font-bold text-text-primary mb-6"
+    >
+      Websites for real local businesses
+    </motion.h2>
+
+    {/* Paragraph 1 */}
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 }}
+      className="text-lg text-text-secondary leading-relaxed mb-4"
+    >
+      We’re an independent web design agency working with trades and service businesses across the UK.
+    </motion.p>
+
+    {/* Paragraph 2 */}
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.15 }}
+      className="text-lg text-text-secondary leading-relaxed"
+    >
+      Our goal is simple. Help you get found locally and make it easy for customers to contact you.
+      We focus on fast loading, mobile friendly websites with clear calls to action so when someone
+      needs your service, you’re the obvious choice.
+    </motion.p>
+
+  </div>
+</section>
 
       {/* How We Build */}
       <section id="process" className="py-16 sm:py-20">
