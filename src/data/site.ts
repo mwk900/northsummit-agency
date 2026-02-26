@@ -121,15 +121,15 @@ export const siteConfig = {
   link: 'https://roofing.northsummit.agency/',
 },
 {
-  id: 'plumber001',
-  title: 'Cresco Plumbing & Heating',
+  id: 'landscaping001',
+  title: 'Verdance Outdoor Living',
   category: 'Trades',
   hook:
-    'Emergency plumbing site designed to turn urgent searches into immediate calls.',
+    'Premium landscaping website designed to turn garden ideas into booked consultations.',
   description:
-    'Mobile-first click-to-call, clear trust signals, and fast quote access positioned above the fold. Service coverage structured for local SEO visibility and rapid customer action during urgent situations. Built as a realistic demo project to showcase conversion-focused design for trades businesses.',
-  image: '/projects/plumber001.png',
-  link: 'https://plumber001.netlify.app/',
+    'Mobile-first layout with a sticky call-to-action, immersive transformation visuals, and a smooth scroll navigation to guide visitors through services and enquiry steps without friction. The design focuses on trust, lifestyle inspiration, and clear next actions to help homeowners confidently request a quote. Built as a realistic demo project to showcase conversion-focused design for local landscaping businesses.',
+  image: '/projects/landscaping.png',
+  link: 'https://landscaping.northsummit.agency/',
 },
 {
   id: 'gym001',
@@ -143,15 +143,15 @@ export const siteConfig = {
   link: 'https://gym001.vercel.app/',
 },
 {
-  id: 'digital-agency',
-  title: 'DigitalForge',
-  category: 'Business',
+  id: 'plumber001',
+  title: 'Cresco Plumbing & Heating',
+  category: 'Trades',
   hook:
-    'Agency website designed to build credibility fast and convert visitors into enquiries.',
+    'Emergency plumbing site designed to turn urgent searches into immediate calls.',
   description:
-    'Modern visual hierarchy, smooth micro-interactions, and clear service pathways to guide potential clients toward booking a consultation. Portfolio presentation and contact flow optimised to reduce friction and increase enquiries. Built as a realistic demo project to showcase conversion-focused design for service businesses.',
-  image: '/projects/digital-agency.png',
-  link: 'https://eclectic-melomakarona-8521c0.netlify.app/',
+    'Mobile-first click-to-call, clear trust signals, and fast quote access positioned above the fold. Service coverage structured for local SEO visibility and rapid customer action during urgent situations. Built as a realistic demo project to showcase conversion-focused design for trades businesses.',
+  image: '/projects/plumber001.png',
+  link: 'https://plumber001.netlify.app/',
 },
     {
       id: 'garagecar',
