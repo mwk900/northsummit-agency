@@ -120,31 +120,42 @@ export const siteConfig = {
   image: '/projects/roofing01.png',
   link: 'https://roofing.northsummit.agency/',
 },
-    {
-      id: 'plumber001',
-      title: 'FlowFix Plumbing',
-      category: 'Trades',
-      hook:
-        'A burst pipe at 11pm - your customer is panicking. Your site needs to work as fast as they need you.',
-      description:
-        'Click-to-call button front and centre on mobile. Emergency info visible without scrolling. Service areas mapped out so Google knows where to show you.',
-      image: '/projects/plumber001.png',
-      link: 'https://plumber001.netlify.app/',
-    },
-    {
-      id: 'digital-agency',
-      title: 'Pulse Digital Agency',
-      category: 'Business',
-      hook:
-        'First impressions count when you are selling a creative service. This site needed to feel sharp from the first scroll.',
-      description:
-        'Smooth animations that show attention to detail. Portfolio section that lets the work speak for itself. Contact flow that makes reaching out feel easy, not like filling in a government form.',
-      image: '/projects/digital-agency.png',
-      link: 'https://eclectic-melomakarona-8521c0.netlify.app/',
-    },
+{
+  id: 'plumber001',
+  title: 'Cresco Plumbing & Heating',
+  category: 'Trades',
+  hook:
+    'Emergency plumbing site designed to turn urgent searches into immediate calls.',
+  description:
+    'Mobile-first click-to-call, clear trust signals, and fast quote access positioned above the fold. Service coverage structured for local SEO visibility and rapid customer action during urgent situations. Built as a realistic demo project to showcase conversion-focused design for trades businesses.',
+  image: '/projects/plumber001.png',
+  link: 'https://plumber001.netlify.app/',
+},
+{
+  id: 'gym001',
+  title: 'NorthPeak Performance',
+  category: 'Local Business',
+  hook:
+    'High-energy fitness site designed to turn motivation into booked consultations.',
+  description:
+    'Bold visual hero, clear coaching pathways, and friction-free consultation booking - built to capture interest while motivation is highest. Includes trust elements, program clarity, and mobile-first UX to support local client acquisition. Created as a realistic demo project to showcase conversion-focused design for fitness businesses.',
+  image: '/projects/gym001.png',
+  link: 'https://gym001.vercel.app/',
+},
+{
+  id: 'digital-agency',
+  title: 'DigitalForge',
+  category: 'Business',
+  hook:
+    'Agency website designed to build credibility fast and convert visitors into enquiries.',
+  description:
+    'Modern visual hierarchy, smooth micro-interactions, and clear service pathways to guide potential clients toward booking a consultation. Portfolio presentation and contact flow optimised to reduce friction and increase enquiries. Built as a realistic demo project to showcase conversion-focused design for service businesses.',
+  image: '/projects/digital-agency.png',
+  link: 'https://eclectic-melomakarona-8521c0.netlify.app/',
+},
     {
       id: 'garagecar',
-      title: 'AutoCare Garage',
+      title: 'Midlands AutoCare',
       category: 'Trades',
       hook:
         'Most people pick a garage based on trust and convenience. This site was built to earn both in under 10 seconds.',
@@ -154,19 +165,8 @@ export const siteConfig = {
       link: 'https://garagecar.pages.dev/',
     },
     {
-      id: 'gym001',
-      title: 'IronPulse Fitness',
-      category: 'Local Business',
-      hook:
-        'Signing up for a gym is an emotional decision. This site needed to make visitors feel the energy before they even walk through the door.',
-      description:
-        'Class schedules that are actually easy to read. Trainer profiles that build a personal connection. Membership sign-up designed to convert browsers into members while the motivation is still fresh.',
-      image: '/projects/gym001.png',
-      link: 'https://gym001.vercel.app/',
-    },
-    {
       id: 'cleaners',
-      title: 'SparkClean Services',
+      title: 'Nottingham Clean Co.',
       category: 'Local Business',
       hook:
         'People want to know one thing: how much will it cost? This site answers that question before they even have to ask.',
