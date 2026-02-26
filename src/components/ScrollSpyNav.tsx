@@ -71,7 +71,7 @@ export default function ScrollSpyNav({
     if (expandedRef.current) setExpanded(false);
   }, []);
 
-  /* ── Idle fade: 2s inactivity → fade out ── */
+  /* ── Idle fade: 1s inactivity → fade out ── */
   const resetIdleTimer = useCallback(() => {
     setIsIdle(false);
     if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
@@ -79,7 +79,14 @@ export default function ScrollSpyNav({
   }, []);
 
   useEffect(() => {
-    const events = ["scroll", "wheel", "touchmove", "mousemove", "keydown"];
+    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches;
+
+    // Mobile: only listen to scroll + touchstart (reduced overhead)
+    // Desktop: full set for mouse/keyboard idle detection
+    const events = isMobile
+      ? ["scroll", "touchstart"]
+      : ["scroll", "wheel", "mousemove", "keydown"];
+
     const handler = () => resetIdleTimer();
     events.forEach((evt) => window.addEventListener(evt, handler, { passive: true }));
     resetIdleTimer();
@@ -179,25 +186,36 @@ export default function ScrollSpyNav({
       </nav>
 
       {/* ═══════════════ MOBILE (<lg) ════════════════════════════════ */}
-      <nav
-        aria-label="Page sections"
-        className={[
-          "lg:hidden fixed z-50 top-1/2 -translate-y-1/2",
-          visible ? "translate-x-0" : "pointer-events-none translate-x-4",
-        ].join(" ")}
-        style={{
-          ...side,
-          opacity: visible ? (expanded ? 1 : (isIdle ? 0.15 : 1)) : 0,
-          transition: "opacity 600ms ease, transform 300ms ease",
-        }}
-      >
-        <div
-          className={`${pill} bg-gradient-to-b from-white/60 via-white/40 to-white/50 border border-white/40 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.18)] overflow-hidden`}
-          style={{
-            width: expanded ? 170 : 46,
-            transition: "width 280ms cubic-bezier(.4,0,.2,1)",
-          }}
-        >
+      {/*
+        FIX: Anchored to bottom instead of top-1/2 -translate-y-1/2.
+        This prevents the ~30px jump caused by mobile browser UI
+        bars expanding/collapsing and changing the viewport height.
+        Safe-area inset added via inline style for iPhone home indicator.
+      */}
+<nav
+  aria-label="Page sections"
+  className={[
+    "lg:hidden fixed right-4 z-50",
+    visible ? "translate-x-0" : "pointer-events-none translate-x-4",
+  ].join(" ")}
+  style={{
+    top: "auto",
+    bottom: "calc(32px + env(safe-area-inset-bottom, 0px))",
+    opacity: visible ? (expanded ? 1 : isIdle ? 0.25 : 1) : 0,
+    transition: "opacity 600ms ease, transform 300ms ease",
+    willChange: "opacity, transform",
+  }}
+>
+<div
+  className={`${pill} relative bg-white/92 border border-white/60 backdrop-blur-lg shadow-[0_18px_40px_rgba(0,0,0,0.30)] overflow-hidden`}
+  style={{
+    width: expanded ? 170 : 46,
+    transition: "width 280ms cubic-bezier(.4,0,.2,1)",
+    willChange: "width",
+  }}
+>
+  {/* subtle glossy highlight */}
+  <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-transparent opacity-60" />
           <div className="flex flex-col items-center py-1.5">
 
             {/* ── Toggle area ── */}
@@ -212,7 +230,7 @@ export default function ScrollSpyNav({
                   opacity: expanded ? 0 : 1,
                   transform: expanded ? "scale(0.9)" : "scale(1)",
                   pointerEvents: expanded ? "none" : "auto",
-                  transition: "opacity 250ms, transform 250ms, background 200ms",
+                  transition: "opacity 250ms ease, transform 250ms ease, background 200ms ease",
                 }}
               >
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -229,7 +247,7 @@ export default function ScrollSpyNav({
                   opacity: expanded ? 1 : 0,
                   transform: expanded ? "scale(1)" : "scale(0.7)",
                   pointerEvents: expanded ? "auto" : "none",
-                  transition: "opacity 250ms, transform 250ms",
+                  transition: "opacity 250ms ease, transform 250ms ease",
                 }}
               >
                 <span>Hide</span>
@@ -261,7 +279,7 @@ export default function ScrollSpyNav({
                   title={s.label}
                   className={[
                     "flex items-center rounded-lg",
-                    "transition-[padding,width,background-color,color] duration-[280ms] ease-[cubic-bezier(.4,0,.2,1)]",
+                    "transition-[background-color,color] duration-200 ease-out",
                     on ? "text-black bg-black/10 font-semibold" : "text-black/50 hover:text-black/80 hover:bg-black/5",
                   ].join(" ")}
                   style={{
@@ -271,10 +289,11 @@ export default function ScrollSpyNav({
                     justifyContent: expanded ? "flex-start" : "center",
                     gap: expanded ? 10 : 0,
                     margin: "0 auto",
-                    transition: "width 280ms cubic-bezier(.4,0,.2,1), padding 280ms cubic-bezier(.4,0,.2,1), gap 280ms cubic-bezier(.4,0,.2,1), background-color 200ms, color 200ms",
+                    transition: "width 280ms cubic-bezier(.4,0,.2,1), padding 280ms cubic-bezier(.4,0,.2,1), gap 280ms cubic-bezier(.4,0,.2,1), background-color 200ms ease, color 200ms ease",
+                    willChange: "width, padding-left",
                   }}
                 >
-                  <span className="shrink-0" style={{ opacity: expanded ? 0.7 : 1, transition: "opacity 200ms" }}>
+                  <span className="shrink-0" style={{ opacity: expanded ? 0.7 : 1, transition: "opacity 200ms ease" }}>
                     {icon(s)}
                   </span>
                   <span
@@ -282,7 +301,7 @@ export default function ScrollSpyNav({
                     style={{
                       maxWidth: expanded ? 110 : 0,
                       opacity: expanded ? 1 : 0,
-                      transition: "max-width 280ms cubic-bezier(.4,0,.2,1), opacity 200ms 80ms",
+                      transition: "max-width 280ms cubic-bezier(.4,0,.2,1), opacity 200ms ease 80ms",
                     }}
                   >
                     {s.label}

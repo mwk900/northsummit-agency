@@ -1,0 +1,26 @@
+﻿--- ROUTE ROOT CHECK ---
+True
+False
+False
+False
+
+=== ROUTES UNDER: .\src\pages ===
+
+FullName                                                        
+--------                                                        
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\_app.tsx      
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\_document.tsx 
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\404.tsx       
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\about.tsx     
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\api\contact.ts
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\audit.tsx     
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\contact.tsx   
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\cookies.tsx   
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\faq.tsx       
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\index.tsx     
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\portfolio.tsx 
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\privacy.tsx   
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\question.tsx  
+C:\Users\mwk\Desktop\northsummit-agency\src\pages\terms.tsx     
+
+
