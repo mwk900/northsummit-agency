@@ -110,17 +110,16 @@ export const siteConfig = {
     'Deposits are refundable until work begins. Once design work starts, deposits are non-refundable.',
 
   projects: [
-    {
-      id: 'roofing01',
-      title: 'Summit Roofing Co.',
-      category: 'Trades',
-      hook:
-        'When a storm hits and someone needs a roofer, they are not browsing. They need your number, now.',
-      description:
-        'Phone number and emergency callout info right at the top. Service areas clearly listed so people know you cover their postcode. Quote request form that takes 30 seconds to fill in.',
-      image: '/projects/roofing01.png',
-      link: 'https://roofing01.netlify.app/',
-    },
+{
+  id: 'roofing01',
+  title: 'Northcrest Roofing Nottingham',
+  category: 'Trades',
+  hook: 'Emergency-first layout built to turn local searches into calls.',
+  description:
+    'Mobile-first sticky emergency CTA, clear trust promises, service-area clarity, and a fast quote form - designed for roof repairs and storm callouts. Built as a realistic demo project to showcase conversion-focused design for trades.',
+  image: '/projects/roofing01.png',
+  link: 'https://roofing.northsummit.agency/',
+},
     {
       id: 'plumber001',
       title: 'FlowFix Plumbing',
