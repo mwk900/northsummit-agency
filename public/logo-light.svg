@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
-  <!-- Double mountain peak — navy -->
+  <!-- Double mountain peak, navy -->
   <path
     d="M20 120 L60 48 L80 78 L100 48 L140 120 Z"
     fill="#1e3a5f"
@@ -9,7 +9,7 @@
     d="M42 120 L60 88 L80 108 L100 88 L118 120 Z"
     fill="white"
   />
-  <!-- Accent arrow — site blue -->
+  <!-- Accent arrow, site blue -->
   <polyline
     points="100,46 112,22 124,46"
     stroke="#3B82F6"

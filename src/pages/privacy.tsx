@@ -18,7 +18,7 @@ export default function Privacy() {
 
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-2">What we collect</h2>
-              <p>When you submit a form on this website, we collect the information you provide — typically your name, email address, and message. If you choose to include a phone number, website URL, trade, or service area, we collect those too.</p>
+              <p>When you submit a form on this website, we collect the information you provide. This is typically your name, email address, and message. If you choose to include a phone number, website URL, trade, or service area, we collect those too.</p>
             </div>
 
             <div>

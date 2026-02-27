@@ -15,11 +15,11 @@ export default function Audit() {
       <section className="py-20">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <p className="text-accent font-medium mb-2">Free — no strings attached</p>
+            <p className="text-accent font-medium mb-2">Free with no strings attached</p>
             <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">Request a free website audit</h1>
             <div className="w-20 h-1 rounded-full bg-accent mb-4" />
             <p className="text-text-secondary">
-              Send your website link and a few details about your business. We&apos;ll review it and reply with clear, practical improvements you can act on — whether you work with us or not.
+              Send your website link and a few details about your business. We&apos;ll review it and reply with clear, practical improvements you can act on. You can use them whether you work with us or not.
             </p>
           </motion.div>
 
@@ -45,7 +45,7 @@ export default function Audit() {
                 <span className="text-accent mt-0.5">•</span> What you want more of (calls, quote requests, bookings)
               </li>
             </ul>
-            <p className="mt-3 text-xs text-text-secondary">Typical turnaround: 24–48 hours. No spam, no hard sell.</p>
+            <p className="mt-3 text-xs text-text-secondary">Typical turnaround: 24-48 hours. No spam, no hard sell.</p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>

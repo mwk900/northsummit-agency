@@ -127,7 +127,7 @@ export default function ContactForm({ intent = 'quote' }: { intent?: Intent }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-      {/* Honeypot — truly hidden */}
+      {/* Honeypot: truly hidden */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="company">Company</label>
         <input
@@ -191,7 +191,7 @@ export default function ContactForm({ intent = 'quote' }: { intent?: Intent }) {
           onChange={(e) => handleChange('message', e.target.value)}
           placeholder={intent === 'audit'
             ? "What should we focus on? (e.g. not getting calls, unclear services, slow on mobile)"
-            : "Tell us about your project — what does your business do, and what do you need the site to do?"
+            : "Tell us about your project. What does your business do, and what do you need the site to do?"
           }
           rows={5}
           className={`${inputClass(errors.message)} resize-y`}

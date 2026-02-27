@@ -65,7 +65,7 @@ export default function Contact() {
               >
                 Book a 30-min call
               </a>
-              <p className="mt-2 text-xs text-text-secondary">Or fill in the form below — whichever you prefer.</p>
+              <p className="mt-2 text-xs text-text-secondary">Or fill in the form below if you prefer.</p>
             </motion.div>
           )}
 

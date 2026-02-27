@@ -90,7 +90,7 @@ export default function FAQ() {
     <>
       <SEOHead
         title="FAQ - Web Design for Trades & Local Businesses | NorthSummit"
-        description="Common questions about NorthSummit web design services — pricing, hosting, timelines, ownership, SEO, and more. Clear answers, no jargon."
+        description="Common questions about NorthSummit web design services. Pricing, hosting, timelines, ownership, SEO, and more. Clear answers, no jargon."
         path="/faq"
       />
 

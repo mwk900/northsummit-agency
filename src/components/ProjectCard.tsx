@@ -36,7 +36,7 @@ export default function ProjectCard({
       className="group block rounded-xl border border-border-color overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1 cursor-pointer"
       style={{ backgroundColor: 'var(--secondary-bg)' }}
     >
-      <div className="relative aspect-video overflow-hidden bg-border-color">
+      <div className="relative overflow-hidden aspect-video">
         {!showImageFallback && (
           <Image
             src={image}

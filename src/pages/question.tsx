@@ -146,7 +146,7 @@ export default function Question() {
             <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">Quick question</h1>
             <div className="w-20 h-1 rounded-full bg-accent mb-4" />
             <p className="text-text-secondary">
-              Got a question before you commit? No problem — send it over and we&apos;ll get back to you within 24 hours.
+              Got a question before you commit? No problem. Send it over and we&apos;ll get back to you within 24 hours.
             </p>
           </motion.div>
 

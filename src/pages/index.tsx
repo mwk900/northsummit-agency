@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import SEOHead from "@/components/SEOHead";
 import ProjectCard from "@/components/ProjectCard";
@@ -28,10 +28,18 @@ const childFade = {
 
 export default function Home() {
   const featuredProjects = siteConfig.projects.slice(0, 6);
+  const mobileMockups = [
+    { src: "/pictures/mobile-garden-white.png", alt: "Landscaping website mobile view" },
+    { src: "/pictures/mobile-gym-white.png", alt: "Gym website mobile view" },
+    { src: "/pictures/mobile-roofing-white.png", alt: "Roofing website mobile view" },
+  ];
   const portfolioCarouselId = "recent-work-carousel";
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(featuredProjects.length > 1);
+
+  const [showLaunchBanner, setShowLaunchBanner] = useState(false);
+  const [hasDismissedLaunchBanner, setHasDismissedLaunchBanner] = useState(false);
 
   const updateCarouselControls = useCallback(() => {
     const carousel = carouselRef.current;
@@ -55,6 +63,43 @@ export default function Home() {
       behavior: "smooth",
     });
   }, []);
+
+  const scrollToSection = useCallback((id: string, offset = 96) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+    const top = window.scrollY + target.getBoundingClientRect().top - offset;
+    window.scrollTo({ top, behavior: "smooth" });
+  }, []);
+
+  const handlePricingClick = useCallback(
+    (event: MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      scrollToSection("pricing");
+    },
+    [scrollToSection],
+  );
+
+  const dismissLaunchBanner = useCallback(() => {
+    setHasDismissedLaunchBanner(true);
+    setShowLaunchBanner(false);
+  }, []);
+
+  useEffect(() => {
+    if (hasDismissedLaunchBanner) return;
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        setShowLaunchBanner((window.scrollY || 0) > 180);
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [hasDismissedLaunchBanner]);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -83,19 +128,65 @@ export default function Home() {
         showAfterPx={250}
         offsetTopPx={96}
         sections={[
-          { id: "process", label: "Steps", icon: "steps" },
           { id: "portfolio", label: "Portfolio", icon: "portfolio" },
           { id: "who-this-is-for", label: "Fit", icon: "fit" },
           { id: "audit", label: "Audit", icon: "audit" },
           { id: "pricing", label: "Pricing", icon: "pricing" },
-          { id: "next", label: "Begin", icon: "begin" },
+          { id: "next", label: "Next steps", icon: "steps" },
         ]}
       />
 
+      {/* Floating Founding Client banner */}
+      <AnimatePresence>
+        {siteConfig.launch.active && showLaunchBanner && !hasDismissedLaunchBanner && (
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 18 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-x-0 bottom-4 z-50 px-4"
+          >
+            <div className="mx-auto max-w-5xl rounded-2xl border border-accent/20 bg-primary-bg/90 backdrop-blur-md shadow-xl">
+              <div className="px-5 py-4 sm:px-6 sm:py-5">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="min-w-0">
+                    <p className="text-sm sm:text-base font-semibold text-text-primary">
+                      Introductory pricing while we grow our portfolio.
+                    </p>
+                    <p className="mt-1 text-xs sm:text-sm text-text-secondary">
+                      We are working with a limited number of businesses at reduced rates. Future projects will be priced higher.
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-2">
+                    <a
+                      href="#pricing"
+                      onClick={handlePricingClick}
+                      className="inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-xs sm:text-sm font-semibold hover:opacity-90 transition-all"
+                      style={{ color: "var(--primary-bg)" }}
+                    >
+                      View pricing
+                    </a>
+                    <button
+                      type="button"
+                      onClick={dismissLaunchBanner}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border-color text-text-secondary hover:text-accent hover:border-accent transition-colors"
+                      aria-label="Dismiss banner"
+                      title="Dismiss"
+                    >
+                      &#10005;
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
 {/* Hero */}
-<section className="relative min-h-[60vh] md:min-h-[calc(100vh-4rem)] flex items-center">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
+<section className="relative py-12 md:py-16 flex items-center">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div className="grid lg:grid-cols-[1.2fr_1.7fr] gap-8 items-center">
       {/* Left */}
       <div className="max-w-3xl">
         <motion.p
@@ -113,7 +204,7 @@ export default function Home() {
           initial="hidden"
           animate="visible"
           variants={fadeIn}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-tight mb-4"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-4"
         >
           {siteConfig.agency.tagline}
         </motion.h1>
@@ -147,6 +238,7 @@ export default function Home() {
         >
           <a
             href="#pricing"
+            onClick={handlePricingClick}
             className="inline-block px-6 py-3 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all"
             style={{ color: "var(--primary-bg)" }}
           >
@@ -182,7 +274,7 @@ export default function Home() {
         variants={fadeIn}
         className="flex justify-center lg:justify-end"
       >
-        <div className="w-full max-w-[620px]">
+        <div className="w-full max-w-none">
           <a
             href="https://landscaping.northsummit.agency/"
             target="_blank"
@@ -213,30 +305,6 @@ export default function Home() {
     </div>
   </div>
 </section>
-
-      {/* Founding Client Programme */}
-      {siteConfig.launch.active && (
-        <section className="py-6">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="rounded-2xl border border-accent/20 bg-accent/5 p-6 sm:p-8"
-            >
-              <div className="max-w-3xl mx-auto text-center">
-                <h2 className="text-xl sm:text-2xl font-bold text-text-primary mb-3">
-                  Fair pricing while we build our track record.
-                </h2>
-                <p className="text-text-secondary leading-relaxed">
-                We’re currently working with a small number of businesses while we grow our portfolio, so pricing is reduced for now.
-                You’ll get a full, professionally built site just without the agency-level price tag.
-              </p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      )}
 
 {/* What We Do */}
 <section
@@ -282,54 +350,12 @@ export default function Home() {
   </div>
 </section>
 
-      {/* How We Build */}
-      <section id="process" className="py-16 sm:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">How we build your website</h2>
-            <p className="text-text-secondary">Here&apos;s what working with us looks like, start to finish.</p>
-          </div>
-
-          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { step: "1", title: "Tell us what you need", text: "Send a message or book a quick call. Tell us about your business, what services you offer, and what you want the site to do." },
-              { step: "2", title: "We build, you check", text: "We put your site together and share it with you as we go. You tell us what you like and what you don't. No surprises." },
-              { step: "3", title: "Go live", text: "Your site launches with proper technical SEO foundations. We guide you through hosting and your domain – all in your name, so you own everything." },
-              { step: "4", title: "We don't disappear", text: "Need something changed after launch? Get in touch. We're here for tweaks, updates, and questions – not just on launch day." },
-            ].map((item) => (
-              <div key={item.step} className="p-6 rounded-xl border border-border-color" style={{ backgroundColor: "var(--secondary-bg)" }}>
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent/10 text-accent font-bold text-sm mb-4">{item.step}</span>
-                <h3 className="text-lg font-semibold text-text-primary mb-2">{item.title}</h3>
-                <p className="text-sm text-text-secondary">{item.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="sm:hidden space-y-3">
-            {[
-              { step: "1", title: "Tell us what you need", text: "Send a message or book a call. Tell us about your business and what the site should do." },
-              { step: "2", title: "We build, you check", text: "We share progress as we go. You give feedback. No surprises." },
-              { step: "3", title: "Go live", text: "Your site launches with SEO foundations. Domain and hosting in your name – you own everything." },
-              { step: "4", title: "We don't disappear", text: "Need changes after launch? We're here. Not just on day one." },
-            ].map((item) => (
-              <div key={item.step} className="flex gap-4 p-4 rounded-xl border border-border-color" style={{ backgroundColor: "var(--secondary-bg)" }}>
-                <span className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm">{item.step}</span>
-                <div>
-                  <h3 className="text-sm font-semibold text-text-primary">{item.title}</h3>
-                  <p className="text-xs text-text-secondary mt-1">{item.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Featured Projects */}
       <section id="portfolio" className="py-20" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Recent work</h2>
-            <p className="text-text-secondary max-w-2xl mx-auto">Example builds showing the kind of sites we create. These are demo projects – not past client work – built to demonstrate layout, speed, and how we think about getting people to pick up the phone.</p>
+            <p className="text-text-secondary max-w-2xl mx-auto">Example builds showing the kind of sites we create. These are demo projects, not past client work. They demonstrate layout, speed, and how we think about getting people to pick up the phone.</p>
           </motion.div>
           <p className="mb-3 text-center text-xs text-text-secondary sm:hidden">
             Swipe or use arrows to browse projects.
@@ -434,12 +460,12 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Is this for you?</h2>
-            <p className="text-text-secondary max-w-2xl mx-auto">We work best with trades and local businesses who want a website that actually generates enquiries – not just &quot;looks nice.&quot;</p>
+            <p className="text-text-secondary max-w-2xl mx-auto">We work best with trades and local businesses who want a website that actually generates enquiries. We do not build sites that only &quot;look nice.&quot;</p>
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Tradespeople", text: "Plumbers, electricians, roofers, builders, landscapers – anyone whose customers search locally and want someone they can trust." },
-              { title: "Local service businesses", text: "Cleaners, dog walkers, personal trainers, tutors, mobile mechanics – if your business serves a local area, we'll make sure people find you." },
+              { title: "Tradespeople", text: "Plumbers, electricians, roofers, builders, landscapers, and similar trades. Their customers search locally and want someone they can trust." },
+              { title: "Local service businesses", text: "Cleaners, dog walkers, personal trainers, tutors, and mobile mechanics. If your business serves a local area, we'll make sure people find you." },
               { title: "New or growing businesses", text: "Just starting out or ready to replace a DIY site? We'll get you set up properly without overcomplicating things." },
             ].map((item) => (
               <motion.div key={item.title} variants={childFade} className="p-6 rounded-xl border border-border-color" style={{ backgroundColor: "var(--secondary-bg)" }}>
@@ -451,13 +477,82 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Mobile Mockups */}
+      <section className="py-16 pb-20 sm:py-20 sm:pb-24 bg-accent/[0.03]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center text-2xl sm:text-3xl font-bold text-text-primary mb-3"
+          >
+            Designed for phones first. Built to turn visitors into enquiries.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05 }}
+            className="text-center text-sm sm:text-base text-text-secondary max-w-2xl mx-auto mb-8 sm:mb-12"
+          >
+            Clear calls to action, fast loading pages, and trust signals visible from the first screen.
+          </motion.p>
+          <div className="mb-6 sm:mb-8">
+            <div
+              className="sm:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x px-[9%] pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              aria-label="Mobile website examples"
+            >
+              {mobileMockups.map((img, i) => (
+                <motion.div
+                  key={img.src}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="snap-center shrink-0 w-[82%] max-w-[360px] rounded-2xl bg-white p-4 border border-border-color/60 shadow-xl shadow-slate-900/10"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-auto"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="hidden sm:flex items-center justify-center gap-8 lg:gap-10">
+              {mobileMockups.map((img) => (
+                <motion.div
+                  key={img.src}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="w-48 lg:w-52 rounded-2xl bg-white p-4 border border-border-color/60 shadow-xl shadow-slate-900/10"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-auto"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          <p className="text-center text-xs sm:text-sm text-text-secondary">
+            Realistic demo projects showing how your business could look online.
+          </p>
+        </div>
+      </section>
+
       {/* Free Audit */}
       <section id="audit" className="py-20" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Already have a website?</h2>
             <p className="text-text-secondary mb-8 max-w-xl mx-auto">
-              We&apos;ll review your current site and tell you what&apos;s working, what&apos;s not, and what we&apos;d change – for free. No strings attached.
+              We&apos;ll review your current site and tell you what&apos;s working, what&apos;s not, and what we&apos;d change. It is free and has no strings attached.
             </p>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
               <Link href="/audit" className="inline-block px-8 py-3.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all" style={{ color: "var(--primary-bg)" }}>
@@ -475,7 +570,7 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Honest pricing, no surprises</h2>
             <p className="text-text-secondary max-w-lg mx-auto">Pick a package or get in touch for something custom. You&apos;ll always know the full cost before we start.</p>
             {siteConfig.launch.active && (
-              <p className="mt-3 text-sm text-accent font-medium">Introductory rates – available while we build our portfolio.</p>
+              <p className="mt-3 text-sm text-accent font-medium">Introductory rates are available while we build our portfolio.</p>
             )}
           </motion.div>
 
@@ -524,7 +619,7 @@ export default function Home() {
                     </span>
                   )}
 
-                  {/* Content — flex-1 so it expands to fill available space */}
+                  {/* Content - flex-1 so it expands to fill available space */}
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-text-primary mb-1">{pkg.name}</h3>
                     <p className="text-3xl font-bold text-accent mb-1">{pkg.price}</p>
@@ -539,7 +634,7 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  {/* CTA footer — mt-auto + fixed min-height so ALL cards align */}
+                  {/* CTA footer - mt-auto + fixed min-height so ALL cards align */}
                   <div className="mt-auto pt-8 min-h-[200px] flex flex-col">
                     {/* Buttons */}
                     <div className="space-y-2">
@@ -600,7 +695,7 @@ export default function Home() {
             })}
           </motion.div>
 
-          {/* Payment trust strip — vertical on mobile */}
+          {/* Payment trust strip - vertical on mobile */}
           <div className="mt-8 flex flex-col items-center text-center gap-3">
             <div className="flex items-center gap-2">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-text-secondary shrink-0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -627,46 +722,31 @@ export default function Home() {
           </p>
 
           <p className="mt-4 text-center text-sm text-text-secondary">
-            Timelines depend on scope and your availability for feedback – we&apos;ll agree a realistic schedule before starting. You&apos;ll hear back from us within 24 hours of getting in touch.
+            Timelines depend on scope and your availability for feedback. We&apos;ll agree a realistic schedule before starting. You&apos;ll hear back from us within 24 hours of getting in touch.
           </p>
         </div>
       </section>
 
-      {/* What Happens Next */}
-      <section id="next" className="py-16 sm:py-20" style={{ backgroundColor: "var(--secondary-bg)" }}>
+      {/* Combined Steps: Ready? Here's what happens next. */}
+      <section id="next" className="py-12 sm:py-20" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Ready? Here&apos;s what happens next.</h2>
-            <p className="text-text-secondary">No pressure, no hard sell – just a simple conversation to see if we&apos;re a good fit.</p>
+          <div className="text-center max-w-3xl mx-auto mb-7 sm:mb-14">
+            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-3 sm:mb-4">Ready? Here&apos;s what happens next.</h2>
+            <p className="text-text-secondary text-base sm:text-lg">No pressure and no hard sell. It is just a simple conversation to see if we&apos;re a good fit.</p>
           </div>
 
-          <div className="hidden sm:grid md:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {[
-              { step: "1", title: "You get in touch", text: "Send a message or book a call. Tell us a bit about your business – even a few sentences is enough to get started." },
+              { step: "1", title: "You get in touch", text: "Send a message or book a call. Tell us a bit about your business. Even a few sentences is enough to get started." },
               { step: "2", title: "We send a clear quote", text: "No hidden fees, no vague estimates. You'll know exactly what you're getting, what it costs, and a realistic timeline." },
-              { step: "3", title: "You decide – no rush", text: "Take your time. There's no obligation and no chasing. If it feels right, we move forward. If not, no hard feelings." },
+              { step: "3", title: "You decide - no rush", text: "Take your time. There's no obligation and no chasing. If it feels right, we move forward. If not, no hard feelings." },
               { step: "4", title: "We get to work", text: "Once you give the go-ahead, we start building. You'll see progress throughout and we'll keep you in the loop at every stage." },
             ].map((item) => (
-              <div key={item.step} className="p-6 rounded-xl border border-border-color" style={{ backgroundColor: "var(--primary-bg)" }}>
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent/10 text-accent font-bold text-sm mb-4">{item.step}</span>
-                <h3 className="text-lg font-semibold text-text-primary mb-2">{item.title}</h3>
-                <p className="text-sm text-text-secondary">{item.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="sm:hidden space-y-3">
-            {[
-              { step: "1", title: "You get in touch", text: "Send a message or book a call. A few sentences about your business is enough." },
-              { step: "2", title: "We send a clear quote", text: "Exact cost, what's included, and a realistic timeline. No surprises." },
-              { step: "3", title: "You decide – no rush", text: "No obligation, no chasing. Take your time." },
-              { step: "4", title: "We get to work", text: "We build, you see progress, and we keep you in the loop." },
-            ].map((item) => (
-              <div key={item.step} className="flex gap-4 p-4 rounded-xl border border-border-color" style={{ backgroundColor: "var(--primary-bg)" }}>
-                <span className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm">{item.step}</span>
-                <div>
-                  <h3 className="text-sm font-semibold text-text-primary">{item.title}</h3>
-                  <p className="text-xs text-text-secondary mt-1">{item.text}</p>
+              <div key={item.step} className="p-4 sm:p-6 rounded-lg sm:rounded-xl border border-border-color flex items-start gap-3.5 sm:block" style={{ backgroundColor: "var(--primary-bg)" }}>
+                <span className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-accent/10 text-accent font-bold text-base sm:text-sm mb-0 sm:mb-4 shrink-0">{item.step}</span>
+                <div className="min-w-0">
+                  <h3 className="text-lg sm:text-lg font-semibold text-text-primary mb-1.5 sm:mb-2">{item.title}</h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">{item.text}</p>
                 </div>
               </div>
             ))}
@@ -681,7 +761,7 @@ export default function Home() {
             Let&apos;s get your site sorted.
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-text-secondary mb-8">
-            Send us a message or book a call – we&apos;ll get back to you within 24 hours.
+            Send us a message or book a call. We&apos;ll get back to you within 24 hours.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="flex flex-wrap justify-center gap-4">
             <Link href="/contact" className="inline-block px-8 py-3.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all" style={{ color: "var(--primary-bg)" }}>

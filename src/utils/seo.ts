@@ -38,7 +38,7 @@ export function generateSEO({
 
   const fullTitle = title
     ? `${title} | ${brandName}`
-    : `${brandName} — ${tagline}`;
+    : `${brandName} | ${tagline}`;
 
   const url = toPageUrl(path);
   const absoluteImage = toAbsoluteUrl(image);

@@ -45,7 +45,7 @@ export const siteConfig = {
         '1 round of revisions',
       ],
       cta: {
-        primary: { label: 'Get started — £149', type: 'stripe' as const },
+        primary: { label: 'Get started for £149', type: 'stripe' as const },
         secondary: { label: 'Talk to us', type: 'question' as const },
         microcopy: 'Prefer to chat first? Send a quick question.',
       },
