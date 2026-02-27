@@ -5,7 +5,7 @@ import Image from 'next/image';
 import SEOHead from '@/components/SEOHead';
 import { siteConfig } from '@/data/site';
 
-const categories = ['All', 'Trades', 'Local Business', 'Business'] as const;
+const categories = ['All', 'Trades', 'Local Business'] as const;
 type Category = (typeof categories)[number];
 
 const stagger = {

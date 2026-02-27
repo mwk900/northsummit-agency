@@ -132,6 +132,17 @@ export const siteConfig = {
   link: 'https://landscaping.northsummit.agency/',
 },
 {
+  id: 'printcompany',
+  title: 'Trent Valley PrintWorks',
+  category: 'Local Business',
+  hook:
+    'Modern print studio concept designed to turn enquiries into quote requests with clear service navigation.',
+  description:
+    'Professional print business website concept featuring structured service pages for products like leaflets, stationery, booklets, and NCR forms. Built with mobile-first UX, clear quote pathways, and local SEO targeting to improve visibility in searches such as printing services near me. The layout adapts between desktop and mobile to prioritise detailed browsing on larger screens and quick contact actions on phones. Created as a realistic demo project to showcase conversion-focused design for print and manufacturing businesses.',
+  image: '/projects/printcompany.png',
+  link: 'https://printcompany.northsummit.agency/',
+},
+{
   id: 'gym001',
   title: 'NorthPeak Performance',
   category: 'Local Business',
