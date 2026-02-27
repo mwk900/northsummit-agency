@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 
 interface ProjectCardProps {
@@ -19,6 +20,8 @@ export default function ProjectCard({
   category,
   link,
 }: ProjectCardProps) {
+  const [showImageFallback, setShowImageFallback] = useState(!image);
+
   const categories = category
     ? Array.isArray(category)
       ? category
@@ -34,32 +37,23 @@ export default function ProjectCard({
       style={{ backgroundColor: 'var(--secondary-bg)' }}
     >
       <div className="relative aspect-video overflow-hidden bg-border-color">
-        <Image
-          src={image}
-          alt={`Screenshot of ${title}`}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-95"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.style.display = 'none';
-          }}
-        />
-        <div className="absolute inset-0 flex items-center justify-center text-text-secondary text-sm">
-          <svg
-            width="48"
-            height="48"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            className="opacity-30"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <polyline points="21 15 16 10 5 21" />
-          </svg>
-        </div>
+        {!showImageFallback && (
+          <Image
+            src={image}
+            alt={`Screenshot of ${title}`}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-95"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            onError={() => setShowImageFallback(true)}
+          />
+        )}
+        {showImageFallback && (
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary-bg to-primary-bg flex items-center justify-center p-4">
+            <span className="px-3 py-1 rounded-full text-xs font-medium border border-border-color text-text-secondary bg-primary-bg/70">
+              Preview coming soon
+            </span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-300 flex items-center justify-center">
           <span
             className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 py-2 rounded-lg bg-accent text-sm font-semibold"

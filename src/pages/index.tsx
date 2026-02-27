@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import SEOHead from "@/components/SEOHead";
@@ -26,7 +27,48 @@ const childFade = {
 };
 
 export default function Home() {
-  const featuredProjects = siteConfig.projects.slice(0, 3);
+  const featuredProjects = siteConfig.projects.slice(0, 6);
+  const portfolioCarouselId = "recent-work-carousel";
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(featuredProjects.length > 1);
+
+  const updateCarouselControls = useCallback(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+    setCanScrollPrev(carousel.scrollLeft > 8);
+    setCanScrollNext(carousel.scrollLeft < maxScrollLeft - 8);
+  }, []);
+
+  const scrollCarousel = useCallback((direction: "prev" | "next") => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const firstSlide = carousel.querySelector<HTMLElement>("[data-project-slide]");
+    const gap = 24;
+    const scrollAmount = firstSlide ? firstSlide.offsetWidth + gap : carousel.clientWidth;
+
+    carousel.scrollBy({
+      left: direction === "next" ? scrollAmount : -scrollAmount,
+      behavior: "smooth",
+    });
+  }, []);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    updateCarouselControls();
+    carousel.addEventListener("scroll", updateCarouselControls, { passive: true });
+    window.addEventListener("resize", updateCarouselControls);
+
+    return () => {
+      carousel.removeEventListener("scroll", updateCarouselControls);
+      window.removeEventListener("resize", updateCarouselControls);
+    };
+  }, [updateCarouselControls]);
 
   return (
     <>
@@ -210,12 +252,61 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Recent work</h2>
             <p className="text-text-secondary max-w-2xl mx-auto">Example builds showing the kind of sites we create. These are demo projects – not past client work – built to demonstrate layout, speed, and how we think about getting people to pick up the phone.</p>
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProjects.map((project, i) => (
-              <motion.div key={project.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <ProjectCard {...project} />
-              </motion.div>
-            ))}
+          <div className="relative">
+            <div
+              id={portfolioCarouselId}
+              ref={carouselRef}
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Recent work projects"
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {featuredProjects.map((project, i) => (
+                <motion.div
+                  key={project.id}
+                  data-project-slide
+                  className="snap-start shrink-0 w-[calc(100%-2rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc((100%-3rem)/3)]"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                >
+                  <ProjectCard {...project} />
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-4 flex items-center justify-between gap-4">
+              <p className="text-xs sm:text-sm text-text-secondary">
+                Swipe or use arrows to browse projects.
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => scrollCarousel("prev")}
+                  aria-controls={portfolioCarouselId}
+                  aria-label="Show previous project cards"
+                  disabled={!canScrollPrev}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-color text-text-primary hover:border-accent hover:text-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollCarousel("next")}
+                  aria-controls={portfolioCarouselId}
+                  aria-label="Show next project cards"
+                  disabled={!canScrollNext}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-color text-text-primary hover:border-accent hover:text-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-10">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
