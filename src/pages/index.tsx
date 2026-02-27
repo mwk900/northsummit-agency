@@ -92,48 +92,127 @@ export default function Home() {
         ]}
       />
 
-      {/* Hero */}
-      <section className="relative min-h-[60vh] md:min-h-[calc(100vh-4rem)] flex items-center">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-3xl">
-            <motion.p custom={0} initial="hidden" animate="visible" variants={fadeIn} className="text-accent font-medium mb-4">
-              Web design for trades &middot; {siteConfig.agency.location}
-            </motion.p>
+{/* Hero */}
+<section className="relative min-h-[60vh] md:min-h-[calc(100vh-4rem)] flex items-center">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Left */}
+      <div className="max-w-3xl">
+        <motion.p
+          custom={0}
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="text-accent font-medium mb-4"
+        >
+          Web design for trades &middot; {siteConfig.agency.location}
+        </motion.p>
 
-            <motion.h1 custom={1} initial="hidden" animate="visible" variants={fadeIn}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-tight mb-4"
+        <motion.h1
+          custom={1}
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-tight mb-4"
+        >
+          {siteConfig.agency.tagline}
+        </motion.h1>
+
+        <motion.p
+          custom={2}
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="text-base sm:text-lg text-text-secondary max-w-xl mb-2"
+        >
+          Fast, mobile-first sites for plumbers, roofers, electricians, and local businesses across the UK. Clear pricing, clean build, and you own everything.
+        </motion.p>
+
+        <motion.p
+          custom={3}
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="text-sm text-text-secondary"
+        >
+          Every site is hand-built and personally checked before it goes live.
+        </motion.p>
+
+        <motion.div
+          custom={4}
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="flex flex-wrap gap-3 mt-8"
+        >
+          <a
+            href="#pricing"
+            className="inline-block px-6 py-3 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all"
+            style={{ color: "var(--primary-bg)" }}
+          >
+            View pricing
+          </a>
+          <a
+            href="#portfolio"
+            className="inline-block px-6 py-3 rounded-lg border border-border-color text-text-primary text-sm font-semibold hover:border-accent hover:text-accent transition-colors"
+          >
+            See our work
+          </a>
+        </motion.div>
+
+        <motion.p
+          custom={5}
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="mt-4 text-sm text-text-secondary"
+        >
+          Already have a site?{" "}
+          <a href="#audit" className="text-accent font-medium hover:underline">
+            Get a free audit &darr;
+          </a>
+        </motion.p>
+      </div>
+
+      {/* Right */}
+      <motion.div
+        custom={2}
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+        className="flex justify-center lg:justify-end"
+      >
+        <div className="w-full max-w-[620px]">
+          <a
+            href="https://landscaping.northsummit.agency/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <img
+              src="/pictures/landsaping-desktop.png"
+              alt="Example landscaping website shown on laptop"
+              className="w-full h-auto rounded-2xl shadow-2xl ring-1 ring-black/5"
+              loading="eager"
+            />
+          </a>
+
+          <div className="mt-3 flex items-center justify-between text-xs text-text-secondary">
+            <span>Example website (portfolio demo)</span>
+            <a
+              href="https://landscaping.northsummit.agency/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
             >
-              {siteConfig.agency.tagline}
-            </motion.h1>
-
-            <motion.p custom={2} initial="hidden" animate="visible" variants={fadeIn}
-              className="text-base sm:text-lg text-text-secondary max-w-xl mb-2"
-            >
-              Fast, mobile-first sites for plumbers, roofers, electricians, and local businesses across the UK. Clear pricing, clean build, and you own everything.
-            </motion.p>
-
-            <motion.p custom={3} initial="hidden" animate="visible" variants={fadeIn}
-              className="text-sm text-text-secondary"
-            >
-              Every site is hand-built and personally checked before it goes live.
-            </motion.p>
-
-            <motion.div custom={4} initial="hidden" animate="visible" variants={fadeIn} className="flex flex-wrap gap-3 mt-8">
-              <a href="#pricing" className="inline-block px-6 py-3 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all" style={{ color: "var(--primary-bg)" }}>
-                View pricing
-              </a>
-              <a href="#portfolio" className="inline-block px-6 py-3 rounded-lg border border-border-color text-text-primary text-sm font-semibold hover:border-accent hover:text-accent transition-colors">
-                See our work
-              </a>
-            </motion.div>
-
-            <motion.p custom={5} initial="hidden" animate="visible" variants={fadeIn} className="mt-4 text-sm text-text-secondary">
-              Already have a site?{" "}
-              <a href="#audit" className="text-accent font-medium hover:underline">Get a free audit &darr;</a>
-            </motion.p>
+              View live example →
+            </a>
           </div>
         </div>
-      </section>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       {/* Founding Client Programme */}
       {siteConfig.launch.active && (
