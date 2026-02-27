@@ -252,6 +252,9 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Recent work</h2>
             <p className="text-text-secondary max-w-2xl mx-auto">Example builds showing the kind of sites we create. These are demo projects – not past client work – built to demonstrate layout, speed, and how we think about getting people to pick up the phone.</p>
           </motion.div>
+          <p className="mb-3 text-center text-xs text-text-secondary sm:hidden">
+            Swipe or use arrows to browse projects.
+          </p>
           <div className="relative">
             <div
               id={portfolioCarouselId}
@@ -259,13 +262,13 @@ export default function Home() {
               role="region"
               aria-roledescription="carousel"
               aria-label="Recent work projects"
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory [scroll-padding-inline:6%] sm:[scroll-padding-inline:0] scroll-smooth touch-pan-x pb-4 -mx-4 px-[6%] sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
               {featuredProjects.map((project, i) => (
                 <motion.div
                   key={project.id}
                   data-project-slide
-                  className="snap-start shrink-0 w-[calc(100%-2rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc((100%-3rem)/3)]"
+                  className="snap-center sm:snap-start shrink-0 w-[88%] sm:w-[calc(50%-0.75rem)] lg:w-[calc((100%-3rem)/3)]"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -276,8 +279,8 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-4 flex items-center justify-between gap-4">
-              <p className="text-xs sm:text-sm text-text-secondary">
+            <div className="mt-4 hidden items-center justify-between gap-4 sm:flex">
+              <p className="text-sm text-text-secondary">
                 Swipe or use arrows to browse projects.
               </p>
               <div className="flex items-center gap-2">
@@ -300,6 +303,35 @@ export default function Home() {
                   aria-label="Show next project cards"
                   disabled={!canScrollNext}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-color text-text-primary hover:border-accent hover:text-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-3 flex justify-center sm:hidden">
+              <div className="inline-flex items-center gap-3 rounded-xl border border-border-color/80 bg-primary-bg/70 px-3 py-2">
+                <button
+                  type="button"
+                  onClick={() => scrollCarousel("prev")}
+                  aria-controls={portfolioCarouselId}
+                  aria-label="Show previous project cards"
+                  disabled={!canScrollPrev}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border-color text-text-primary hover:border-accent hover:text-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollCarousel("next")}
+                  aria-controls={portfolioCarouselId}
+                  aria-label="Show next project cards"
+                  disabled={!canScrollNext}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border-color text-text-primary hover:border-accent hover:text-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                     <path d="M9 18l6-6-6-6" />
