@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import SEOHead from '@/components/SEOHead';
-import { siteConfig } from '@/data/site';
 
 export default function Question() {
   const router = useRouter();
@@ -18,7 +17,6 @@ export default function Question() {
     email: '',
     message: '',
     company: '', // honeypot
-    package: packageParam,
   });
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -57,8 +55,8 @@ export default function Question() {
           websiteUrl: '',
           trade: '',
           serviceArea: '',
-          message: formData.package
-            ? `[Interested in: ${formData.package}]\n\n${formData.message}`
+          message: packageParam
+            ? `[Interested in: ${packageParam}]\n\n${formData.message}`
             : formData.message,
           company: formData.company,
         }),
@@ -66,7 +64,7 @@ export default function Question() {
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', message: '', company: '', package: packageParam });
+        setFormData({ name: '', email: '', message: '', company: '' });
       } else {
         const data = await response.json().catch(() => null);
         if (data?.error === 'rate_limit') {

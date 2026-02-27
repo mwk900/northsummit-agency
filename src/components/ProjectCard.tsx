@@ -44,6 +44,7 @@ export default function ProjectCard({
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-95"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            draggable={false}
             onError={() => setShowImageFallback(true)}
           />
         )}
@@ -54,7 +55,7 @@ export default function ProjectCard({
             </span>
           </div>
         )}
-        <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-300 flex items-center justify-center">
+        <div className="pointer-events-none absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-300 flex items-center justify-center">
           <span
             className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 py-2 rounded-lg bg-accent text-sm font-semibold"
             style={{ color: 'var(--primary-bg)' }}

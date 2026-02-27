@@ -1,5 +1,5 @@
 import SEOHead from "@/components/SEOHead";
-import { siteConfig } from "@/data/site";
+import ObfuscatedContactLink from "@/components/ObfuscatedContactLink";
 
 export default function Privacy() {
   return (
@@ -13,7 +13,12 @@ export default function Privacy() {
           <div className="space-y-8 text-text-secondary leading-relaxed">
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-2">Who we are</h2>
-              <p>NorthSummit is a web design service operated by Mateusz Wozniak. You can contact us at <a href={`mailto:${siteConfig.agency.email}`} className="text-accent hover:underline">{siteConfig.agency.email}</a>.</p>
+              <p>
+                NorthSummit is a web design service operated by Mateusz Wozniak. You can contact us at{" "}
+                <ObfuscatedContactLink method="email" ssrLabel="Email us" className="text-accent hover:underline">
+                  {(emailLabel) => emailLabel}
+                </ObfuscatedContactLink>.
+              </p>
             </div>
 
             <div>
@@ -38,7 +43,12 @@ export default function Privacy() {
 
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-2">Your rights</h2>
-              <p>Under UK data protection law, you have the right to access, correct, or delete any personal data we hold about you. To make a request, email us at <a href={`mailto:${siteConfig.agency.email}`} className="text-accent hover:underline">{siteConfig.agency.email}</a>.</p>
+              <p>
+                Under UK data protection law, you have the right to access, correct, or delete any personal data we hold about you. To make a request, email us at{" "}
+                <ObfuscatedContactLink method="email" ssrLabel="Email us" className="text-accent hover:underline">
+                  {(emailLabel) => emailLabel}
+                </ObfuscatedContactLink>.
+              </p>
             </div>
           </div>
         </div>

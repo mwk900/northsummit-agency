@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import LogoMark from "@/components/LogoMark";
+import ObfuscatedContactLink from "@/components/ObfuscatedContactLink";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -106,28 +107,31 @@ export default function Footer() {
               </div>
 
 <div className="text-sm text-text-secondary flex flex-col gap-1">
-  <a
-    href={`tel:${siteConfig.agency.phone}`}
+  <ObfuscatedContactLink
+    method="phone"
+    ssrLabel="Call us"
     className="hover:text-accent transition-colors font-medium"
   >
-    Call me on {siteConfig.agency.phone}
-  </a>
+    {(phoneLabel) => <>Call me on {phoneLabel}</>}
+  </ObfuscatedContactLink>
 
-  <a
-    href={`https://wa.me/${(siteConfig.agency.whatsapp || siteConfig.agency.phone).replace(/[^\d]/g, "")}`}
+  <ObfuscatedContactLink
+    method="whatsapp"
+    ssrLabel="WhatsApp"
     target="_blank"
     rel="noopener noreferrer"
     className="hover:text-accent transition-colors"
   >
     Message on WhatsApp
-  </a>
+  </ObfuscatedContactLink>
 
-  <a
-    href={`mailto:${siteConfig.agency.email}`}
+  <ObfuscatedContactLink
+    method="email"
+    ssrLabel="Email us"
     className="hover:text-accent transition-colors"
   >
-    Email me {siteConfig.agency.email}
-  </a>
+    {(emailLabel) => <>Email me {emailLabel}</>}
+  </ObfuscatedContactLink>
 
   <span className="mt-1 text-xs text-text-secondary">
     UK Based • Usually replies within a few hours

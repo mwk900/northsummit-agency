@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import SEOHead from '@/components/SEOHead';
 import ContactForm from '@/components/ContactForm';
+import ObfuscatedContactLink from '@/components/ObfuscatedContactLink';
 import { siteConfig } from '@/data/site';
 
 export default function Contact() {
@@ -93,16 +94,21 @@ export default function Contact() {
             className="mt-12 pt-8 border-t border-border-color"
           >
             <p className="text-sm font-semibold text-text-primary mb-2">Or reach out directly</p>
-            <a
-              href={`mailto:${siteConfig.agency.email}`}
+            <ObfuscatedContactLink
+              method="email"
+              ssrLabel="Email us"
               className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-accent transition-colors"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              {siteConfig.agency.email}
-            </a>
+              {(emailLabel) => (
+                <>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  {emailLabel}
+                </>
+              )}
+            </ObfuscatedContactLink>
             <p className="mt-1 text-sm text-text-secondary">{siteConfig.agency.location}</p>
           </motion.div>
         </div>

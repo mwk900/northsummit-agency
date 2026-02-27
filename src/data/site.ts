@@ -2,9 +2,9 @@ export const siteConfig = {
   agency: {
     name: 'NorthSummit',
     domain: 'NorthSummit.agency',
-    email: 'North-Summit@tuta.com',
-    phone: '+447776937164',
-    whatsapp: '+447776937164',
+    emailParts: ['North-Summit', 'tuta.com'],
+    phoneParts: ['+44', '7776', '937', '164'],
+    whatsappParts: ['+44', '7776', '937', '164'],
     tagline: 'Websites built to turn local searches into calls and enquiries.',
     description:
       'Professional websites for trades and local businesses across the UK. Clear pricing, honest timelines, and a site that actually brings in work.',

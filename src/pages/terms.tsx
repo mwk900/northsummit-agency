@@ -1,5 +1,5 @@
 import SEOHead from "@/components/SEOHead";
-import { siteConfig } from "@/data/site";
+import ObfuscatedContactLink from "@/components/ObfuscatedContactLink";
 
 export default function Terms() {
   return (
@@ -38,7 +38,12 @@ export default function Terms() {
 
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-2">Contact</h2>
-              <p>If you have questions about these terms, email us at <a href={`mailto:${siteConfig.agency.email}`} className="text-accent hover:underline">{siteConfig.agency.email}</a>.</p>
+              <p>
+                If you have questions about these terms, email us at{" "}
+                <ObfuscatedContactLink method="email" ssrLabel="Email us" className="text-accent hover:underline">
+                  {(emailLabel) => emailLabel}
+                </ObfuscatedContactLink>.
+              </p>
             </div>
           </div>
         </div>

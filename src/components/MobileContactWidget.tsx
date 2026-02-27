@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { siteConfig } from "@/data/site";
-
-function waDigits(phone: string) {
-  return phone.replace(/[^\d]/g, ""); // +44... -> 44...
-}
+import ObfuscatedContactLink from "@/components/ObfuscatedContactLink";
 
 function PhoneIcon() {
   return (
@@ -17,14 +13,6 @@ function PhoneIcon() {
 export default function MobileContactWidget() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
-
-  const phone = siteConfig.agency.phone;
-  const email = siteConfig.agency.email;
-  const wa = siteConfig.agency.whatsapp || phone;
-
-  const telHref = `tel:${phone}`;
-  const mailHref = `mailto:${email}`;
-  const waHref = `https://wa.me/${waDigits(wa)}`;
 
   useEffect(() => {
     const onDown = (e: MouseEvent) => {
@@ -59,31 +47,38 @@ export default function MobileContactWidget() {
             className="absolute right-0 mt-2 w-56 rounded-xl border border-border-color p-2 shadow-lg z-50"
             style={{ backgroundColor: "var(--primary-bg)" }}
           >
-            <a
-              href={telHref}
+            <ObfuscatedContactLink
+              method="phone"
+              ssrLabel="Call"
               className="flex items-center justify-between px-3 py-2 rounded-lg text-sm hover:bg-white/5 transition-colors"
             >
-              <span className="text-text-primary font-medium">Call</span>
-              <span className="text-text-secondary text-xs">{phone}</span>
-            </a>
+              {(phoneLabel) => (
+                <>
+                  <span className="text-text-primary font-medium">Call</span>
+                  <span className="text-text-secondary text-xs">{phoneLabel}</span>
+                </>
+              )}
+            </ObfuscatedContactLink>
 
-            <a
-              href={mailHref}
+            <ObfuscatedContactLink
+              method="email"
+              ssrLabel="Email us"
               className="flex items-center justify-between px-3 py-2 rounded-lg text-sm hover:bg-white/5 transition-colors"
             >
               <span className="text-text-primary font-medium">Email</span>
               <span className="text-text-secondary text-xs">Open</span>
-            </a>
+            </ObfuscatedContactLink>
 
-            <a
-              href={waHref}
+            <ObfuscatedContactLink
+              method="whatsapp"
+              ssrLabel="WhatsApp"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between px-3 py-2 rounded-lg text-sm hover:bg-white/5 transition-colors"
             >
               <span className="text-text-primary font-medium">WhatsApp</span>
               <span className="text-text-secondary text-xs">Chat</span>
-            </a>
+            </ObfuscatedContactLink>
           </motion.div>
         )}
       </AnimatePresence>

@@ -63,6 +63,10 @@ body {
   top: 0;
 }
 
+body[data-mobile-menu-open='true'] #launch-pricing-banner {
+  pointer-events: none;
+}
+
 /* Focus indicators */
 *:focus-visible {
   outline: 2px solid var(--accent);

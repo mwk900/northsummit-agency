@@ -47,6 +47,7 @@ type Props = {
   showAfterPx?: number;
   offsetTopPx?: number;
   position?: "right" | "left";
+  mobileBottomOffsetPx?: number;
 };
 
 /* ── Component ───────────────────────────────────────────── */
@@ -55,6 +56,7 @@ export default function ScrollSpyNav({
   showAfterPx = 280,
   offsetTopPx = 96,
   position = "right",
+  mobileBottomOffsetPx = 32,
 }: Props) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
   const [visible, setVisible] = useState(false);
@@ -64,8 +66,11 @@ export default function ScrollSpyNav({
   const ids = useMemo(() => sections.map((s) => s.id), [sections]);
   const rafRef = useRef<number | null>(null);
   const expandedRef = useRef(expanded);
-  expandedRef.current = expanded;
   const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    expandedRef.current = expanded;
+  }, [expanded]);
 
   const collapseOnScroll = useCallback(() => {
     if (expandedRef.current) setExpanded(false);
@@ -88,10 +93,12 @@ export default function ScrollSpyNav({
       : ["scroll", "wheel", "mousemove", "keydown"];
 
     const handler = () => resetIdleTimer();
+    let raf: number | null = null;
     events.forEach((evt) => window.addEventListener(evt, handler, { passive: true }));
-    resetIdleTimer();
+    raf = requestAnimationFrame(() => resetIdleTimer());
     return () => {
       events.forEach((evt) => window.removeEventListener(evt, handler));
+      if (raf !== null) cancelAnimationFrame(raf);
       if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
     };
   }, [resetIdleTimer]);
@@ -200,7 +207,7 @@ export default function ScrollSpyNav({
   ].join(" ")}
   style={{
     top: "auto",
-    bottom: "calc(32px + env(safe-area-inset-bottom, 0px))",
+    bottom: `calc(${mobileBottomOffsetPx}px + env(safe-area-inset-bottom, 0px))`,
     opacity: visible ? (expanded ? 1 : isIdle ? 0.25 : 1) : 0,
     transition: "opacity 600ms ease, transform 300ms ease",
     willChange: "opacity, transform",

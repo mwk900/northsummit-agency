@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import SEOHead from "@/components/SEOHead";
 import ProjectCard from "@/components/ProjectCard";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/utils/seo";
 import { siteConfig } from "@/data/site";
 import ScrollSpyNav from "@/components/ScrollSpyNav";
+import ObfuscatedContactLink from "@/components/ObfuscatedContactLink";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -127,6 +129,7 @@ export default function Home() {
         position="right"
         showAfterPx={250}
         offsetTopPx={96}
+        mobileBottomOffsetPx={showLaunchBanner && !hasDismissedLaunchBanner ? 120 : 32}
         sections={[
           { id: "portfolio", label: "Portfolio", icon: "portfolio" },
           { id: "who-this-is-for", label: "Fit", icon: "fit" },
@@ -140,42 +143,29 @@ export default function Home() {
       <AnimatePresence>
         {siteConfig.launch.active && showLaunchBanner && !hasDismissedLaunchBanner && (
           <motion.div
+            id="launch-pricing-banner"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 18 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-x-0 bottom-4 z-50 px-4"
+            className="fixed inset-x-0 bottom-3 z-50 px-4"
           >
-            <div className="mx-auto max-w-5xl rounded-2xl border border-accent/20 bg-primary-bg/90 backdrop-blur-md shadow-xl">
-              <div className="px-5 py-4 sm:px-6 sm:py-5">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="min-w-0">
-                    <p className="text-sm sm:text-base font-semibold text-text-primary">
-                      Introductory pricing while we grow our portfolio.
-                    </p>
-                    <p className="mt-1 text-xs sm:text-sm text-text-secondary">
-                      We are working with a limited number of businesses at reduced rates. Future projects will be priced higher.
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 items-center gap-2">
-                    <a
-                      href="#pricing"
-                      onClick={handlePricingClick}
-                      className="inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-xs sm:text-sm font-semibold hover:opacity-90 transition-all"
-                      style={{ color: "var(--primary-bg)" }}
-                    >
-                      View pricing
-                    </a>
-                    <button
-                      type="button"
-                      onClick={dismissLaunchBanner}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border-color text-text-secondary hover:text-accent hover:border-accent transition-colors"
-                      aria-label="Dismiss banner"
-                      title="Dismiss"
-                    >
-                      &#10005;
-                    </button>
-                  </div>
+            <div className="mx-auto max-w-5xl rounded-xl border border-accent/20 bg-primary-bg/92 backdrop-blur-md shadow-lg">
+              <div className="px-4 py-2.5 sm:px-5 sm:py-3">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="min-w-0 text-[13px] sm:text-sm leading-5 text-text-secondary">
+                    <span className="font-semibold text-text-primary">Introductory pricing while we grow our portfolio.</span>{" "}
+                    We are working with a limited number of businesses at reduced rates. Future projects will be priced higher.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={dismissLaunchBanner}
+                    className="shrink-0 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-sm font-semibold text-accent hover:bg-accent/16 transition-colors"
+                    aria-label="Dismiss banner"
+                    title="Dismiss"
+                  >
+                    OK
+                  </button>
                 </div>
               </div>
             </div>
@@ -184,7 +174,7 @@ export default function Home() {
       </AnimatePresence>
 
 {/* Hero */}
-<section className="relative py-12 md:py-16 flex items-center">
+<section className="relative py-12 md:py-16 flex items-center" style={{ backgroundColor: "var(--primary-bg)" }}>
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
     <div className="grid lg:grid-cols-[1.2fr_1.7fr] gap-8 items-center">
       {/* Left */}
@@ -281,11 +271,14 @@ export default function Home() {
             rel="noopener noreferrer"
             className="block"
           >
-            <img
+            <Image
               src="/pictures/landsaping-desktop.png"
               alt="Example landscaping website shown on laptop"
+              width={1920}
+              height={1140}
               className="w-full h-auto rounded-2xl shadow-2xl ring-1 ring-black/5"
-              loading="eager"
+              priority
+              sizes="(max-width: 1024px) 100vw, 58vw"
             />
           </a>
 
@@ -361,13 +354,15 @@ export default function Home() {
             Swipe or use arrows to browse projects.
           </p>
           <div className="relative">
+            {/* iOS scroll fix: avoid touch-pan-x so vertical drags still scroll the page.
+                Native scrolling still handles horizontal swipes when x movement dominates. */}
             <div
               id={portfolioCarouselId}
               ref={carouselRef}
               role="region"
               aria-roledescription="carousel"
               aria-label="Recent work projects"
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory [scroll-padding-inline:6%] sm:[scroll-padding-inline:0] scroll-smooth touch-pan-x pb-4 -mx-4 px-[6%] sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory [scroll-padding-inline:6%] sm:[scroll-padding-inline:0] scroll-smooth pb-4 -mx-4 px-[6%] sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
               {featuredProjects.map((project, i) => (
                 <motion.div
@@ -384,10 +379,7 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-4 hidden items-center justify-between gap-4 sm:flex">
-              <p className="text-sm text-text-secondary">
-                Swipe or use arrows to browse projects.
-              </p>
+            <div className="mt-4 hidden flex-col items-center justify-center gap-3 sm:flex">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -414,6 +406,9 @@ export default function Home() {
                   </svg>
                 </button>
               </div>
+              <p className="text-center text-sm text-text-secondary">
+                Swipe or use arrows to browse projects.
+              </p>
             </div>
 
             <div className="mt-3 flex justify-center sm:hidden">
@@ -456,7 +451,7 @@ export default function Home() {
       </section>
 
       {/* Who This Is For */}
-      <section id="who-this-is-for" className="py-20">
+      <section id="who-this-is-for" className="py-20" style={{ backgroundColor: "var(--primary-bg)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Is this for you?</h2>
@@ -478,7 +473,7 @@ export default function Home() {
       </section>
 
       {/* Mobile Mockups */}
-      <section className="py-16 pb-20 sm:py-20 sm:pb-24 bg-accent/[0.03]">
+      <section className="py-16 pb-20 sm:py-20 sm:pb-24" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
@@ -499,7 +494,7 @@ export default function Home() {
           </motion.p>
           <div className="mb-6 sm:mb-8">
             <div
-              className="sm:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x px-[9%] pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="sm:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-[9%] pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
               aria-label="Mobile website examples"
             >
               {mobileMockups.map((img, i) => (
@@ -509,13 +504,16 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className="snap-center shrink-0 w-[82%] max-w-[360px] rounded-2xl bg-white p-4 border border-border-color/60 shadow-xl shadow-slate-900/10"
+                  className="snap-center shrink-0 w-[74%] max-w-[300px] rounded-2xl bg-white p-3 border border-border-color/60 shadow-xl shadow-slate-900/10"
                 >
-                  <img
+                  <Image
                     src={img.src}
                     alt={img.alt}
+                    width={560}
+                    height={1136}
                     className="w-full h-auto"
-                    loading="lazy"
+                    sizes="(max-width: 639px) 68vw, 280px"
+                    quality={68}
                   />
                 </motion.div>
               ))}
@@ -528,13 +526,16 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="w-48 lg:w-52 rounded-2xl bg-white p-4 border border-border-color/60 shadow-xl shadow-slate-900/10"
+                  className="w-40 lg:w-44 rounded-2xl bg-white p-3 border border-border-color/60 shadow-xl shadow-slate-900/10"
                 >
-                  <img
+                  <Image
                     src={img.src}
                     alt={img.alt}
+                    width={560}
+                    height={1136}
                     className="w-full h-auto"
-                    loading="lazy"
+                    sizes="(max-width: 1023px) 160px, 176px"
+                    quality={68}
                   />
                 </motion.div>
               ))}
@@ -564,7 +565,7 @@ export default function Home() {
       </section>
 
       {/* ─── PRICING ─── */}
-      <section id="pricing" className="py-20">
+      <section id="pricing" className="py-20" style={{ backgroundColor: "var(--primary-bg)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Honest pricing, no surprises</h2>
@@ -712,9 +713,10 @@ export default function Home() {
             <p className="text-xs text-text-secondary max-w-xs">No card details stored by us</p>
           </div>
           <p className="mt-2 text-sm text-text-secondary text-center">
-  Questions before paying? Call <a href={`tel:${siteConfig.agency.phone}`} className="text-accent hover:underline">
-    {siteConfig.agency.phone}
-  </a>
+  Questions before paying? Call{" "}
+  <ObfuscatedContactLink method="phone" ssrLabel="us" className="text-accent hover:underline">
+    {(phoneLabel) => phoneLabel}
+  </ObfuscatedContactLink>
 </p>
 
           <p className="mt-4 text-center text-xs text-text-secondary">

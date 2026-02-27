@@ -12,6 +12,13 @@ interface SEOProps {
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://northsummit.agency";
 
+type AgencyConfig = typeof siteConfig.agency & {
+  twitter?: string;
+  sameAs?: string[];
+};
+
+const agency = siteConfig.agency as AgencyConfig;
+
 function toAbsoluteUrl(pathOrUrl: string) {
   // If already absolute, keep it
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
@@ -33,8 +40,8 @@ export function generateSEO({
   type = "website",
   publishedTime,
 }: SEOProps = {}) {
-  const brandName = (siteConfig as any)?.agency?.name ?? siteConfig.agency.domain;
-  const tagline = siteConfig.agency.tagline;
+  const brandName = agency.name || agency.domain;
+  const tagline = agency.tagline;
 
   const fullTitle = title
     ? `${title} | ${brandName}`
@@ -45,7 +52,7 @@ export function generateSEO({
 
   // Optional twitter handle if you have one; otherwise undefined
   const twitterHandle =
-    (siteConfig as any)?.agency?.twitter ||
+    agency.twitter ||
     process.env.NEXT_PUBLIC_TWITTER_HANDLE ||
     undefined;
 
@@ -74,36 +81,20 @@ export function generateSEO({
 }
 
 export function generateOrganizationSchema() {
-  const brandName = (siteConfig as any)?.agency?.name ?? siteConfig.agency.domain;
-  const phone = (siteConfig as any)?.agency?.phone;
-  const email = siteConfig.agency.email;
+  const brandName = agency.name || agency.domain;
 
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: brandName,
-    description: siteConfig.agency.description,
+    description: agency.description,
     url: baseUrl,
-    logo: toAbsoluteUrl("/logo.svg"),
+    logo: toAbsoluteUrl("/logo-light.svg"),
     address: {
       "@type": "PostalAddress",
       addressCountry: "GB",
     },
   };
-
-  // These are not always valid on Organization, but are commonly accepted signals.
-  if (email) schema.email = email;
-
-  // Prefer contactPoint (stronger + more standard)
-  if (email || phone) {
-    schema.contactPoint = {
-      "@type": "ContactPoint",
-      contactType: "customer support",
-      ...(email ? { email } : {}),
-      ...(phone ? { telephone: phone } : {}),
-      areaServed: "GB",
-    };
-  }
 
   // Optional sameAs if you add socials later:
   // const sameAs = (siteConfig as any)?.agency?.sameAs;
@@ -113,7 +104,7 @@ export function generateOrganizationSchema() {
 }
 
 export function generateWebSiteSchema() {
-  const brandName = (siteConfig as any)?.agency?.name ?? siteConfig.agency.domain;
+  const brandName = agency.name || agency.domain;
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
