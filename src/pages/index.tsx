@@ -231,7 +231,7 @@ export default function Home() {
           variants={fadeIn}
           className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-4"
         >
-          Websites that turn local searches into real calls.
+          Websites that turn local searches into calls.
         </motion.h1>
 
         <motion.p
