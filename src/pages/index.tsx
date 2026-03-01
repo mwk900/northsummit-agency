@@ -28,6 +28,27 @@ const childFade = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+const heroSlides = [
+  {
+    src: "/pictures/transparent-img-landing/mix-landscaping-roofing.png",
+    alt: "Landscaping and roofing website mockups",
+    label: "LANDSCAPING & ROOFING",
+    sublabel: "Built for tradespeople who need calls, not compliments",
+  },
+  {
+    src: "/pictures/transparent-img-landing/mix3-print-restaurant-hair.png",
+    alt: "Print, restaurant and beauty website mockups",
+    label: "PRINT · RESTAURANTS · HAIR SALONS",
+    sublabel: "Any business, any screen - desktop, tablet or phone",
+  },
+  {
+    src: "/pictures/transparent-img-landing/restaurant-phone-desktop-landing.png",
+    alt: "Restaurant and hospitality website mockup",
+    label: "RESTAURANTS · LOCAL BUSINESS · CONTRACTORS",
+    sublabel: "Sharp, fast websites that work as hard as you do",
+  },
+];
+
 export default function Home() {
   const featuredProjects = siteConfig.projects.slice(0, 6);
   const mobileMockups = [
@@ -42,6 +63,7 @@ export default function Home() {
 
   const [showLaunchBanner, setShowLaunchBanner] = useState(false);
   const [hasDismissedLaunchBanner, setHasDismissedLaunchBanner] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const updateCarouselControls = useCallback(() => {
     const carousel = carouselRef.current;
@@ -116,6 +138,13 @@ export default function Home() {
       window.removeEventListener("resize", updateCarouselControls);
     };
   }, [updateCarouselControls]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -265,34 +294,42 @@ export default function Home() {
         className="flex justify-center lg:justify-end"
       >
         <div className="w-full max-w-none">
-          <a
-            href="https://landscaping.northsummit.agency/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <Image
-              src="/pictures/landsaping-desktop.png"
-              alt="Example landscaping website shown on laptop"
-              width={1920}
-              height={1140}
-              className="w-full h-auto rounded-2xl shadow-2xl ring-1 ring-black/5"
-              priority
-              sizes="(max-width: 1024px) 100vw, 58vw"
-            />
-          </a>
-
-          <div className="mt-3 flex items-center justify-between text-xs text-text-secondary">
-            <span>Example website (portfolio demo)</span>
-            <a
-              href="https://landscaping.northsummit.agency/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:underline"
-            >
-              View live example →
-            </a>
+          <div className="relative">
+            {heroSlides.map((slide, i) => (
+              <motion.div
+                key={slide.src}
+                animate={{ opacity: i === currentSlide ? 1 : 0 }}
+                transition={{ duration: 0.7 }}
+                className={i !== 0 ? "absolute inset-0" : undefined}
+              >
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  width={1920}
+                  height={1140}
+                  className="w-full h-auto"
+                  priority={i === 0}
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                />
+              </motion.div>
+            ))}
           </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`label-${currentSlide}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
+              className="mt-3 text-center"
+            >
+              <p className="text-xs font-semibold tracking-widest uppercase text-accent">
+                {heroSlides[currentSlide].label}
+              </p>
+              <p className="text-sm text-text-secondary">{heroSlides[currentSlide].sublabel}</p>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </motion.div>
     </div>
