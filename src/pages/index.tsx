@@ -30,22 +30,28 @@ const childFade = {
 
 const heroSlides = [
   {
-    src: "/pictures/transparent-img-landing/mix-landscaping-roofing.png",
-    alt: "Landscaping and roofing website mockups",
-    label: "LANDSCAPING & ROOFING",
-    sublabel: "Built for tradespeople who need calls, not compliments",
-  },
-  {
     src: "/pictures/transparent-img-landing/mix3-print-restaurant-hair.png",
-    alt: "Print, restaurant and beauty website mockups",
-    label: "PRINT · RESTAURANTS · HAIR SALONS",
-    sublabel: "Any business, any screen - desktop, tablet or phone",
+    alt: "Print, restaurant and beauty salon websites shown on mobile",
+    label: "RESTAURANTS · SALONS · PRINT",
+    sublabel: "Any business. Any screen. Built to get you noticed.",
   },
   {
-    src: "/pictures/transparent-img-landing/restaurant-phone-desktop-landing.png",
-    alt: "Restaurant and hospitality website mockup",
-    label: "RESTAURANTS · LOCAL BUSINESS · CONTRACTORS",
-    sublabel: "Sharp, fast websites that work as hard as you do",
+    src: "/pictures/transparent-img-landing/mix-landscaping-roofing.png",
+    alt: "Landscaping website on laptop and roofing website on mobile",
+    label: "LANDSCAPING · ROOFING",
+    sublabel: "Trades sites that turn local searches into calls.",
+  },
+  {
+    src: "/pictures/transparent-img-landing/mix-mottablet-landscaping.png",
+    alt: "MOT garage website on tablet and landscaping website on mobile",
+    label: "GARAGES · LANDSCAPERS · TRADESPEOPLE",
+    sublabel: "Every device covered - from emergency callout to booked consultation.",
+  },
+  {
+    src: "/pictures/transparent-img-landing/restaurant-gymphone-desktop-landing.png",
+    alt: "Gym website on mobile and restaurant website on laptop",
+    label: "GYM · RESTAURANT · LOCAL BUSINESS",
+    sublabel: "Different industries. Different designs. One agency.",
   },
 ];
 
@@ -142,7 +148,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
+    }, 6200);
     return () => clearInterval(timer);
   }, []);
 
@@ -509,81 +515,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mobile Mockups */}
-      <section className="py-16 pb-20 sm:py-20 sm:pb-24" style={{ backgroundColor: "var(--secondary-bg)" }}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center text-2xl sm:text-3xl font-bold text-text-primary mb-3"
-          >
-            Designed for phones first. Built to turn visitors into enquiries.
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.05 }}
-            className="text-center text-sm sm:text-base text-text-secondary max-w-2xl mx-auto mb-8 sm:mb-12"
-          >
-            Clear calls to action, fast loading pages, and trust signals visible from the first screen.
-          </motion.p>
-          <div className="mb-6 sm:mb-8">
-            <div
-              className="sm:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-[9%] pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-              aria-label="Mobile website examples"
-            >
-              {mobileMockups.map((img, i) => (
-                <motion.div
-                  key={img.src}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className="snap-center shrink-0 w-[74%] max-w-[300px] rounded-2xl bg-white p-3 border border-border-color/60 shadow-xl shadow-slate-900/10"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={560}
-                    height={1136}
-                    className="w-full h-auto"
-                    sizes="(max-width: 639px) 68vw, 280px"
-                    quality={68}
-                  />
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="hidden sm:flex items-center justify-center gap-8 lg:gap-10">
-              {mobileMockups.map((img) => (
-                <motion.div
-                  key={img.src}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="w-40 lg:w-44 rounded-2xl bg-white p-3 border border-border-color/60 shadow-xl shadow-slate-900/10"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={560}
-                    height={1136}
-                    className="w-full h-auto"
-                    sizes="(max-width: 1023px) 160px, 176px"
-                    quality={68}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          <p className="text-center text-xs sm:text-sm text-text-secondary">
-            Realistic demo projects showing how your business could look online.
-          </p>
-        </div>
-      </section>
-
+  
       {/* Free Audit */}
       <section id="audit" className="py-20" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
