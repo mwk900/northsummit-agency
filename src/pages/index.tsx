@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useState, type MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -56,43 +56,13 @@ const heroSlides = [
 ];
 
 export default function Home() {
-  const featuredProjects = siteConfig.projects.slice(0, 6);
-  const mobileMockups = [
-    { src: "/pictures/mobile-garden-white.png", alt: "Landscaping website mobile view" },
-    { src: "/pictures/mobile-gym-white.png", alt: "Gym website mobile view" },
-    { src: "/pictures/mobile-roofing-white.png", alt: "Roofing website mobile view" },
-  ];
-  const portfolioCarouselId = "recent-work-carousel";
-  const carouselRef = useRef<HTMLDivElement | null>(null);
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(featuredProjects.length > 1);
-
+  const featuredProjectIds = ['beautystudio', 'restaurant', 'landscaping001', 'roofing01', 'gym001', 'printcompany'];
+  const featuredProjects = featuredProjectIds
+    .map(id => siteConfig.projects.find((p: { id: string }) => p.id === id))
+    .filter(Boolean);
   const [showLaunchBanner, setShowLaunchBanner] = useState(false);
   const [hasDismissedLaunchBanner, setHasDismissedLaunchBanner] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const updateCarouselControls = useCallback(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-    setCanScrollPrev(carousel.scrollLeft > 8);
-    setCanScrollNext(carousel.scrollLeft < maxScrollLeft - 8);
-  }, []);
-
-  const scrollCarousel = useCallback((direction: "prev" | "next") => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const firstSlide = carousel.querySelector<HTMLElement>("[data-project-slide]");
-    const gap = 24;
-    const scrollAmount = firstSlide ? firstSlide.offsetWidth + gap : carousel.clientWidth;
-
-    carousel.scrollBy({
-      left: direction === "next" ? scrollAmount : -scrollAmount,
-      behavior: "smooth",
-    });
-  }, []);
 
   const scrollToSection = useCallback((id: string, offset = 96) => {
     const target = document.getElementById(id);
@@ -130,20 +100,6 @@ export default function Home() {
       window.removeEventListener("scroll", onScroll);
     };
   }, [hasDismissedLaunchBanner]);
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    updateCarouselControls();
-    carousel.addEventListener("scroll", updateCarouselControls, { passive: true });
-    window.addEventListener("resize", updateCarouselControls);
-
-    return () => {
-      carousel.removeEventListener("scroll", updateCarouselControls);
-      window.removeEventListener("resize", updateCarouselControls);
-    };
-  }, [updateCarouselControls]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -403,96 +359,23 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Recent work</h2>
             <p className="text-text-secondary max-w-2xl mx-auto">Example builds showing the kind of sites we create. These are demo projects, not past client work. They demonstrate layout, speed, and how we think about getting people to pick up the phone.</p>
           </motion.div>
-          <p className="mb-3 text-center text-xs text-text-secondary sm:hidden">
-            Swipe or use arrows to browse projects.
-          </p>
-          <div className="relative">
-            {/* iOS scroll fix: avoid touch-pan-x so vertical drags still scroll the page.
-                Native scrolling still handles horizontal swipes when x movement dominates. */}
-            <div
-              id={portfolioCarouselId}
-              ref={carouselRef}
-              role="region"
-              aria-roledescription="carousel"
-              aria-label="Recent work projects"
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory [scroll-padding-inline:6%] sm:[scroll-padding-inline:0] scroll-smooth pb-4 -mx-4 px-[6%] sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {featuredProjects.map((project, i) => (
-                <motion.div
-                  key={project.id}
-                  data-project-slide
-                  className="snap-center sm:snap-start shrink-0 w-[88%] sm:w-[calc(50%-0.75rem)] lg:w-[calc((100%-3rem)/3)]"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                >
-                  <ProjectCard {...project} />
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="mt-4 hidden flex-col items-center justify-center gap-3 sm:flex">
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => scrollCarousel("prev")}
-                  aria-controls={portfolioCarouselId}
-                  aria-label="Show previous project cards"
-                  disabled={!canScrollPrev}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-color text-text-primary hover:border-accent hover:text-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollCarousel("next")}
-                  aria-controls={portfolioCarouselId}
-                  aria-label="Show next project cards"
-                  disabled={!canScrollNext}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-color text-text-primary hover:border-accent hover:text-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </button>
-              </div>
-              <p className="text-center text-sm text-text-secondary">
-                Swipe or use arrows to browse projects.
-              </p>
-            </div>
-
-            <div className="mt-3 flex justify-center sm:hidden">
-              <div className="inline-flex items-center gap-3 rounded-xl border border-border-color/80 bg-primary-bg/70 px-3 py-2">
-                <button
-                  type="button"
-                  onClick={() => scrollCarousel("prev")}
-                  aria-controls={portfolioCarouselId}
-                  aria-label="Show previous project cards"
-                  disabled={!canScrollPrev}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border-color text-text-primary hover:border-accent hover:text-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollCarousel("next")}
-                  aria-controls={portfolioCarouselId}
-                  aria-label="Show next project cards"
-                  disabled={!canScrollNext}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border-color text-text-primary hover:border-accent hover:text-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {featuredProjects.map((project, i) => (
+              <motion.div
+                key={project!.id}
+                variants={childFade}
+                transition={{ delay: i * 0.08 }}
+              >
+                <ProjectCard {...project!} />
+              </motion.div>
+            ))}
+          </motion.div>
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-10">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
               <Link href="/portfolio" className="inline-block px-6 py-3 rounded-lg border border-border-color text-text-primary text-sm font-semibold hover:border-accent hover:text-accent transition-colors">

@@ -111,6 +111,26 @@ export const siteConfig = {
 
   projects: [
 {
+  id: 'beautystudio',
+  title: 'Velvet Bloom Beauty Studio',
+  category: 'Local Business',
+  shortDesc: 'Hair salon website focused on bookings, not just aesthetics.',
+  description:
+    'Editorial imagery builds trust, service menus are easy to scan and strong call-to-action buttons lead directly to a simple appointment request form. Designed to create a calm, high-end impression while guiding visitors smoothly toward conversion.',
+  image: '/projects/beautystudio.png',
+  link: 'https://beautystudio.northsummit.agency/',
+},
+{
+  id: 'restaurant',
+  title: 'Ember & East',
+  category: 'Local Business',
+  shortDesc: 'Restaurant website built around the booking and showcasing the menu.',
+  description:
+    'Dark, atmospheric design that sells the experience before the food. Signature dish cards, an evocative brand story and a reservation form that removes every reason to pick up the phone instead.',
+  image: '/projects/restaurant.png',
+  link: 'https://restaurant.northsummit.agency/',
+},
+{
   id: 'roofing01',
   title: 'Northcrest Roofing Nottingham',
   category: 'Trades',
