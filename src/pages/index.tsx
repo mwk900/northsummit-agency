@@ -231,7 +231,7 @@ export default function Home() {
           variants={fadeIn}
           className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-4"
         >
-          {siteConfig.agency.tagline}
+          Websites that turn local searches into real calls.
         </motion.h1>
 
         <motion.p
@@ -241,7 +241,7 @@ export default function Home() {
           variants={fadeIn}
           className="text-base sm:text-lg text-text-secondary max-w-xl mb-2"
         >
-          Fast, mobile-first sites for plumbers, roofers, electricians, and local businesses across the UK. Clear pricing, clean build, and you own everything.
+          Fast, mobile-first sites for trades and local businesses across the UK. Built to get you found and get you called.
         </motion.p>
 
         <motion.p
@@ -251,7 +251,7 @@ export default function Home() {
           variants={fadeIn}
           className="text-sm text-text-secondary"
         >
-          Every site is hand-built and personally checked before it goes live.
+          Clear pricing. Simple process. You own everything.
         </motion.p>
 
         <motion.div
@@ -273,12 +273,22 @@ export default function Home() {
             href="#portfolio"
             className="inline-block px-6 py-3 rounded-lg border border-border-color text-text-primary text-sm font-semibold hover:border-accent hover:text-accent transition-colors"
           >
-            See our work
+            Browse the portfolio
           </a>
         </motion.div>
 
         <motion.p
           custom={5}
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="text-xs text-text-secondary mt-2"
+        >
+          Roofers · Plumbers · Electricians · Gyms · Salons · Local businesses
+        </motion.p>
+
+        <motion.p
+          custom={6}
           initial="hidden"
           animate="visible"
           variants={fadeIn}

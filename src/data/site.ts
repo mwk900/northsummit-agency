@@ -116,7 +116,7 @@ export const siteConfig = {
   category: 'Trades',
   hook: 'Emergency-first layout built to turn local searches into calls.',
   description:
-    'Mobile-first sticky emergency CTA, clear trust promises, service-area clarity, and a fast quote form - designed for roof repairs and storm callouts. Built as a realistic demo project to showcase conversion-focused design for trades.',
+    'Emergency layout built for urgency. Click-to-call above the fold, trust signals upfront, and a quote form that works on any phone.',
   image: '/projects/roofing01.png',
   link: 'https://roofing.northsummit.agency/',
 },
@@ -127,7 +127,7 @@ export const siteConfig = {
   hook:
     'Premium landscaping website designed to turn garden ideas into booked consultations.',
   description:
-    'Mobile-first layout with a sticky call-to-action, immersive transformation visuals, and a smooth scroll navigation to guide visitors through services and enquiry steps without friction. The design focuses on trust, lifestyle inspiration, and clear next actions to help homeowners confidently request a quote. Built as a realistic demo project to showcase conversion-focused design for local landscaping businesses.',
+    'Lifestyle-led design that turns garden inspiration into booked consultations. Sticky CTAs, transformation visuals, and a smooth path to enquiry.',
   image: '/projects/landscaping.png',
   link: 'https://landscaping.northsummit.agency/',
 },
@@ -138,7 +138,7 @@ export const siteConfig = {
   hook:
     'Modern print studio concept designed to turn enquiries into quote requests with clear service navigation.',
   description:
-    'Professional print business website concept featuring structured service pages for products like leaflets, stationery, booklets, and NCR forms. Built with mobile-first UX, clear quote pathways, and local SEO targeting to improve visibility in searches such as printing services near me. The layout adapts between desktop and mobile to prioritise detailed browsing on larger screens and quick contact actions on phones. Created as a realistic demo project to showcase conversion-focused design for print and manufacturing businesses.',
+    'Clear service pages, fast quote flow, and a layout that works equally well for a quick phone browse or a detailed desktop comparison.',
   image: '/projects/printcompany.png',
   link: 'https://printcompany.northsummit.agency/',
 },
@@ -149,7 +149,7 @@ export const siteConfig = {
   hook:
     'High-energy fitness site designed to turn motivation into booked consultations.',
   description:
-    'Bold visual hero, clear coaching pathways, and friction-free consultation booking - built to capture interest while motivation is highest. Includes trust elements, program clarity, and mobile-first UX to support local client acquisition. Created as a realistic demo project to showcase conversion-focused design for fitness businesses.',
+    'High-energy design that captures interest before motivation fades. Coaching pathways, clear pricing, and a consultation booking built for mobile.',
   image: '/projects/gym001.png',
   link: 'https://gym.northsummit.agency/',
 },
@@ -160,7 +160,7 @@ export const siteConfig = {
   hook:
     'Emergency plumbing site designed to turn urgent searches into immediate calls.',
   description:
-    'Mobile-first click-to-call, clear trust signals, and fast quote access positioned above the fold. Service coverage structured for local SEO visibility and rapid customer action during urgent situations. Built as a realistic demo project to showcase conversion-focused design for trades businesses.',
+    'Built for the moment someone has a leak and needs help now. Click-to-call, trust signals, and a quote form all visible without scrolling.',
   image: '/projects/plumber001.png',
   link: 'https://plumber001.netlify.app/',
 },

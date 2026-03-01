@@ -82,7 +82,6 @@ export default function ProjectCard({
         <h3 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent transition-colors">
           {title}
         </h3>
-        {hook && <p className="text-sm text-text-secondary italic mb-2">{hook}</p>}
         <p className="text-sm text-text-secondary line-clamp-3">{description}</p>
       </div>
     </a>
