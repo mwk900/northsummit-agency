@@ -174,6 +174,33 @@ export const siteConfig = {
   link: 'https://gym.northsummit.agency/',
 },
 {
+  id: 'barbershop',
+  title: 'Oak and Steel Barbers',
+  category: 'Local Business',
+  description:
+    'Warm, confident design built around walk-ins and easy bookings. Service menu with clear pricing, a photo gallery showing real craft, and a contact form that works just as well for a quick message as it does for booking ahead.',
+  image: '/projects/barbershop.png',
+  link: 'https://barbershop.northsummit.agency/',
+},
+{
+  id: 'bathroom-kitchen',
+  title: 'Ashwood Kitchens & Bathrooms',
+  category: 'Local Business',
+  description:
+    'Premium design for a high-value service where trust is everything. A before-and-after transformation slider, detailed project case studies, and a consultation request form that makes it easy to take the first step without feeling pressured.',
+  image: '/projects/bathroom-kitchen.png',
+  link: 'https://bathroom-kitchen.northsummit.agency/',
+},
+{
+  id: 'electrician',
+  title: 'Arc & Line Electrical',
+  category: 'Trades',
+  description:
+    'Built for a trade where credibility closes the job. Certifications and compliance badges upfront, an interactive fault-finder that helps customers self-diagnose before calling, and a rapid quote form above the fold on every device.',
+  image: '/projects/electrician.png',
+  link: 'https://electrician.northsummit.agency/',
+},
+{
   id: 'plumber001',
   title: 'Cresco Plumbing & Heating',
   category: 'Trades',
@@ -181,6 +208,7 @@ export const siteConfig = {
     'Emergency plumbing site designed to turn urgent searches into immediate calls.',
   description:
     'Built for the moment someone has a leak and needs help now. Click-to-call, trust signals, and a quote form all visible without scrolling.',
+  // TODO: update link and image when redesign is live
   image: '/projects/plumber001.png',
   link: 'https://plumber001.netlify.app/',
 },
@@ -192,6 +220,7 @@ export const siteConfig = {
         'Most people pick a garage based on trust and convenience. This site was built to earn both in under 10 seconds.',
       description:
         'Service listings with clear pricing so there are no surprises. Location and opening hours impossible to miss. Online booking prompt that catches people while they are already thinking about it.',
+      // TODO: update link and image when redesign is live
       image: '/projects/garagecar.png',
       link: 'https://garagecar.pages.dev/',
     },
@@ -203,19 +232,9 @@ export const siteConfig = {
         'People want to know one thing: how much will it cost? This site answers that question before they even have to ask.',
       description:
         'Dynamic pricing calculator that gives an instant quote. No back-and-forth emails, no waiting for a callback. Customers see the price, like it, and book - all in one visit.',
+      // TODO: update link and image when redesign is live
       image: '/projects/cleaners.png',
       link: 'https://cleaners-nonstatic.vercel.app/',
-    },
-    {
-      id: 'sonia-vet',
-      title: 'Sonia Veterinary Practice',
-      category: 'Local Business',
-      hook:
-        'Pet owners are protective. They need to trust you before they trust you with their dog. This site was built to feel warm from the first click.',
-      description:
-        'Friendly team bios that put a face to the practice. Services explained without the medical jargon. Appointment booking that is simple enough to use when you are worried about your pet.',
-      image: '/projects/sonia-vet.png',
-      link: 'https://sonia-e6b.pages.dev/',
     },
   ],
 } as const;

@@ -3,44 +3,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
-  const [hasLaunchBanner, setHasLaunchBanner] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [hasBanner, setHasBanner] = useState(false);
 
   useEffect(() => {
-    const mobileQuery = window.matchMedia('(max-width: 1023px)');
-
-    const updateMobileState = () => {
-      setIsMobile(mobileQuery.matches);
-    };
-
     const updateState = () => {
       setVisible(window.scrollY > window.innerHeight);
-      setHasLaunchBanner(Boolean(document.getElementById('launch-pricing-banner')));
+      setHasBanner(document.body.hasAttribute('data-banner'));
     };
 
-    updateMobileState();
     updateState();
 
     window.addEventListener('scroll', updateState, { passive: true });
     window.addEventListener('resize', updateState);
 
-    if (mobileQuery.addEventListener) {
-      mobileQuery.addEventListener('change', updateMobileState);
-    } else {
-      mobileQuery.addListener(updateMobileState);
-    }
-
-    const observer = new MutationObserver(updateState);
-    observer.observe(document.body, { childList: true, subtree: true });
+    const observer = new MutationObserver(() => {
+      setHasBanner(document.body.hasAttribute('data-banner'));
+    });
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['data-banner'],
+    });
 
     return () => {
       window.removeEventListener('scroll', updateState);
       window.removeEventListener('resize', updateState);
-      if (mobileQuery.removeEventListener) {
-        mobileQuery.removeEventListener('change', updateMobileState);
-      } else {
-        mobileQuery.removeListener(updateMobileState);
-      }
       observer.disconnect();
     };
   }, []);
@@ -49,8 +35,9 @@ export default function ScrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const mobileBottomOffsetPx = hasLaunchBanner ? 120 : 24;
-  const bottomOffsetPx = isMobile ? mobileBottomOffsetPx : 24;
+  const bottomOffset = hasBanner
+    ? 'calc(4rem + env(safe-area-inset-bottom, 0px))'
+    : 'calc(24px + env(safe-area-inset-bottom, 0px))';
 
   return (
     <AnimatePresence>
@@ -60,9 +47,7 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           className="fixed left-6 z-40"
-          style={{
-            bottom: `calc(${bottomOffsetPx}px + env(safe-area-inset-bottom, 0px))`,
-          }}
+          style={{ bottom: bottomOffset }}
         >
           <button
             onClick={scrollToTop}

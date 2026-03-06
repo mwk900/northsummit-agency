@@ -56,7 +56,7 @@ const heroSlides = [
 ];
 
 export default function Home() {
-  const featuredProjectIds = ['beautystudio', 'restaurant', 'landscaping001', 'roofing01', 'gym001', 'printcompany'];
+  const featuredProjectIds = ['beautystudio', 'restaurant', 'barbershop', 'bathroom-kitchen', 'electrician', 'gym001'];
   const featuredProjects = featuredProjectIds
     .map(id => siteConfig.projects.find((p: { id: string }) => p.id === id))
     .filter(Boolean);
@@ -85,7 +85,21 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (hasDismissedLaunchBanner) return;
+    const isBannerVisible =
+      siteConfig.launch.active && showLaunchBanner && !hasDismissedLaunchBanner;
+
+    if (isBannerVisible) {
+      document.body.setAttribute("data-banner", "true");
+    } else {
+      document.body.removeAttribute("data-banner");
+    }
+
+    if (hasDismissedLaunchBanner) {
+      return () => {
+        document.body.removeAttribute("data-banner");
+      };
+    }
+
     let raf = 0;
     const onScroll = () => {
       cancelAnimationFrame(raf);
@@ -98,8 +112,9 @@ export default function Home() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
+      document.body.removeAttribute("data-banner");
     };
-  }, [hasDismissedLaunchBanner]);
+  }, [showLaunchBanner, hasDismissedLaunchBanner]);
 
   useEffect(() => {
     const timer = setInterval(() => {

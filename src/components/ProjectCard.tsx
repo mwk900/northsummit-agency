@@ -1,4 +1,9 @@
-import { useCallback } from 'react';
+import { useEffect, useRef } from 'react';
+
+const DESKTOP_PREVIEW_WIDTH = 1280;
+const DESKTOP_PREVIEW_HEIGHT = 800;
+const IFRAME_ZOOM = 1.02;
+const IFRAME_BOTTOM_BLEED = 16;
 
 interface ProjectCardProps {
   title: string;
@@ -17,19 +22,35 @@ export default function ProjectCard({
   category,
   link,
 }: ProjectCardProps) {
-  // Measure container width on mount and set the CSS scale variable.
-  // iframe is 1440×900px (16/10); scale = containerWidth / 1440 fills the container exactly.
-  const containerRef = useCallback((el: HTMLDivElement | null) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+
     if (!el) return;
+
+    // Keep a stable desktop viewport preview without letting the iframe's
+    // native dimensions expand the card on narrow layouts.
     const update = () => {
-      const scale = el.offsetWidth / 1440;
-      const iframeHeight = Math.ceil(el.offsetHeight / scale);
-      el.style.setProperty('--iframe-scale', String(scale));
+      const cardWidth = el.clientWidth;
+      const cardHeight = el.clientHeight;
+
+      if (!cardWidth || !cardHeight) return;
+
+      const scale = cardWidth / DESKTOP_PREVIEW_WIDTH;
+      const iframeHeight = Math.ceil((cardHeight + IFRAME_BOTTOM_BLEED) / scale);
+
+      el.style.setProperty('--iframe-width', `${DESKTOP_PREVIEW_WIDTH}px`);
+      el.style.setProperty('--iframe-scale', String(scale * IFRAME_ZOOM));
       el.style.setProperty('--iframe-height', `${iframeHeight}px`);
     };
+
     update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
+
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+
+    return () => observer.disconnect();
   }, []);
 
   const categories = category
@@ -56,13 +77,16 @@ export default function ProjectCard({
           title={`Preview of ${title}`}
           loading="lazy"
           tabIndex={-1}
+          scrolling="no"
+          className="absolute top-0 left-1/2"
           style={{
             pointerEvents: 'none',
             border: 'none',
-            width: '1440px',
-            height: 'var(--iframe-height, 900px)',
-            transform: 'scale(var(--iframe-scale))',
-            transformOrigin: 'top left',
+            display: 'block',
+            width: 'var(--iframe-width, 1280px)',
+            height: `var(--iframe-height, ${DESKTOP_PREVIEW_HEIGHT}px)`,
+            transform: 'translateX(-50%) scale(var(--iframe-scale))',
+            transformOrigin: 'top center',
           }}
         />
         <div className="pointer-events-none absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-300 flex items-center justify-center">
