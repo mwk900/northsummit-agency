@@ -220,7 +220,6 @@ export const siteConfig = {
         'Most people pick a garage based on trust and convenience. This site was built to earn both in under 10 seconds.',
       description:
         'Service listings with clear pricing so there are no surprises. Location and opening hours impossible to miss. Online booking prompt that catches people while they are already thinking about it.',
-      // TODO: update link and image when redesign is live
       image: '/projects/garagecar.png',
       link: 'https://garagecar.northsummit.agency/',
     },
@@ -232,9 +231,8 @@ export const siteConfig = {
         'People want to know one thing: how much will it cost? This site answers that question before they even have to ask.',
       description:
         'Dynamic pricing calculator that gives an instant quote. No back-and-forth emails, no waiting for a callback. Customers see the price, like it, and book - all in one visit.',
-      // TODO: update link and image when redesign is live
       image: '/projects/cleaners.png',
-      link: 'https://cleaners-nonstatic.vercel.app/',
+      link: 'https://cleaners.northsummit.agency/',
     },
   ],
 } as const;
