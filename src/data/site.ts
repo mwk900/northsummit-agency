@@ -222,7 +222,7 @@ export const siteConfig = {
         'Service listings with clear pricing so there are no surprises. Location and opening hours impossible to miss. Online booking prompt that catches people while they are already thinking about it.',
       // TODO: update link and image when redesign is live
       image: '/projects/garagecar.png',
-      link: 'https://garagecar.pages.dev/',
+      link: 'https://garagecar.northsummit.agency/',
     },
     {
       id: 'cleaners',
