@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import Image from 'next/image';
+import { useCallback } from 'react';
 
 interface ProjectCardProps {
   title: string;
@@ -15,12 +14,23 @@ interface ProjectCardProps {
 export default function ProjectCard({
   title,
   description,
-  hook,
-  image,
   category,
   link,
 }: ProjectCardProps) {
-  const [showImageFallback, setShowImageFallback] = useState(!image);
+  // Measure container width on mount and set the CSS scale variable.
+  // iframe is 1440×900px (16/10); scale = containerWidth / 1440 fills the container exactly.
+  const containerRef = useCallback((el: HTMLDivElement | null) => {
+    if (!el) return;
+    const update = () => {
+      const scale = el.offsetWidth / 1440;
+      const iframeHeight = Math.ceil(el.offsetHeight / scale);
+      el.style.setProperty('--iframe-scale', String(scale));
+      el.style.setProperty('--iframe-height', `${iframeHeight}px`);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+  }, []);
 
   const categories = category
     ? Array.isArray(category)
@@ -36,25 +46,25 @@ export default function ProjectCard({
       className="group block rounded-xl border border-border-color overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1 cursor-pointer"
       style={{ backgroundColor: 'var(--secondary-bg)' }}
     >
-      <div className="relative overflow-hidden aspect-video">
-        {!showImageFallback && (
-          <Image
-            src={image}
-            alt={`Screenshot of ${title}`}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-95"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            draggable={false}
-            onError={() => setShowImageFallback(true)}
-          />
-        )}
-        {showImageFallback && (
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary-bg to-primary-bg flex items-center justify-center p-4">
-            <span className="px-3 py-1 rounded-full text-xs font-medium border border-border-color text-text-secondary bg-primary-bg/70">
-              Preview coming soon
-            </span>
-          </div>
-        )}
+      <div
+        ref={containerRef}
+        className="relative overflow-hidden"
+        style={{ aspectRatio: '16/10', backgroundColor: 'var(--secondary-bg)' }}
+      >
+        <iframe
+          src={link}
+          title={`Preview of ${title}`}
+          loading="lazy"
+          tabIndex={-1}
+          style={{
+            pointerEvents: 'none',
+            border: 'none',
+            width: '1440px',
+            height: 'var(--iframe-height, 900px)',
+            transform: 'scale(var(--iframe-scale))',
+            transformOrigin: 'top left',
+          }}
+        />
         <div className="pointer-events-none absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-300 flex items-center justify-center">
           <span
             className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 py-2 rounded-lg bg-accent text-sm font-semibold"
