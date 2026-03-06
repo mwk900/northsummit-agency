@@ -109,128 +109,134 @@ export const siteConfig = {
   depositPolicy:
     'Deposits are refundable until work begins. Once design work starts, deposits are non-refundable.',
 
+  // ──────────────────────────────────────────────
+  // TOP 6 — homepage gallery
+  // Row 1: Restaurant (dark) | Kitchen/Bath (light) | Electrician (dark)
+  // Row 2: Barbershop (dark) | Auto Garage (light) | Print Company (light)
+  // Visual contrast across both rows.
+  // ──────────────────────────────────────────────
+
   projects: [
-{
-  id: 'beautystudio',
-  title: 'Velvet Bloom Beauty Studio',
-  category: 'Local Business',
-  shortDesc: 'Hair salon website focused on bookings, not just aesthetics.',
-  description:
-    'Editorial imagery builds trust, service menus are easy to scan and strong call-to-action buttons lead directly to a simple appointment request form. Designed to create a calm, high-end impression while guiding visitors smoothly toward conversion.',
-  image: '/projects/beautystudio.png',
-  link: 'https://beautystudio.northsummit.agency/',
-},
-{
-  id: 'restaurant',
-  title: 'Ember & East',
-  category: 'Local Business',
-  shortDesc: 'Restaurant website built around the booking and showcasing the menu.',
-  description:
-    'Dark, atmospheric design that sells the experience before the food. Signature dish cards, an evocative brand story and a reservation form that removes every reason to pick up the phone instead.',
-  image: '/projects/restaurant.png',
-  link: 'https://restaurant.northsummit.agency/',
-},
-{
-  id: 'roofing01',
-  title: 'Northcrest Roofing Nottingham',
-  category: 'Trades',
-  hook: 'Emergency-first layout built to turn local searches into calls.',
-  description:
-    'Emergency layout built for urgency. Click-to-call above the fold, trust signals upfront, and a quote form that works on any phone.',
-  image: '/projects/roofing01.png',
-  link: 'https://roofing.northsummit.agency/',
-},
-{
-  id: 'landscaping001',
-  title: 'Verdance Outdoor Living',
-  category: 'Trades',
-  hook:
-    'Premium landscaping website designed to turn garden ideas into booked consultations.',
-  description:
-    'Lifestyle-led design that turns garden inspiration into booked consultations. Sticky CTAs, transformation visuals, and a smooth path to enquiry.',
-  image: '/projects/landscaping.png',
-  link: 'https://landscaping.northsummit.agency/',
-},
-{
-  id: 'printcompany',
-  title: 'Trent Valley PrintWorks',
-  category: 'Local Business',
-  hook:
-    'Modern print studio concept designed to turn enquiries into quote requests with clear service navigation.',
-  description:
-    'Clear service pages, fast quote flow, and a layout that works equally well for a quick phone browse or a detailed desktop comparison.',
-  image: '/projects/printcompany.png',
-  link: 'https://printcompany.northsummit.agency/',
-},
-{
-  id: 'gym001',
-  title: 'NorthPeak Performance',
-  category: 'Local Business',
-  hook:
-    'High-energy fitness site designed to turn motivation into booked consultations.',
-  description:
-    'High-energy design that captures interest before motivation fades. Coaching pathways, clear pricing, and a consultation booking built for mobile.',
-  image: '/projects/gym001.png',
-  link: 'https://gym.northsummit.agency/',
-},
-{
-  id: 'barbershop',
-  title: 'Oak and Steel Barbers',
-  category: 'Local Business',
-  description:
-    'Warm, confident design built around walk-ins and easy bookings. Service menu with clear pricing, a photo gallery showing real craft, and a contact form that works just as well for a quick message as it does for booking ahead.',
-  image: '/projects/barbershop.png',
-  link: 'https://barbershop.northsummit.agency/',
-},
-{
-  id: 'bathroom-kitchen',
-  title: 'Ashwood Kitchens & Bathrooms',
-  category: 'Local Business',
-  description:
-    'Premium design for a high-value service where trust is everything. A before-and-after transformation slider, detailed project case studies, and a consultation request form that makes it easy to take the first step without feeling pressured.',
-  image: '/projects/bathroom-kitchen.png',
-  link: 'https://bathroom-kitchen.northsummit.agency/',
-},
-{
-  id: 'electrician',
-  title: 'Arc & Line Electrical',
-  category: 'Trades',
-  description:
-    'Built for a trade where credibility closes the job. Certifications and compliance badges upfront, an interactive fault-finder that helps customers self-diagnose before calling, and a rapid quote form above the fold on every device.',
-  image: '/projects/electrician.png',
-  link: 'https://electrician.northsummit.agency/',
-},
-{
-  id: 'plumber001',
-  title: 'Cresco Plumbing & Heating',
-  category: 'Trades',
-  hook:
-    'Emergency plumbing site designed to turn urgent searches into immediate calls.',
-  description:
-    'Built for the moment someone has a leak and needs help now. Click-to-call, trust signals, and a quote form all visible without scrolling.',
-  // TODO: update link and image when redesign is live
-  image: '/projects/plumber001.png',
-  link: 'https://plumber001.netlify.app/',
-},
+    // === TOP 6 (homepage gallery) ===
+    {
+      id: 'restaurant',
+      title: 'Ember & East',
+      category: 'Local Business',
+      shortDesc: 'Dark, moody design that sells the experience. Menu cards, chef backstory, and easy reservations.',
+      description:
+        'Menu, backstory, and reservation form. Dark, moody design that sells the experience before the food. Signature dish cards with pricing and a booking form that removes friction.',
+      image: '/projects/restaurant.png',
+      link: 'https://restaurant.northsummit.agency/',
+    },
+    {
+      id: 'bathroom-kitchen',
+      title: 'Ashwood Kitchens & Bathrooms',
+      category: 'Local Business',
+      shortDesc: 'Style switcher, before-and-after slider, and coverage map. Built for high-value services.',
+      description:
+        'Style switcher, before-and-after slider, and a coverage map with project counts per area. Built for a high-value service where trust closes the sale.',
+      image: '/projects/bathroom-kitchen.png',
+      link: 'https://bathroom-kitchen.northsummit.agency/',
+    },
+    {
+      id: 'electrician',
+      title: 'Arc & Line Electrical',
+      category: 'Trades',
+      shortDesc: 'Fault-finder tool helps visitors diagnose issues before calling. Quote form on every page.',
+      description:
+        'Interactive fault-finder helps visitors self-diagnose before calling. Certification badges, EV and smart home sections, and a rapid quote form above the fold.',
+      image: '/projects/electrician.png',
+      link: 'https://electrician.northsummit.agency/',
+    },
+    {
+      id: 'barbershop',
+      title: 'Oak and Steel Barbers',
+      category: 'Local Business',
+      shortDesc: 'Bold identity with walk-in badge, product shots, gallery grid, and a clear price board.',
+      description:
+        'Walk-in badge, product carousel, photo gallery, and a clean price board. Bold, dark design built around walk-ins and quick bookings.',
+      image: '/projects/barbershop.png',
+      link: 'https://barbershop.northsummit.agency/',
+    },
     {
       id: 'garagecar',
       title: 'Midlands AutoCare',
       category: 'Trades',
-      hook:
-        'Most people pick a garage based on trust and convenience. This site was built to earn both in under 10 seconds.',
+      shortDesc: 'Diagnostic tool, full price list, and us-vs-dealer comparison. Trust built in seconds.',
       description:
-        'Service listings with clear pricing so there are no surprises. Location and opening hours impossible to miss. Online booking prompt that catches people while they are already thinking about it.',
+        'Diagnostic tool, full price list, and an us-vs-dealer comparison that builds trust fast. Multi-step booking captures the job while they are already thinking about it.',
       image: '/projects/garagecar.png',
       link: 'https://garagecar.northsummit.agency/',
     },
     {
-      id: 'cleaners',
-      title: 'Nottingham Clean Co.',
+      id: 'printcompany',
+      title: 'Trent Valley PrintWorks',
       category: 'Local Business',
-      hook:
-        'People want to know one thing: how much will it cost? This site answers that question before they even have to ask.',
+      shortDesc: 'Multi-page B2B site with service pages, work samples, and a fast quote flow.',
       description:
-        'Dynamic pricing calculator that gives an instant quote. No back-and-forth emails, no waiting for a callback. Customers see the price, like it, and book - all in one visit.',
+        'Multi-page B2B site with dedicated service pages, a work carousel with stock and finish specs, and a quote form with quick-select options.',
+      image: '/projects/printcompany.png',
+      link: 'https://printcompany.northsummit.agency/',
+    },
+
+    // === REMAINING PORTFOLIO ===
+    {
+      id: 'landscaping001',
+      title: 'Verdance Outdoor Living',
+      category: 'Trades',
+      shortDesc: 'Before-and-after sliders and a guided process. Lifestyle positioning above typical trades.',
+      description:
+        'Before-and-after sliders and a guided process that turns garden ideas into consultations. Lifestyle positioning lifts it above a typical trades page.',
+      image: '/projects/landscaping.png',
+      link: 'https://landscaping.northsummit.agency/',
+    },
+    {
+      id: 'roofing01',
+      title: 'Northcrest Roofing Nottingham',
+      category: 'Trades',
+      shortDesc: 'Emergency-first layout with click-to-call and before-and-after project sliders.',
+      description:
+        'Emergency-first layout with click-to-call above the fold and before-and-after project sliders. Built to turn urgent searches into same-day calls.',
+      image: '/projects/roofing01.png',
+      link: 'https://roofing.northsummit.agency/',
+    },
+    {
+      id: 'plumber001',
+      title: 'Cresco Plumbing & Heating',
+      category: 'Trades',
+      shortDesc: 'Symptom picker, instant price guide, and trust badges. Built for emergencies.',
+      description:
+        'Symptom picker, instant price guide, and Gas Safe trust badges. Built for the moment someone has a leak and needs help now.',
+      image: '/projects/plumber001.png',
+      link: 'https://plumber.northsummit.agency/',
+    },
+    {
+      id: 'beautystudio',
+      title: 'Velvet Bloom Beauty Studio',
+      category: 'Local Business',
+      shortDesc: 'Editorial photography and a calm tone that matches the boutique experience.',
+      description:
+        'Warm editorial photography and a calm tone that matches a boutique salon experience. Easy service menu and a simple booking form.',
+      image: '/projects/beautystudio.png',
+      link: 'https://beautystudio.northsummit.agency/',
+    },
+    {
+      id: 'gym001',
+      title: 'NorthPeak Performance',
+      category: 'Local Business',
+      shortDesc: 'Coaching programmes, real results with numbers, and a goal-based booking form.',
+      description:
+        'Coaching programmes, real results with numbers, and a goal-based consultation form. Designed to capture interest before motivation fades.',
+      image: '/projects/gym001.png',
+      link: 'https://gym.northsummit.agency/',
+    },
+    {
+      id: 'cleaners',
+      title: 'Spotless Nottingham',
+      category: 'Local Business',
+      shortDesc: 'Three pricing tiers upfront so visitors know the cost before they ask.',
+      description:
+        'Three pricing tiers shown upfront so visitors know the cost before they ask. Simple booking flow with a WhatsApp option for quick enquiries.',
       image: '/projects/cleaners.png',
       link: 'https://cleaners.northsummit.agency/',
     },

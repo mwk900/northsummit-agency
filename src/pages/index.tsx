@@ -56,7 +56,14 @@ const heroSlides = [
 ];
 
 export default function Home() {
-  const featuredProjectIds = ['beautystudio', 'restaurant', 'barbershop', 'bathroom-kitchen', 'electrician', 'gym001'];
+  const featuredProjectIds = [
+  'restaurant',
+  'bathroom-kitchen',
+  'electrician',
+  'barbershop',
+  'garagecar',
+  'printcompany'
+];
   const featuredProjects = featuredProjectIds
     .map(id => siteConfig.projects.find((p: { id: string }) => p.id === id))
     .filter(Boolean);
