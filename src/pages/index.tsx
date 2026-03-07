@@ -30,28 +30,28 @@ const childFade = {
 
 const heroSlides = [
   {
-    src: "/pictures/transparent-img-landing/mix3-print-restaurant-hair.png",
-    alt: "Print, restaurant and beauty salon websites shown on mobile",
-    label: "RESTAURANTS · SALONS · PRINT",
-    sublabel: "Any business. Any screen. Built to get you noticed.",
+    src: "/pictures/transparent-img-landing/barber-garage.webp",
+    alt: "Barber shop website on laptop and MOT garage website on mobile",
+    label: "BARBERS · GARAGES",
+    sublabel: "From sharp cuts to service bays - sites that book more appointments.",
   },
   {
-    src: "/pictures/transparent-img-landing/mix-landscaping-roofing.png",
-    alt: "Landscaping website on laptop and roofing website on mobile",
-    label: "LANDSCAPING · ROOFING",
+    src: "/pictures/transparent-img-landing/ember-gym-beauty.webp",
+    alt: "Electrician, restaurant and beauty salon websites across multiple devices",
+    label: "ELECTRICIANS · RESTAURANTS · SALONS",
+    sublabel: "Any industry. Any screen. Built to get you noticed.",
+  },
+  {
+    src: "/pictures/transparent-img-landing/kitchen-gym.webp",
+    alt: "Kitchen specialists website on laptop and gym coaching website on mobile",
+    label: "KITCHENS · GYM · FITNESS",
+    sublabel: "Premium design for premium services - turn visitors into clients.",
+  },
+  {
+    src: "/pictures/transparent-img-landing/plumber-landscaping.webp",
+    alt: "Emergency plumber website on laptop and landscaping website on mobile",
+    label: "PLUMBERS · LANDSCAPERS",
     sublabel: "Trades sites that turn local searches into calls.",
-  },
-  {
-    src: "/pictures/transparent-img-landing/mix-mottablet-landscaping.png",
-    alt: "MOT garage website on tablet and landscaping website on mobile",
-    label: "GARAGES · LANDSCAPERS · TRADESPEOPLE",
-    sublabel: "Every device covered - from emergency callout to booked consultation.",
-  },
-  {
-    src: "/pictures/transparent-img-landing/restaurant-gymphone-desktop-landing.png",
-    alt: "Gym website on mobile and restaurant website on laptop",
-    label: "GYM · RESTAURANT · LOCAL BUSINESS",
-    sublabel: "Different industries. Different designs. One agency.",
   },
 ];
 
