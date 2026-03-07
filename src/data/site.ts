@@ -121,8 +121,8 @@ export const siteConfig = {
     {
       id: 'restaurant',
       title: 'Ember & East',
-      category: 'Local Business',
-      shortDesc: 'Dark, moody design that sells the experience. Menu cards, chef backstory, and easy reservations.',
+      trade: 'Restaurant',
+      shortDesc: 'Menu with prices, chef backstory, and a reservation form. Visitors can book a table in under 30 seconds.',
       description:
         'Menu, backstory, and reservation form. Dark, moody design that sells the experience before the food. Signature dish cards with pricing and a booking form that removes friction.',
       image: '/projects/restaurant.png',
@@ -131,8 +131,8 @@ export const siteConfig = {
     {
       id: 'bathroom-kitchen',
       title: 'Ashwood Kitchens & Bathrooms',
-      category: 'Local Business',
-      shortDesc: 'Style switcher, before-and-after slider, and coverage map. Built for high-value services.',
+      trade: 'Kitchen & Bathroom Fitting',
+      shortDesc: 'Style switcher, before-and-after slider, and a coverage map showing completed projects by area.',
       description:
         'Style switcher, before-and-after slider, and a coverage map with project counts per area. Built for a high-value service where trust closes the sale.',
       image: '/projects/bathroom-kitchen.png',
@@ -141,8 +141,8 @@ export const siteConfig = {
     {
       id: 'electrician',
       title: 'Arc & Line Electrical',
-      category: 'Trades',
-      shortDesc: 'Fault-finder tool helps visitors diagnose issues before calling. Quote form on every page.',
+      trade: 'Electrician',
+      shortDesc: 'Fault-finder tool that helps visitors work out their issue before calling. Quote form on every page.',
       description:
         'Interactive fault-finder helps visitors self-diagnose before calling. Certification badges, EV and smart home sections, and a rapid quote form above the fold.',
       image: '/projects/electrician.png',
@@ -151,8 +151,8 @@ export const siteConfig = {
     {
       id: 'barbershop',
       title: 'Oak and Steel Barbers',
-      category: 'Local Business',
-      shortDesc: 'Bold identity with walk-in badge, product shots, gallery grid, and a clear price board.',
+      trade: 'Barber',
+      shortDesc: 'Walk-in availability badge, clear price board, and a gallery grid. Everything a customer needs at a glance.',
       description:
         'Walk-in badge, product carousel, photo gallery, and a clean price board. Bold, dark design built around walk-ins and quick bookings.',
       image: '/projects/barbershop.png',
@@ -161,8 +161,8 @@ export const siteConfig = {
     {
       id: 'garagecar',
       title: 'Midlands AutoCare',
-      category: 'Trades',
-      shortDesc: 'Diagnostic tool, full price list, and us-vs-dealer comparison. Trust built in seconds.',
+      trade: 'Auto Garage & MOT',
+      shortDesc: 'Diagnostic tool, transparent price list, and a side-by-side comparison against main dealers.',
       description:
         'Diagnostic tool, full price list, and an us-vs-dealer comparison that builds trust fast. Multi-step booking captures the job while they are already thinking about it.',
       image: '/projects/garagecar.png',
@@ -171,8 +171,8 @@ export const siteConfig = {
     {
       id: 'printcompany',
       title: 'Trent Valley PrintWorks',
-      category: 'Local Business',
-      shortDesc: 'Multi-page B2B site with service pages, work samples, and a fast quote flow.',
+      trade: 'Print & Design',
+      shortDesc: 'Dedicated service pages, work samples with finish specs, and a quote form with quick-select options.',
       description:
         'Multi-page B2B site with dedicated service pages, a work carousel with stock and finish specs, and a quote form with quick-select options.',
       image: '/projects/printcompany.png',
@@ -183,8 +183,8 @@ export const siteConfig = {
     {
       id: 'landscaping001',
       title: 'Verdance Outdoor Living',
-      category: 'Trades',
-      shortDesc: 'Before-and-after sliders and a guided process. Lifestyle positioning above typical trades.',
+      trade: 'Landscaping',
+      shortDesc: 'Before-and-after project sliders and a guided process that turns ideas into consultation bookings.',
       description:
         'Before-and-after sliders and a guided process that turns garden ideas into consultations. Lifestyle positioning lifts it above a typical trades page.',
       image: '/projects/landscaping.png',
@@ -193,8 +193,8 @@ export const siteConfig = {
     {
       id: 'roofing01',
       title: 'Northcrest Roofing Nottingham',
-      category: 'Trades',
-      shortDesc: 'Emergency-first layout with click-to-call and before-and-after project sliders.',
+      trade: 'Roofing',
+      shortDesc: 'Emergency-first layout with click-to-call above the fold. Built to convert urgent searches into same-day calls.',
       description:
         'Emergency-first layout with click-to-call above the fold and before-and-after project sliders. Built to turn urgent searches into same-day calls.',
       image: '/projects/roofing01.png',
@@ -203,8 +203,8 @@ export const siteConfig = {
     {
       id: 'plumber001',
       title: 'Cresco Plumbing & Heating',
-      category: 'Trades',
-      shortDesc: 'Symptom picker, instant price guide, and trust badges. Built for emergencies.',
+      trade: 'Plumber & Heating',
+      shortDesc: 'Symptom picker so visitors can describe their problem fast, instant price guide, and Gas Safe trust badges.',
       description:
         'Symptom picker, instant price guide, and Gas Safe trust badges. Built for the moment someone has a leak and needs help now.',
       image: '/projects/plumber001.png',
@@ -213,8 +213,8 @@ export const siteConfig = {
     {
       id: 'beautystudio',
       title: 'Velvet Bloom Beauty Studio',
-      category: 'Local Business',
-      shortDesc: 'Editorial photography and a calm tone that matches the boutique experience.',
+      trade: 'Beauty Salon',
+      shortDesc: 'Clean service menu, simple booking form, and editorial photography that matches the salon experience.',
       description:
         'Warm editorial photography and a calm tone that matches a boutique salon experience. Easy service menu and a simple booking form.',
       image: '/projects/beautystudio.png',
@@ -223,8 +223,8 @@ export const siteConfig = {
     {
       id: 'gym001',
       title: 'NorthPeak Performance',
-      category: 'Local Business',
-      shortDesc: 'Coaching programmes, real results with numbers, and a goal-based booking form.',
+      trade: 'Gym & Personal Training',
+      shortDesc: 'Coaching programmes with real results shown in numbers. Goal-based enquiry form captures interest before it fades.',
       description:
         'Coaching programmes, real results with numbers, and a goal-based consultation form. Designed to capture interest before motivation fades.',
       image: '/projects/gym001.png',
@@ -233,8 +233,8 @@ export const siteConfig = {
     {
       id: 'cleaners',
       title: 'Spotless Nottingham',
-      category: 'Local Business',
-      shortDesc: 'Three pricing tiers upfront so visitors know the cost before they ask.',
+      trade: 'Cleaning Services',
+      shortDesc: 'Three pricing tiers shown upfront so visitors know the cost before they ask. WhatsApp option for quick bookings.',
       description:
         'Three pricing tiers shown upfront so visitors know the cost before they ask. Simple booking flow with a WhatsApp option for quick enquiries.',
       image: '/projects/cleaners.png',

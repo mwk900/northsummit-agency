@@ -31,8 +31,10 @@
   --border-color: #2d3561;
 }
 
-* {
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
 }
 
 html {

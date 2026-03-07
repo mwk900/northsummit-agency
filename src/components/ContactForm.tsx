@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-type Intent = 'quote' | 'audit';
+type Intent = 'quote' | 'audit' | 'question';
 
 interface FormData {
   intent: Intent;
@@ -22,7 +22,12 @@ interface FormErrors {
   message?: string;
 }
 
-export default function ContactForm({ intent = 'quote' }: { intent?: Intent }) {
+interface ContactFormProps {
+  intent?: Intent;
+  packageContext?: string;
+}
+
+export default function ContactForm({ intent = 'quote', packageContext }: ContactFormProps) {
   const [formData, setFormData] = useState<FormData>({
     intent,
     name: '',
@@ -63,7 +68,12 @@ export default function ContactForm({ intent = 'quote' }: { intent?: Intent }) {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          message: packageContext
+            ? `[Interested in: ${packageContext}]\n\n${formData.message}`
+            : formData.message,
+        }),
       });
 
       if (response.ok) {
@@ -110,7 +120,7 @@ export default function ContactForm({ intent = 'quote' }: { intent?: Intent }) {
           </svg>
         </div>
         <h3 className="text-xl font-semibold text-text-primary mb-2">
-          {intent === 'audit' ? 'Audit requested!' : 'Message sent!'}
+          {intent === 'audit' ? 'Audit requested!' : intent === 'question' ? 'Question sent!' : 'Message sent!'}
         </h3>
         <p className="text-text-secondary">
           Thanks for reaching out. We&apos;ll get back to you within 24 hours.
@@ -156,30 +166,34 @@ export default function ContactForm({ intent = 'quote' }: { intent?: Intent }) {
       </div>
 
       {/* Phone + Website */}
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-text-primary mb-1.5">Phone <span className="text-text-secondary font-normal">(optional)</span></label>
-          <input type="tel" id="phone" name="phone" value={formData.phone} onChange={(e) => handleChange('phone', e.target.value)} placeholder="07xxx xxx xxx" className={inputClass()} style={inputStyle} />
+      {intent !== 'question' && (
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-text-primary mb-1.5">Phone <span className="text-text-secondary font-normal">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={(e) => handleChange('phone', e.target.value)} placeholder="07xxx xxx xxx" className={inputClass()} style={inputStyle} />
+          </div>
+          <div>
+            <label htmlFor="websiteUrl" className="block text-sm font-medium text-text-primary mb-1.5">
+              {intent === 'audit' ? 'Website to audit' : 'Current website'} <span className="text-text-secondary font-normal">(optional)</span>
+            </label>
+            <input type="url" id="websiteUrl" name="websiteUrl" value={formData.websiteUrl} onChange={(e) => handleChange('websiteUrl', e.target.value)} placeholder="https://..." className={inputClass()} style={inputStyle} />
+          </div>
         </div>
-        <div>
-          <label htmlFor="websiteUrl" className="block text-sm font-medium text-text-primary mb-1.5">
-            {intent === 'audit' ? 'Website to audit' : 'Current website'} <span className="text-text-secondary font-normal">(optional)</span>
-          </label>
-          <input type="url" id="websiteUrl" name="websiteUrl" value={formData.websiteUrl} onChange={(e) => handleChange('websiteUrl', e.target.value)} placeholder="https://..." className={inputClass()} style={inputStyle} />
-        </div>
-      </div>
+      )}
 
       {/* Trade + Service area */}
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="trade" className="block text-sm font-medium text-text-primary mb-1.5">Trade / service <span className="text-text-secondary font-normal">(optional)</span></label>
-          <input type="text" id="trade" name="trade" value={formData.trade} onChange={(e) => handleChange('trade', e.target.value)} placeholder="e.g. Plumbing, Roofing, Cleaning" className={inputClass()} style={inputStyle} />
+      {intent !== 'question' && (
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="trade" className="block text-sm font-medium text-text-primary mb-1.5">Trade / service <span className="text-text-secondary font-normal">(optional)</span></label>
+            <input type="text" id="trade" name="trade" value={formData.trade} onChange={(e) => handleChange('trade', e.target.value)} placeholder="e.g. Plumbing, Roofing, Cleaning" className={inputClass()} style={inputStyle} />
+          </div>
+          <div>
+            <label htmlFor="serviceArea" className="block text-sm font-medium text-text-primary mb-1.5">Service area <span className="text-text-secondary font-normal">(optional)</span></label>
+            <input type="text" id="serviceArea" name="serviceArea" value={formData.serviceArea} onChange={(e) => handleChange('serviceArea', e.target.value)} placeholder="e.g. Nottingham + 20 miles" className={inputClass()} style={inputStyle} />
+          </div>
         </div>
-        <div>
-          <label htmlFor="serviceArea" className="block text-sm font-medium text-text-primary mb-1.5">Service area <span className="text-text-secondary font-normal">(optional)</span></label>
-          <input type="text" id="serviceArea" name="serviceArea" value={formData.serviceArea} onChange={(e) => handleChange('serviceArea', e.target.value)} placeholder="e.g. Nottingham + 20 miles" className={inputClass()} style={inputStyle} />
-        </div>
-      </div>
+      )}
 
       {/* Message */}
       <div>
@@ -191,6 +205,8 @@ export default function ContactForm({ intent = 'quote' }: { intent?: Intent }) {
           onChange={(e) => handleChange('message', e.target.value)}
           placeholder={intent === 'audit'
             ? "What should we focus on? (e.g. not getting calls, unclear services, slow on mobile)"
+            : intent === 'question'
+            ? "What would you like to know?"
             : "Tell us about your project. What does your business do, and what do you need the site to do?"
           }
           rows={5}
@@ -228,7 +244,7 @@ export default function ContactForm({ intent = 'quote' }: { intent?: Intent }) {
             </svg>
             Sending...
           </span>
-        ) : intent === 'audit' ? 'Request audit' : 'Send message'}
+        ) : intent === 'audit' ? 'Request audit' : intent === 'question' ? 'Send question' : 'Send message'}
       </motion.button>
     </form>
   );

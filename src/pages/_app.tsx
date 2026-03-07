@@ -13,47 +13,20 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     try {
       window.history.scrollRestoration = "manual";
-    } catch {
-      // ignore
-    }
-
-    const hardScrollTop = () => {
-      // 1) Force-unlock any leftover scroll locks (menu overlays etc.)
-      document.body.style.overflow = "";
-      delete document.body.dataset.mobileMenuOpen;
-
-      // 2) Temporarily disable smooth scrolling so the jump is immediate
-      const html = document.documentElement as HTMLElement;
-      const prevScrollBehavior = html.style.scrollBehavior;
-      html.style.scrollBehavior = "auto";
-
-      // 3) Force top on all possible scroll containers
-      window.scrollTo(0, 0);
-      document.scrollingElement?.scrollTo(0, 0);
-      document.documentElement.scrollTo?.(0, 0);
-      document.body.scrollTo?.(0, 0);
-
-      // Restore scroll behavior after the jump
-      window.setTimeout(() => {
-        html.style.scrollBehavior = prevScrollBehavior;
-      }, 0);
-    };
+    } catch {}
 
     const handleRouteDone = (url: string) => {
       if (url.includes("#")) return;
-
+      const html = document.documentElement;
+      html.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          hardScrollTop();
-          [0, 50, 120, 220, 400].forEach((ms) => window.setTimeout(hardScrollTop, ms));
-        });
+        html.style.scrollBehavior = "";
       });
     };
 
     router.events.on("routeChangeComplete", handleRouteDone);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteDone);
-    };
+    return () => router.events.off("routeChangeComplete", handleRouteDone);
   }, [router.events]);
 
   return (

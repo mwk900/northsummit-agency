@@ -35,8 +35,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!mounted) return;
+    document.documentElement.classList.add('theme-transitioning');
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transitioning');
+    }, 300);
   }, [theme, mounted]);
 
   const toggleTheme = () => {

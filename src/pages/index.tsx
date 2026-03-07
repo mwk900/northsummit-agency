@@ -125,6 +125,9 @@ const featuredProjectIds = [
   }, [showLaunchBanner, hasDismissedLaunchBanner]);
 
   useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 6200);
@@ -134,7 +137,7 @@ const featuredProjectIds = [
   return (
     <>
       <SEOHead
-        title="Web Design for Trades & Local Businesses | UK Web Design Agency"
+        title="Websites for Trades & Local Businesses"
         description="Professional websites for plumbers, roofers, electricians, and local businesses across the UK. Honest pricing, real timelines, and a site that actually brings in work."
         jsonLd={[generateOrganizationSchema(), generateWebSiteSchema()]}
       />

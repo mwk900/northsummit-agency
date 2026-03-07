@@ -85,6 +85,19 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
+
 export default function FAQ() {
   return (
     <>
@@ -92,6 +105,7 @@ export default function FAQ() {
         title="FAQ - Web Design for Trades & Local Businesses | NorthSummit"
         description="Common questions about NorthSummit web design services. Pricing, hosting, timelines, ownership, SEO, and more. Clear answers, no jargon."
         path="/faq"
+        jsonLd={faqSchema}
       />
 
       <section className="py-20">

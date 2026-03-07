@@ -1,12 +1,8 @@
-import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import SEOHead from '@/components/SEOHead';
 import ProjectCard from '@/components/ProjectCard';
 import { siteConfig } from '@/data/site';
-
-const categories = ['All', 'Trades', 'Local Business'] as const;
-type Category = (typeof categories)[number];
 
 const stagger = {
   hidden: {},
@@ -19,13 +15,6 @@ const childFade = {
 };
 
 export default function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState<Category>('All');
-
-  const filteredProjects = useMemo(() => {
-    if (activeCategory === 'All') return siteConfig.projects;
-    return siteConfig.projects.filter((p) => p.category === activeCategory);
-  }, [activeCategory]);
-
   return (
     <>
       <SEOHead
@@ -48,49 +37,19 @@ export default function Portfolio() {
             </p>
           </motion.div>
 
-          {/* Category filter */}
+          {/* Projects grid */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="flex flex-wrap gap-2 mb-10"
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  activeCategory === cat
-                    ? 'bg-accent'
-                    : 'border border-border-color text-text-secondary hover:text-accent hover:border-accent'
-                }`}
-                style={activeCategory === cat ? { color: 'var(--primary-bg)' } : undefined}
-              >
-                {cat}
-              </button>
+            {siteConfig.projects.map((project) => (
+              <motion.div key={project.id} variants={childFade}>
+                <ProjectCard {...project} />
+              </motion.div>
             ))}
           </motion.div>
-
-          {/* Projects grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              variants={stagger}
-              initial="hidden"
-              animate="visible"
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {filteredProjects.map((project) => (
-                <motion.div key={project.id} variants={childFade}>
-                  <ProjectCard {...project} />
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-
-          {filteredProjects.length === 0 && (
-            <p className="text-center text-text-secondary py-12">No projects in this category yet.</p>
-          )}
         </div>
       </section>
 
