@@ -89,12 +89,13 @@ export function generateOrganizationSchema() {
     name: brandName,
     description: agency.description,
     url: baseUrl,
-    logo: toAbsoluteUrl("/logo-light.svg"),
+    logo: toAbsoluteUrl("/new-logo-white.png"),
     address: {
       "@type": "PostalAddress",
       addressCountry: "GB",
     },
   };
+
 
   // Optional sameAs if you add socials later:
   // const sameAs = (siteConfig as any)?.agency?.sameAs;

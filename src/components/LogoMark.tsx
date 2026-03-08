@@ -10,7 +10,7 @@ export default function LogoMark({ size = 28 }: LogoMarkProps) {
 
   return (
     <Image
-      src={theme === 'dark' ? '/logo-dark.svg' : '/logo-light.svg'}
+      src={theme === 'dark' ? '/new-logo-white.png' : '/new-logo.png'}
       alt="NorthSummit logo mark"
       width={size}
       height={size}
