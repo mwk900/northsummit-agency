@@ -2,7 +2,7 @@ export const siteConfig = {
   agency: {
     name: 'NorthSummit',
     domain: 'NorthSummit.agency',
-    emailParts: ['North-Summit', 'tuta.com'],
+    emailParts: ['Hello', 'NorthSummit.agency'],
     phoneParts: ['+44', '7776', '937', '164'],
     whatsappParts: ['+44', '7776', '937', '164'],
     tagline: 'Websites built to turn local searches into calls and enquiries.',
