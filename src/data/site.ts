@@ -149,6 +149,26 @@ export const siteConfig = {
       link: 'https://electrician.northsummit.agency/',
     },
     {
+  id: 'builder',
+  title: 'Hearthstone Build Co.',
+  trade: 'Builder',
+  shortDesc: 'Interactive cost estimator, phased build timeline, and worry-buster cards that answer objections before they are raised.',
+  description:
+    'Interactive cost estimator lets visitors price a project in under two minutes. Phased build-process explorer, draggable Gantt-style timeline, worry-buster flip cards, and accreditation badges build trust before the first phone call.',
+  image: '/projects/builder.png',
+  link: 'https://builder.northsummit.agency/',
+},
+{
+  id: 'painter',
+  title: 'Chalk & Line Decorating',
+  trade: 'Painter & Decorator',
+  shortDesc: 'Live colour-picker room visualiser and before/after reveal slider. Palette-driven design throughout.',
+  description:
+    'Room visualiser lets visitors try colours on walls, ceilings, and trim before committing. Curated palette explorer, before/after hover-reveal project gallery, and a five-step process section that sells the prep work as a feature.',
+  image: '/projects/painter.png',
+  link: 'https://painter.northsummit.agency/',
+},
+    {
       id: 'barbershop',
       title: 'Oak and Steel Barbers',
       trade: 'Barber',
@@ -167,16 +187,6 @@ export const siteConfig = {
         'Diagnostic tool, full price list, and an us-vs-dealer comparison that builds trust fast. Multi-step booking captures the job while they are already thinking about it.',
       image: '/projects/garagecar.png',
       link: 'https://garagecar.northsummit.agency/',
-    },
-    {
-      id: 'printcompany',
-      title: 'Trent Valley PrintWorks',
-      trade: 'Print & Design',
-      shortDesc: 'Dedicated service pages, work samples with finish specs, and a quote form with quick-select options.',
-      description:
-        'Multi-page B2B site with dedicated service pages, a work carousel with stock and finish specs, and a quote form with quick-select options.',
-      image: '/projects/printcompany.png',
-      link: 'https://printcompany.northsummit.agency/',
     },
 
     // === REMAINING PORTFOLIO ===
@@ -239,6 +249,16 @@ export const siteConfig = {
         'Three pricing tiers shown upfront so visitors know the cost before they ask. Simple booking flow with a WhatsApp option for quick enquiries.',
       image: '/projects/cleaners.png',
       link: 'https://cleaners.northsummit.agency/',
+    },
+    {
+      id: 'printcompany',
+      title: 'Trent Valley PrintWorks',
+      trade: 'Print & Design',
+      shortDesc: 'Dedicated service pages, work samples with finish specs, and a quote form with quick-select options.',
+      description:
+        'Multi-page B2B site with dedicated service pages, a work carousel with stock and finish specs, and a quote form with quick-select options.',
+      image: '/projects/printcompany.png',
+      link: 'https://printcompany.northsummit.agency/',
     },
   ],
 } as const;

@@ -55,16 +55,19 @@ const heroSlides = [
   },
 ];
 
-export default function Home() {
 const featuredProjectIds = [
-  'electrician',    
+  'electrician',
+  'builder',
+  'painter',
+  'restaurant',
   'bathroom-kitchen',
-  'restaurant',       
-  'plumber001',           
-  'barbershop',       
-  'gym001'        
+  'garagecar',
+  'barbershop',
+  'gym001',
+  'plumber001',
 ];
 
+export default function Home() { 
   const featuredProjects = featuredProjectIds
     .map(id => siteConfig.projects.find((p: { id: string }) => p.id === id))
     .filter(Boolean);
@@ -392,16 +395,18 @@ const featuredProjectIds = [
             viewport={{ once: true }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {featuredProjects.map((project, i) => (
-              <motion.div
-                key={project!.id}
-                variants={childFade}
-                transition={{ delay: i * 0.08 }}
-              >
-                <ProjectCard {...project!} />
-              </motion.div>
-            ))}
-          </motion.div>
+
+          {featuredProjects.map((project, i) => (
+  <motion.div
+    key={project!.id}
+    variants={childFade}
+    transition={{ delay: i * 0.08 }}
+    className={i >= 6 ? 'hidden lg:block' : ''}
+  >
+    <ProjectCard {...project!} />
+  </motion.div>
+))}
+</motion.div>
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-10">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
               <Link href="/portfolio" className="inline-block px-6 py-3 rounded-lg border border-border-color text-text-primary text-sm font-semibold hover:border-accent hover:text-accent transition-colors">
