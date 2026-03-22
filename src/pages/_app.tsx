@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/ThemeContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -30,20 +31,24 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router.events]);
 
   return (
-    <ThemeProvider>
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
-      <Header />
-      <main
-        id="main-content"
-        className="min-h-screen pt-16"
-        style={{ backgroundColor: "var(--primary-bg)" }}
-      >
-        <Component {...pageProps} />
-      </main>
-      <Footer />
-      <ScrollToTop />
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <Header />
+        <main
+          id="main-content"
+          className="min-h-screen pt-16"
+          style={{ backgroundColor: "var(--primary-bg)" }}
+        >
+          <ErrorBoundary>
+            <Component {...pageProps} />
+          </ErrorBoundary>
+        </main>
+        <Footer />
+        <ScrollToTop />
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }

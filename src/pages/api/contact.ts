@@ -25,8 +25,21 @@ function escapeHtml(str: string): string {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  res.setHeader('Cache-Control', 'no-store');
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const RESEND_API_KEY = process.env.RESEND_API_KEY;
+  const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL;
+  const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL;
+  if (!RESEND_API_KEY || !CONTACT_TO_EMAIL || !CONTACT_FROM_EMAIL) {
+    return res.status(503).json({ error: 'Service unavailable' });
+  }
+
+  if (!req.headers['content-type']?.startsWith('application/json')) {
+    return res.status(415).json({ error: 'Unsupported Media Type' });
   }
 
   const ip =
@@ -45,6 +58,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json({ success: true });
   }
 
+  // Max-length validation
+  const fieldLimits: [unknown, number, string][] = [
+    [name,        100, 'name'],
+    [email,       254, 'email'],
+    [phone,        30, 'phone'],
+    [websiteUrl,  200, 'websiteUrl'],
+    [trade,       100, 'trade'],
+    [serviceArea, 200, 'serviceArea'],
+    [message,    5000, 'message'],
+    [intent,       20, 'intent'],
+  ];
+  for (const [val, max, field] of fieldLimits) {
+    if (typeof val === 'string' && val.length > max) {
+      return res.status(400).json({ error: `${field} exceeds maximum length` });
+    }
+  }
+
+  // Intent allowlist
+  const VALID_INTENTS = ['quote', 'audit', 'question'];
+  if (intent !== undefined && !VALID_INTENTS.includes(String(intent))) {
+    return res.status(400).json({ error: 'Invalid intent' });
+  }
+
   // Validation
   if (!name || typeof name !== 'string' || !name.trim()) {
     return res.status(400).json({ error: 'Name is required' });
@@ -54,15 +90,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   if (!message || typeof message !== 'string' || message.trim().length < 10) {
     return res.status(400).json({ error: 'Message must be at least 10 characters' });
-  }
-
-  const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_TO_EMAIL;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || 'onboarding@resend.dev';
-
-  if (!apiKey || !toEmail) {
-    console.error('Missing RESEND_API_KEY or CONTACT_TO_EMAIL');
-    return res.status(500).json({ error: 'Server configuration error' });
   }
 
   const intentLabel = String(intent || 'quote').toUpperCase();
@@ -84,11 +111,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: `NorthSummit <${fromEmail}>`,
-        to: toEmail,
+        from: `NorthSummit <${CONTACT_FROM_EMAIL}>`,
+        to: CONTACT_TO_EMAIL,
         reply_to: email.trim(),
         subject: `[${intentLabel}] New enquiry from ${name.trim()}`,
         html,
