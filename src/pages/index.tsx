@@ -471,7 +471,7 @@ export default function Home() {
             <Link href="/web-design-for-landscapers" className="text-accent hover:underline">landscapers</Link>,{" "}
             <Link href="/web-design-for-painters-and-decorators" className="text-accent hover:underline">painters &amp; decorators</Link>,{" "}
             <Link href="/web-design-for-kitchen-and-bathroom-fitters" className="text-accent hover:underline">kitchen &amp; bathroom fitters</Link>, and{" "}
-            <Link href="/web-design-for-cleaners" className="text-accent hover:underline">cleaners</Link>. Based in Nottinghamshire, working UK-wide.{" "}
+            <Link href="/web-design-for-cleaners" className="text-accent hover:underline">cleaners</Link>. Based in Nottingham, working UK-wide.{" "}
             <Link href="/web-design-nottingham" className="text-accent hover:underline">See our Nottingham page</Link>.
           </p>
         </div>

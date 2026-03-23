@@ -34,11 +34,39 @@ export default function Portfolio() {
               Every site below was built around a simple question: <span className="text-text-primary font-medium">what does this business need people to do?</span>
             </p>
             <p className="text-text-secondary leading-relaxed">
-              These trade website examples show how we approach plumbers, electricians, roofers, builders, landscapers, painters, cleaners, and other local businesses. The design choices change by trade, but the goal stays the same: make it obvious what you do, make it easy to enquire, and remove friction.
-            </p>
-            <p className="text-text-secondary leading-relaxed mt-4">
-              Looking for a more targeted example? See our pages for <Link href="/web-design-for-plumbers" className="text-accent font-medium hover:underline">plumber website design</Link>, <Link href="/web-design-for-electricians" className="text-accent font-medium hover:underline">electrician website design</Link>, <Link href="/web-design-for-roofers" className="text-accent font-medium hover:underline">roofer website design</Link>, <Link href="/web-design-for-builders" className="text-accent font-medium hover:underline">builder website design</Link>, and <Link href="/web-design-for-landscapers" className="text-accent font-medium hover:underline">landscaper website design</Link>.
-            </p>
+  These trade website examples show how we approach{" "}
+  <Link href="/web-design-for-plumbers" className="text-accent hover:underline">
+    plumbers
+  </Link>
+  ,{" "}
+  <Link href="/web-design-for-electricians" className="text-accent hover:underline">
+    electricians
+  </Link>
+  ,{" "}
+  <Link href="/web-design-for-roofers" className="text-accent hover:underline">
+    roofers
+  </Link>
+  ,{" "}
+  <Link href="/web-design-for-builders" className="text-accent hover:underline">
+    builders
+  </Link>
+  ,{" "}
+  <Link href="/web-design-for-landscapers" className="text-accent hover:underline">
+    landscapers
+  </Link>
+  ,{" "}
+  <Link href="/web-design-for-painters-and-decorators" className="text-accent hover:underline">
+    painters
+  </Link>
+  ,{" "}
+  <Link href="/web-design-for-cleaners" className="text-accent hover:underline">
+    cleaners
+  </Link>
+  , and other local businesses. The design choices change by trade, but the goal stays the same: make it obvious what you do, make it easy to enquire, and remove friction.
+</p>
+
+
+
             <p className="text-text-secondary leading-relaxed mt-4">
               Already have a website? <Link href="/audit" className="text-accent font-medium hover:underline">Get a free audit</Link> and we&apos;ll tell you what&apos;s working and what could be better.
             </p>
@@ -59,23 +87,7 @@ export default function Portfolio() {
           </motion.div>
         </div>
       </section>
-
-      {/* Trade pages */}
-      <section className="py-12">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm text-text-secondary">
-            Looking for something specific? See our dedicated pages for{" "}
-            <Link href="/web-design-for-plumbers" className="text-accent hover:underline">plumber websites</Link>,{" "}
-            <Link href="/web-design-for-electricians" className="text-accent hover:underline">electrician websites</Link>, and{" "}
-            <Link href="/web-design-for-roofers" className="text-accent hover:underline">roofer websites</Link>. We also have pages for{" "}
-            <Link href="/web-design-for-builders" className="text-accent hover:underline">builders</Link>,{" "}
-            <Link href="/web-design-for-landscapers" className="text-accent hover:underline">landscapers</Link>,{" "}
-            <Link href="/web-design-for-painters-and-decorators" className="text-accent hover:underline">painters &amp; decorators</Link>,{" "}
-            <Link href="/web-design-for-kitchen-and-bathroom-fitters" className="text-accent hover:underline">kitchen &amp; bathroom fitters</Link>, and{" "}
-            <Link href="/web-design-for-cleaners" className="text-accent hover:underline">cleaners</Link>.
-          </p>
-        </div>
-      </section>
+      
 
       {/* CTA */}
       <section className="py-20 bg-accent/5">

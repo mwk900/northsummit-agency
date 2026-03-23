@@ -282,7 +282,7 @@ export default function TradeLandingPage({
             <Link href="/audit" className="text-accent hover:underline">
               request a free audit
             </Link>
-            . Based in Nottinghamshire, working UK-wide.{" "}
+            . Based in Nottingham, working UK-wide.{" "}
             <Link href="/web-design-nottingham" className="text-accent hover:underline">
               See our Nottingham page
             </Link>

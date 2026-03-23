@@ -95,7 +95,7 @@ export function generateOrganizationSchema() {
     address: {
       "@type": "PostalAddress",
       addressLocality: "Nottingham",
-      addressRegion: "Nottinghamshire",
+      addressRegion: "Nottingham",
       addressCountry: "GB",
     },
     contactPoint: {
@@ -149,7 +149,7 @@ export function generateLocalBusinessSchema() {
     address: {
       "@type": "PostalAddress",
       addressLocality: "Nottingham",
-      addressRegion: "Nottinghamshire",
+      addressRegion: "Nottingham",
       addressCountry: "GB",
     },
     contactPoint: {

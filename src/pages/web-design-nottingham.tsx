@@ -13,7 +13,7 @@ const localServiceSchema = {
   "@type": "Service",
   name: "Web Design in Nottingham",
   description:
-    "Web design for trades and local businesses in Nottingham and Nottinghamshire. Fast, mobile-first websites built to turn local searches into calls.",
+    "Web design for trades and local businesses in Nottingham. Fast, mobile-first websites built to turn local searches into calls.",
   provider: {
     "@type": "ProfessionalService",
     name: "NorthSummit",
@@ -27,7 +27,7 @@ const localServiceSchema = {
     },
     {
       "@type": "AdministrativeArea",
-      name: "Nottinghamshire",
+      name: "Nottingham",
     },
     {
       "@type": "Country",
@@ -50,7 +50,7 @@ export default function WebDesignNottingham() {
     <>
       <SEOHead
         title="Web Design Nottingham - Trades & Local Businesses"
-        description="Web design in Nottingham for trades and local businesses. Fast, mobile-first websites that turn local searches into calls. Based in Nottinghamshire, working UK-wide."
+        description="Web design in Nottingham for trades and local businesses. Fast, mobile-first websites that turn local searches into calls. Based in Nottingham, working UK-wide."
         path="/web-design-nottingham"
         jsonLd={[breadcrumbSchema, localServiceSchema, generateLocalBusinessSchema()]}
       />
@@ -62,7 +62,7 @@ export default function WebDesignNottingham() {
             custom={0} initial="hidden" animate="visible" variants={fadeIn}
             className="text-accent font-medium mb-3"
           >
-            NorthSummit &middot; Nottinghamshire
+            NorthSummit &middot; Nottingham
           </motion.p>
           <motion.h1
             custom={1} initial="hidden" animate="visible" variants={fadeIn}
@@ -74,7 +74,7 @@ export default function WebDesignNottingham() {
             custom={2} initial="hidden" animate="visible" variants={fadeIn}
             className="text-lg text-text-secondary max-w-2xl mb-8"
           >
-            NorthSummit is based in Nottinghamshire and we work with trades and local service businesses across the UK. If you are a Nottingham-area business looking for a website that actually brings in work, you are dealing with someone local who understands the market.
+            NorthSummit is based in Nottingham and we work with trades and local service businesses across the UK. If you are a Nottingham-area business looking for a website that actually brings in work, you are dealing with someone local who understands the market.
           </motion.p>
           <motion.div
             custom={3} initial="hidden" animate="visible" variants={fadeIn}
@@ -117,7 +117,7 @@ export default function WebDesignNottingham() {
               For most trades and local businesses in the Nottingham area - plumbers, electricians, roofers, builders, cleaners, landscapers - the answer is the same. Get found in local searches, look trustworthy, and make it easy for customers to get in touch. That is what we optimise for.
             </p>
             <p>
-              Being based in Nottinghamshire means we understand the local market, but our sites are built to work anywhere. Whether you serve Nottingham city centre, the wider county, or the entire East Midlands, the approach is the same: fast, mobile-first, built to convert.
+              Being based in Nottingham means we understand the local market, but our sites are built to work anywhere. Whether you serve Nottingham city centre, the wider county, or the entire East Midlands, the approach is the same: fast, mobile-first, built to convert.
             </p>
           </motion.div>
         </div>
@@ -139,7 +139,7 @@ export default function WebDesignNottingham() {
             {[
               {
                 title: "Local knowledge, UK-wide capability",
-                text: "We are based in Nottinghamshire and work with businesses across the UK. You get someone local who also builds sites that compete nationally.",
+                text: "We are based in Nottingham and work with businesses across the UK. You get someone local who also builds sites that compete nationally.",
               },
               {
                 title: "Mobile-first, fast-loading sites",
@@ -147,7 +147,7 @@ export default function WebDesignNottingham() {
               },
               {
                 title: "Built for your trade",
-                text: "Whether you are a plumber in Beeston, an electrician in West Bridgford, or a roofer covering all of Nottinghamshire - we build around your specific business needs.",
+                text: "Whether you are a plumber in Beeston, an electrician in West Bridgford, or a roofer covering all of Nottingham - we build around your specific business needs.",
               },
               {
                 title: "Technical SEO from day one",
@@ -262,7 +262,7 @@ export default function WebDesignNottingham() {
             Need a website for your Nottingham business?
           </h2>
           <p className="text-text-secondary mb-8">
-            Tell us about your business and we will get back to you within 24 hours. Based in Nottinghamshire, working with businesses across the UK.
+            Tell us about your business and we will get back to you within 24 hours. Based in Nottingham, working with businesses across the UK.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
