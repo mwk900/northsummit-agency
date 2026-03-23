@@ -20,6 +20,7 @@ export const siteConfig = {
   navigation: [
     { href: '/', label: 'Home' },
     { href: '/portfolio', label: 'Portfolio' },
+    { href: '/blog', label: 'Blog' },
     { href: '/faq', label: 'FAQ' },
     { href: '/about', label: 'About' },
   ],
