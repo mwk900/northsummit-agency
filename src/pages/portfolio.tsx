@@ -35,6 +35,9 @@ export default function Portfolio() {
             <p className="text-text-secondary leading-relaxed">
               For a plumber, it might be a click-to-call button that works the second someone lands on the page. For a gym, it might be a sign-up flow that catches people while they&apos;re still motivated. The design choices are different every time - but the goal is always the same. Make it obvious what you do, make it easy to get in touch, and don&apos;t get in the way.
             </p>
+            <p className="text-text-secondary leading-relaxed mt-4">
+              Already have a website? <Link href="/audit" className="text-accent font-medium hover:underline">Get a free audit</Link> and we&apos;ll tell you what&apos;s working and what could be better.
+            </p>
           </motion.div>
 
           {/* Projects grid */}

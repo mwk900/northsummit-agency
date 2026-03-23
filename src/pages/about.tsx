@@ -42,6 +42,9 @@ export default function About() {
               <p>
                 I only take on a handful of projects at a time so each one gets proper attention. You speak directly with the person building your site, and you&apos;ll never wait a week for a reply.
               </p>
+              <p>
+                Take a look at the <Link href="/portfolio" className="text-accent font-medium hover:underline">portfolio</Link> to see the kind of work we do, or check out the <Link href="/faq" className="text-accent font-medium hover:underline">FAQ</Link> if you have questions about pricing, timelines, or how we work.
+              </p>
             </motion.div>
           </div>
         </div>

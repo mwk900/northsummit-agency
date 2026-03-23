@@ -96,10 +96,8 @@ export function generateOrganizationSchema() {
     },
   };
 
-
-  // Optional sameAs if you add socials later:
-  // const sameAs = (siteConfig as any)?.agency?.sameAs;
-  // if (Array.isArray(sameAs) && sameAs.length) schema.sameAs = sameAs;
+  const sameAs = agency.sameAs;
+  if (Array.isArray(sameAs) && sameAs.length) schema.sameAs = sameAs;
 
   return schema;
 }
@@ -111,5 +109,65 @@ export function generateWebSiteSchema() {
     "@type": "WebSite",
     name: brandName,
     url: baseUrl,
+  };
+}
+
+export function generateLocalBusinessSchema() {
+  const brandName = agency.name || agency.domain;
+  const phone = siteConfig.agency.phoneParts.join("");
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: brandName,
+    description: agency.description,
+    url: baseUrl,
+    logo: toAbsoluteUrl("/new-logo-white.png"),
+    telephone: phone,
+    priceRange: "££",
+    areaServed: {
+      "@type": "Country",
+      name: "United Kingdom",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "GB",
+    },
+    serviceType: ["Web Design", "Web Development", "SEO"],
+  };
+}
+
+export function generateServiceOfferSchema() {
+  const brandName = agency.name || agency.domain;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    provider: {
+      "@type": "ProfessionalService",
+      name: brandName,
+      url: baseUrl,
+    },
+    serviceType: "Web Design",
+    areaServed: {
+      "@type": "Country",
+      name: "United Kingdom",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Web Design Packages",
+      itemListElement: siteConfig.pricing.map((pkg) => ({
+        "@type": "Offer",
+        name: `${pkg.name} Website Package`,
+        description: pkg.description,
+        price: pkg.name === "Starter" ? "149" : pkg.name === "Growth" ? "349" : "699",
+        priceCurrency: "GBP",
+        url: `${baseUrl}/#pricing`,
+        eligibleRegion: {
+          "@type": "Country",
+          name: "United Kingdom",
+        },
+      })),
+    },
   };
 }

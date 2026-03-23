@@ -146,6 +146,7 @@ export default function FAQ() {
           <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Still got questions?</h2>
           <p className="text-text-secondary mb-8">
             Book a free call and ask us anything. No pressure, no commitment.
+            Or if you already have a website, <Link href="/audit" className="text-accent font-medium hover:underline">request a free audit</Link> and we&apos;ll tell you what we&apos;d improve.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

@@ -1,0 +1,27 @@
+{
+  "name": "NorthSummit - Web Design for Trades & Local Businesses",
+  "short_name": "NorthSummit",
+  "description": "Professional websites for trades and local businesses across the UK. Clear pricing, honest timelines, and a site that actually brings in work.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/new-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/new-logo-white.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

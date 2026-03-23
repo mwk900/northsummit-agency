@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SEOHead from "@/components/SEOHead";
 import ProjectCard from "@/components/ProjectCard";
-import { generateOrganizationSchema, generateWebSiteSchema } from "@/utils/seo";
+import { generateOrganizationSchema, generateWebSiteSchema, generateLocalBusinessSchema, generateServiceOfferSchema } from "@/utils/seo";
 import { siteConfig } from "@/data/site";
 import ScrollSpyNav from "@/components/ScrollSpyNav";
 import ObfuscatedContactLink from "@/components/ObfuscatedContactLink";
@@ -142,7 +142,7 @@ export default function Home() {
       <SEOHead
         title="Websites for Trades & Local Businesses"
         description="Professional websites for plumbers, roofers, electricians, and local businesses across the UK. Honest pricing, real timelines, and a site that actually brings in work."
-        jsonLd={[generateOrganizationSchema(), generateWebSiteSchema()]}
+        jsonLd={[generateOrganizationSchema(), generateWebSiteSchema(), generateLocalBusinessSchema(), generateServiceOfferSchema()]}
       />
 
       <ScrollSpyNav
