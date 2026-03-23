@@ -16,7 +16,7 @@ export default function Contact() {
   return (
     <>
       <SEOHead
-        title="Get a Quote | NorthSummit"
+        title="Get a Free Quote"
         description="Tell us what you need and we'll get back to you within 24 hours. Clear pricing, no obligation."
         path="/contact"
       />

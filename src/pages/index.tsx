@@ -140,8 +140,8 @@ export default function Home() {
   return (
     <>
       <SEOHead
-        title="Websites for Trades & Local Businesses"
-        description="Professional websites for plumbers, roofers, electricians, and local businesses across the UK. Honest pricing, real timelines, and a site that actually brings in work."
+        title="Web Design for Trades & Local Businesses UK"
+        description="Web design for plumbers, electricians, roofers, and local businesses across the UK. Fast, mobile-first websites built to turn local searches into calls. Based in Nottingham, working UK-wide."
         jsonLd={[generateOrganizationSchema(), generateWebSiteSchema(), generateLocalBusinessSchema(), generateServiceOfferSchema()]}
       />
 
@@ -270,7 +270,7 @@ export default function Home() {
           variants={fadeIn}
           className="text-xs text-text-secondary mt-2"
         >
-          Roofers · Plumbers · Electricians · Gyms · Salons · Local businesses
+          <Link href="/web-design-for-roofers" className="hover:text-accent transition-colors">Roofers</Link> · <Link href="/web-design-for-plumbers" className="hover:text-accent transition-colors">Plumbers</Link> · <Link href="/web-design-for-electricians" className="hover:text-accent transition-colors">Electricians</Link> · Gyms · Salons · Local businesses
         </motion.p>
 
         <motion.p
@@ -440,7 +440,40 @@ export default function Home() {
         </div>
       </section>
 
-  
+      {/* Trade-specific pages */}
+      <section className="py-12" style={{ backgroundColor: "var(--secondary-bg)" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-3">Web design built for your trade</h2>
+            <p className="text-text-secondary max-w-2xl mx-auto">Every trade has different customers and different problems. We build websites tailored to how your specific customers search and what makes them pick up the phone.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="grid sm:grid-cols-3 gap-4"
+          >
+            {[
+              { href: "/web-design-for-plumbers", title: "Plumbers", text: "Emergency-first design with click-to-call, quote forms, and Gas Safe trust signals." },
+              { href: "/web-design-for-electricians", title: "Electricians", text: "Professional layout with certification badges, service pages, and fast quote request flow." },
+              { href: "/web-design-for-roofers", title: "Roofers", text: "Urgent-enquiry layout with before-and-after galleries, mobile speed, and trust signals." },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="p-5 rounded-xl border border-border-color hover:border-accent/40 transition-colors"
+                style={{ backgroundColor: "var(--primary-bg)" }}
+              >
+                <h3 className="text-base font-semibold text-text-primary mb-1.5">{item.title}</h3>
+                <p className="text-sm text-text-secondary">{item.text}</p>
+              </Link>
+            ))}
+          </motion.div>
+          <p className="text-center mt-4 text-sm text-text-secondary">
+            Based in Nottinghamshire, working UK-wide.{" "}
+            <Link href="/web-design-nottingham" className="text-accent hover:underline">See our Nottingham page</Link>.
+          </p>
+        </div>
+      </section>
+
       {/* Free Audit */}
       <section id="audit" className="py-20" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

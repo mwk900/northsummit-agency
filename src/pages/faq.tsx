@@ -111,7 +111,7 @@ export default function FAQ() {
   return (
     <>
       <SEOHead
-        title="FAQ - Web Design for Trades & Local Businesses | NorthSummit"
+        title="FAQ - Web Design Pricing, Timelines & More"
         description="Common questions about NorthSummit web design services. Pricing, hosting, timelines, ownership, SEO, and more. Clear answers, no jargon."
         path="/faq"
         jsonLd={faqSchema}

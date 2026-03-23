@@ -8,7 +8,7 @@ export const siteConfig = {
     tagline: 'Websites built to turn local searches into calls and enquiries.',
     description:
       'Professional websites for trades and local businesses across the UK. Clear pricing, honest timelines, and a site that actually brings in work.',
-    location: 'UK-based',
+    location: 'Based in Nottingham, working UK-wide',
   },
 
   launch: {
@@ -111,7 +111,7 @@ export const siteConfig = {
     'Deposits are refundable until work begins. Once design work starts, deposits are non-refundable.',
 
   // ──────────────────────────────────────────────
-  // TOP 6 — homepage gallery
+  // TOP 6 - homepage gallery
   // Row 1: Restaurant (dark) | Kitchen/Bath (light) | Electrician (dark)
   // Row 2: Barbershop (dark) | Auto Garage (light) | Print Company (light)
   // Visual contrast across both rows.

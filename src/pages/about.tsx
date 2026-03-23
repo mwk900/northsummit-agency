@@ -19,7 +19,7 @@ export default function About() {
   return (
     <>
       <SEOHead
-        title="About NorthSummit | UK Web Design for Trades & Local Businesses"
+        title="About - UK Web Design Agency for Trades"
         description="NorthSummit builds websites for tradespeople and local businesses across the UK. One person, direct communication, honest pricing."
         path="/about"
         jsonLd={personSchema}

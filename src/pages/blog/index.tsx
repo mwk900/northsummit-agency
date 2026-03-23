@@ -21,7 +21,7 @@ export default function Blog() {
   return (
     <>
       <SEOHead
-        title="Blog - Web Design Tips for Trades & Local Businesses"
+        title="Blog - Web Design Tips for Trades & Small Businesses"
         description="Practical advice on websites, SEO, and getting more customers online. Written for plumbers, electricians, builders, roofers, and local service businesses across the UK."
         path="/blog"
       />

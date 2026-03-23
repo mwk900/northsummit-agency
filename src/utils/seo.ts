@@ -164,6 +164,19 @@ export function generateLocalBusinessSchema() {
   };
 }
 
+export function generateBreadcrumbSchema(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: new URL(item.path, baseUrl).toString(),
+    })),
+  };
+}
+
 export function generateServiceOfferSchema() {
   const brandName = agency.name || agency.domain;
 

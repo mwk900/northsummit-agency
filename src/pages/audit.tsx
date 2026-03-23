@@ -6,7 +6,7 @@ export default function Audit() {
   return (
     <>
       <SEOHead
-        title="Free Website Audit | NorthSummit"
+        title="Free Website Audit for Trades & Local Businesses"
         description="Send your website and we'll reply with clear, practical improvements to help you get more calls and enquiries. No obligation, no hard sell."
         path="/audit"
       />

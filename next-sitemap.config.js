@@ -34,6 +34,16 @@ module.exports = {
       };
     }
 
+    // Trade landing pages and local pages
+    if (path.startsWith('/web-design-for-') || path === '/web-design-nottingham') {
+      return {
+        loc: path,
+        changefreq: 'monthly',
+        priority: 0.9,
+        lastmod: new Date().toISOString(),
+      };
+    }
+
     // Contact, about, FAQ
     if (['/contact', '/about', '/faq'].includes(path)) {
       return {

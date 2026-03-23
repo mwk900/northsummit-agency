@@ -15,7 +15,7 @@ export default function Question() {
   return (
     <>
       <SEOHead
-        title="Quick Question | NorthSummit"
+        title="Ask a Quick Question"
         description="Send us a quick question and we'll get back to you within 24 hours."
         path="/question"
       />

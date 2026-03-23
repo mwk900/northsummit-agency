@@ -18,7 +18,7 @@ export default function Portfolio() {
   return (
     <>
       <SEOHead
-        title="Portfolio | Web Design Examples for Trades & Local Businesses"
+        title="Web Design Portfolio - Trades & Local Businesses"
         description="See the kind of websites we build for trades and local businesses. Each one is designed around one thing: getting your customers to pick up the phone."
         path="/portfolio"
       />
@@ -53,6 +53,18 @@ export default function Portfolio() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Trade pages */}
+      <section className="py-12">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-sm text-text-secondary">
+            Looking for something specific? See our dedicated pages for{" "}
+            <Link href="/web-design-for-plumbers" className="text-accent hover:underline">plumber websites</Link>,{" "}
+            <Link href="/web-design-for-electricians" className="text-accent hover:underline">electrician websites</Link>, and{" "}
+            <Link href="/web-design-for-roofers" className="text-accent hover:underline">roofer websites</Link>.
+          </p>
         </div>
       </section>
 
