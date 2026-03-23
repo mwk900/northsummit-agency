@@ -151,6 +151,7 @@ export default function Home() {
         offsetTopPx={96}
         mobileBottomOffsetPx={showLaunchBanner && !hasDismissedLaunchBanner ? 120 : 32}
         sections={[
+          { id: "services", label: "What we do", icon: "fit" },
           { id: "portfolio", label: "Portfolio", icon: "portfolio" },
           { id: "who-this-is-for", label: "Fit", icon: "fit" },
           { id: "audit", label: "Audit", icon: "audit" },
@@ -385,7 +386,7 @@ export default function Home() {
       <section id="portfolio" className="py-20" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Recent work</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Recent web design projects</h2>
             <p className="text-text-secondary max-w-2xl mx-auto">Example builds showing the kind of sites we create. These are demo projects, not past client work. They demonstrate layout, speed, and how we think about getting people to pick up the phone.</p>
           </motion.div>
           <motion.div

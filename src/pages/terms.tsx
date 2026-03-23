@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SEOHead from "@/components/SEOHead";
 import ObfuscatedContactLink from "@/components/ObfuscatedContactLink";
 
@@ -44,6 +45,18 @@ export default function Terms() {
                   {(emailLabel) => emailLabel}
                 </ObfuscatedContactLink>.
               </p>
+            </div>
+          </div>
+
+          <div className="mt-16 pt-8 border-t border-border-color text-center">
+            <p className="text-text-secondary mb-4">Looking for our services?</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/#pricing" className="inline-block px-6 py-2.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all" style={{ color: "var(--primary-bg)" }}>
+                View pricing
+              </Link>
+              <Link href="/contact" className="inline-block px-6 py-2.5 rounded-lg border border-border-color text-sm font-medium text-text-secondary hover:text-accent hover:border-accent transition-colors">
+                Get a free quote
+              </Link>
             </div>
           </div>
         </div>

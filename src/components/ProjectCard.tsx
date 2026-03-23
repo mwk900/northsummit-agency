@@ -11,6 +11,7 @@ interface ProjectCardProps {
   description: string;
   hook?: string;
   image: string;
+  imageAlt?: string;
   trade?: string | string[];
   link: string;
   // Allow extra props from siteConfig without TS errors
@@ -21,6 +22,7 @@ export default function ProjectCard({
   title,
   description,
   image,
+  imageAlt,
   trade,
   link,
 }: ProjectCardProps) {
@@ -110,7 +112,7 @@ export default function ProjectCard({
         ) : (
           <Image
             src={image}
-            alt={title}
+            alt={imageAlt || title}
             fill
             className="object-cover object-top"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

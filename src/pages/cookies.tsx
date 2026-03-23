@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SEOHead from "@/components/SEOHead";
 
 export default function Cookies() {
@@ -23,6 +24,18 @@ export default function Cookies() {
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-2">Managing cookies</h2>
               <p>You can clear cookies through your browser settings at any time. Clearing the theme cookie will reset your display to the default theme.</p>
+            </div>
+          </div>
+
+          <div className="mt-16 pt-8 border-t border-border-color text-center">
+            <p className="text-text-secondary mb-4">Looking for our services?</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/#pricing" className="inline-block px-6 py-2.5 rounded-lg bg-accent text-sm font-semibold hover:opacity-90 transition-all" style={{ color: "var(--primary-bg)" }}>
+                View pricing
+              </Link>
+              <Link href="/contact" className="inline-block px-6 py-2.5 rounded-lg border border-border-color text-sm font-medium text-text-secondary hover:text-accent hover:border-accent transition-colors">
+                Get a free quote
+              </Link>
             </div>
           </div>
         </div>

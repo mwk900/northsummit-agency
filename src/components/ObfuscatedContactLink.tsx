@@ -65,13 +65,25 @@ export default function ObfuscatedContactLink({
   };
 
   return (
-    <a
-      {...anchorProps}
-      href={href}
-      aria-label={ariaLabel ?? defaultAriaLabelByMethod[method]}
-      onClick={handleClick}
-    >
-      {content}
-    </a>
+    <>
+      <a
+        {...anchorProps}
+        href={href}
+        aria-label={ariaLabel ?? defaultAriaLabelByMethod[method]}
+        onClick={handleClick}
+      >
+        {content}
+      </a>
+      {method === "phone" && (
+        <noscript>
+          <a href="tel:+447776937164">+44 7776 937 164</a>
+        </noscript>
+      )}
+      {method === "email" && (
+        <noscript>
+          <a href="mailto:Hello@NorthSummit.agency">Hello@NorthSummit.agency</a>
+        </noscript>
+      )}
+    </>
   );
 }

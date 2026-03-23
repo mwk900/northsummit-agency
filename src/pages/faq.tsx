@@ -85,6 +85,15 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
+function sanitiseFaqAnswer(text: string): string {
+  return text
+    .replace(/^- /gm, '') // strip markdown bullet syntax
+    .replace(/\n\n+/g, ' ') // collapse double newlines to spaces
+    .replace(/\n/g, ' ') // collapse single newlines to spaces
+    .replace(/\s{2,}/g, ' ') // collapse multiple spaces
+    .trim();
+}
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -93,7 +102,7 @@ const faqSchema = {
     name: faq.q,
     acceptedAnswer: {
       '@type': 'Answer',
-      text: faq.a,
+      text: sanitiseFaqAnswer(faq.a),
     },
   })),
 };

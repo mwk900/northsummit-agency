@@ -82,6 +82,8 @@ export function generateSEO({
 
 export function generateOrganizationSchema() {
   const brandName = agency.name || agency.domain;
+  const phone = siteConfig.agency.phoneParts.join("");
+  const email = siteConfig.agency.emailParts.join("@");
 
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -92,7 +94,16 @@ export function generateOrganizationSchema() {
     logo: toAbsoluteUrl("/new-logo-white.png"),
     address: {
       "@type": "PostalAddress",
+      addressLocality: "Nottingham",
+      addressRegion: "Nottinghamshire",
       addressCountry: "GB",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: phone,
+      email,
+      contactType: "customer service",
+      areaServed: "GB",
     },
   };
 
@@ -115,6 +126,7 @@ export function generateWebSiteSchema() {
 export function generateLocalBusinessSchema() {
   const brandName = agency.name || agency.domain;
   const phone = siteConfig.agency.phoneParts.join("");
+  const email = siteConfig.agency.emailParts.join("@");
 
   return {
     "@context": "https://schema.org",
@@ -125,13 +137,28 @@ export function generateLocalBusinessSchema() {
     logo: toAbsoluteUrl("/new-logo-white.png"),
     telephone: phone,
     priceRange: "££",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 52.9548,
+      longitude: -1.1581,
+    },
     areaServed: {
       "@type": "Country",
       name: "United Kingdom",
     },
     address: {
       "@type": "PostalAddress",
+      addressLocality: "Nottingham",
+      addressRegion: "Nottinghamshire",
       addressCountry: "GB",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: phone,
+      email,
+      contactType: "customer service",
+      areaServed: "GB",
+      availableLanguage: ["English"],
     },
     serviceType: ["Web Design", "Web Development", "SEO"],
   };

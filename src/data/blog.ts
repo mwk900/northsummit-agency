@@ -3,9 +3,11 @@ export interface BlogPost {
   title: string;
   description: string;
   date: string;
+  dateModified?: string;
   readingTime: string;
   tags: string[];
   content: string;
+  ogImage?: string; // TODO: create unique OG images per post; falls back to /og.jpg
 }
 
 export const blogPosts: BlogPost[] = [

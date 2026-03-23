@@ -9,6 +9,7 @@ interface SEOHeadProps {
   type?: "website" | "article";
   publishedTime?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noIndex?: boolean;
 }
 
 export default function SEOHead({
@@ -19,6 +20,7 @@ export default function SEOHead({
   type,
   publishedTime,
   jsonLd,
+  noIndex,
 }: SEOHeadProps) {
   const seo = generateSEO({ title, description, path, image, type, publishedTime });
 
@@ -26,7 +28,7 @@ export default function SEOHead({
     <Head>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
-      <meta name="robots" content="index,follow" />
+      <meta name="robots" content={noIndex ? "noindex,follow" : "index,follow"} />
       <link rel="canonical" href={seo.url} />
 
       {/* Open Graph */}
@@ -39,10 +41,17 @@ export default function SEOHead({
       <meta property="og:type" content={seo.openGraph.type} />
       <meta property="og:site_name" content={seo.openGraph.siteName} />
       <meta property="og:locale" content={seo.openGraph.locale} />
+      <meta property="og:image:alt" content={seo.title} />
       {seo.openGraph.publishedTime && (
         <meta property="article:published_time" content={seo.openGraph.publishedTime} />
       )}
 
+      {/* Twitter Card */}
+      <meta name="twitter:card" content={seo.twitter.card} />
+      <meta name="twitter:title" content={seo.twitter.title} />
+      <meta name="twitter:description" content={seo.twitter.description} />
+      <meta name="twitter:image" content={seo.twitter.image} />
+      {seo.twitter.site && <meta name="twitter:site" content={seo.twitter.site} />}
 
       {/* JSON-LD */}
       {jsonLd && (

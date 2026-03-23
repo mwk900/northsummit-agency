@@ -126,7 +126,8 @@ export const siteConfig = {
       shortDesc: 'Menu with prices, chef backstory, and a reservation form. Visitors can book a table in under 30 seconds.',
       description:
         'Menu, backstory, and reservation form. Dark, moody design that sells the experience before the food. Signature dish cards with pricing and a booking form that removes friction.',
-      image: '/projects/restaurant.png',
+      image: '/projects/restaurant.webp',
+      imageAlt: 'Ember & East restaurant website with dark moody design, signature dish cards with pricing, and online reservation form',
       link: 'https://restaurant.northsummit.agency/',
     },
     {
@@ -136,7 +137,8 @@ export const siteConfig = {
       shortDesc: 'Style switcher, before-and-after slider, and a coverage map showing completed projects by area.',
       description:
         'Style switcher, before-and-after slider, and a coverage map with project counts per area. Built for a high-value service where trust closes the sale.',
-      image: '/projects/bathroom-kitchen.png',
+      image: '/projects/bathroom-kitchen.webp',
+      imageAlt: 'Ashwood Kitchens & Bathrooms website with style switcher, before-and-after slider, and regional coverage map',
       link: 'https://bathroom-kitchen.northsummit.agency/',
     },
     {
@@ -146,7 +148,8 @@ export const siteConfig = {
       shortDesc: 'Fault-finder tool that helps visitors work out their issue before calling. Quote form on every page.',
       description:
         'Interactive fault-finder helps visitors self-diagnose before calling. Certification badges, EV and smart home sections, and a rapid quote form above the fold.',
-      image: '/projects/electrician.png',
+      image: '/projects/electrician.webp',
+      imageAlt: 'Arc & Line Electrical website with interactive fault-finder tool, certification badges, and rapid quote form',
       link: 'https://electrician.northsummit.agency/',
     },
     {
@@ -156,7 +159,8 @@ export const siteConfig = {
   shortDesc: 'Interactive cost estimator, phased build timeline, and worry-buster cards that answer objections before they are raised.',
   description:
     'Interactive cost estimator lets visitors price a project in under two minutes. Phased build-process explorer, draggable Gantt-style timeline, worry-buster flip cards, and accreditation badges build trust before the first phone call.',
-  image: '/projects/builder.png',
+  image: '/projects/builder.webp',
+  imageAlt: 'Hearthstone Build Co. website with interactive cost estimator, phased build timeline, and accreditation badges',
   link: 'https://builder.northsummit.agency/',
 },
 {
@@ -166,7 +170,8 @@ export const siteConfig = {
   shortDesc: 'Live colour-picker room visualiser and before/after reveal slider. Palette-driven design throughout.',
   description:
     'Room visualiser lets visitors try colours on walls, ceilings, and trim before committing. Curated palette explorer, before/after hover-reveal project gallery, and a five-step process section that sells the prep work as a feature.',
-  image: '/projects/painter.png',
+  image: '/projects/painter.webp',
+  imageAlt: 'Chalk & Line Decorating website with live colour-picker room visualiser and before-and-after reveal slider',
   link: 'https://painter.northsummit.agency/',
 },
     {
@@ -176,7 +181,8 @@ export const siteConfig = {
       shortDesc: 'Walk-in availability badge, clear price board, and a gallery grid. Everything a customer needs at a glance.',
       description:
         'Walk-in badge, product carousel, photo gallery, and a clean price board. Bold, dark design built around walk-ins and quick bookings.',
-      image: '/projects/barbershop.png',
+      image: '/projects/barbershop.webp',
+      imageAlt: 'Oak and Steel Barbers website with walk-in availability badge, price board, and dark wood aesthetic',
       link: 'https://barbershop.northsummit.agency/',
     },
     {
@@ -186,7 +192,8 @@ export const siteConfig = {
       shortDesc: 'Diagnostic tool, transparent price list, and a side-by-side comparison against main dealers.',
       description:
         'Diagnostic tool, full price list, and an us-vs-dealer comparison that builds trust fast. Multi-step booking captures the job while they are already thinking about it.',
-      image: '/projects/garagecar.png',
+      image: '/projects/garagecar.webp',
+      imageAlt: 'Midlands AutoCare website with diagnostic tool, transparent price list, and dealer comparison section',
       link: 'https://garagecar.northsummit.agency/',
     },
 
@@ -198,7 +205,8 @@ export const siteConfig = {
       shortDesc: 'Before-and-after project sliders and a guided process that turns ideas into consultation bookings.',
       description:
         'Before-and-after sliders and a guided process that turns garden ideas into consultations. Lifestyle positioning lifts it above a typical trades page.',
-      image: '/projects/landscaping.png',
+      image: '/projects/landscaping.webp',
+      imageAlt: 'Verdance Outdoor Living website with before-and-after project sliders and consultation booking flow',
       link: 'https://landscaping.northsummit.agency/',
     },
     {
@@ -208,7 +216,8 @@ export const siteConfig = {
       shortDesc: 'Emergency-first layout with click-to-call above the fold. Built to convert urgent searches into same-day calls.',
       description:
         'Emergency-first layout with click-to-call above the fold and before-and-after project sliders. Built to turn urgent searches into same-day calls.',
-      image: '/projects/roofing01.png',
+      image: '/projects/roofing01.webp',
+      imageAlt: 'Northcrest Roofing website with emergency-first layout, click-to-call banner, and before-and-after project gallery',
       link: 'https://roofing.northsummit.agency/',
     },
     {
@@ -218,7 +227,8 @@ export const siteConfig = {
       shortDesc: 'Symptom picker so visitors can describe their problem fast, instant price guide, and Gas Safe trust badges.',
       description:
         'Symptom picker, instant price guide, and Gas Safe trust badges. Built for the moment someone has a leak and needs help now.',
-      image: '/projects/plumber001.png',
+      image: '/projects/plumber001.webp',
+      imageAlt: 'Cresco Plumbing & Heating website with symptom picker, instant price guide, and Gas Safe trust badges',
       link: 'https://plumber.northsummit.agency/',
     },
     {
@@ -228,7 +238,8 @@ export const siteConfig = {
       shortDesc: 'Clean service menu, simple booking form, and editorial photography that matches the salon experience.',
       description:
         'Warm editorial photography and a calm tone that matches a boutique salon experience. Easy service menu and a simple booking form.',
-      image: '/projects/beautystudio.png',
+      image: '/projects/beautystudio.webp',
+      imageAlt: 'Velvet Bloom Beauty Studio website with warm editorial photography, service menu, and simple booking form',
       link: 'https://beautystudio.northsummit.agency/',
     },
     {
@@ -238,7 +249,8 @@ export const siteConfig = {
       shortDesc: 'Coaching programmes with real results shown in numbers. Goal-based enquiry form captures interest before it fades.',
       description:
         'Coaching programmes, real results with numbers, and a goal-based consultation form. Designed to capture interest before motivation fades.',
-      image: '/projects/gym001.png',
+      image: '/projects/gym001.webp',
+      imageAlt: 'NorthPeak Performance gym website with coaching programmes, real results stats, and goal-based consultation form',
       link: 'https://gym.northsummit.agency/',
     },
     {
@@ -248,7 +260,8 @@ export const siteConfig = {
       shortDesc: 'Three pricing tiers shown upfront so visitors know the cost before they ask. WhatsApp option for quick bookings.',
       description:
         'Three pricing tiers shown upfront so visitors know the cost before they ask. Simple booking flow with a WhatsApp option for quick enquiries.',
-      image: '/projects/cleaners.png',
+      image: '/projects/cleaners.webp',
+      imageAlt: 'Spotless Nottingham cleaning website with three pricing tiers, booking flow, and WhatsApp quick-enquiry option',
       link: 'https://cleaners.northsummit.agency/',
     },
     {
@@ -258,7 +271,8 @@ export const siteConfig = {
       shortDesc: 'Dedicated service pages, work samples with finish specs, and a quote form with quick-select options.',
       description:
         'Multi-page B2B site with dedicated service pages, a work carousel with stock and finish specs, and a quote form with quick-select options.',
-      image: '/projects/printcompany.png',
+      image: '/projects/printcompany.webp',
+      imageAlt: 'Trent Valley PrintWorks website with dedicated service pages, work samples with finish specs, and quick-select quote form',
       link: 'https://printcompany.northsummit.agency/',
     },
   ],

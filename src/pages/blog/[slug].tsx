@@ -158,11 +158,12 @@ export default function BlogPost({ post }: Props) {
     "@type": "Article",
     headline: post.title,
     description: post.description,
+    image: post.ogImage || "https://northsummit.agency/og.jpg",
     datePublished: post.date,
+    dateModified: post.dateModified || post.date,
     author: {
-      "@type": "Organization",
-      name: "NorthSummit",
-      url: "https://northsummit.agency",
+      "@type": "Person",
+      name: "Mati Wozniak",
     },
     publisher: {
       "@type": "Organization",
@@ -178,6 +179,31 @@ export default function BlogPost({ post }: Props) {
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://northsummit.agency",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://northsummit.agency/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `https://northsummit.agency/blog/${post.slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <SEOHead
@@ -186,7 +212,8 @@ export default function BlogPost({ post }: Props) {
         path={`/blog/${post.slug}`}
         type="article"
         publishedTime={post.date}
-        jsonLd={articleSchema}
+        image={post.ogImage}
+        jsonLd={[articleSchema, breadcrumbSchema]}
       />
 
       <article className="py-20">

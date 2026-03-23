@@ -14,6 +14,7 @@ export default function LogoMark({ size = 28 }: LogoMarkProps) {
       alt="NorthSummit logo mark"
       width={size}
       height={size}
+      style={{ height: 'auto' }}
       priority
     />
   );

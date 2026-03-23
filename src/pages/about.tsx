@@ -2,6 +2,19 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import SEOHead from "@/components/SEOHead";
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Mati Wozniak",
+  jobTitle: "Founder",
+  worksFor: {
+    "@type": "Organization",
+    name: "NorthSummit",
+    url: "https://northsummit.agency",
+  },
+  url: "https://northsummit.agency/about",
+};
+
 export default function About() {
   return (
     <>
@@ -9,6 +22,7 @@ export default function About() {
         title="About NorthSummit | UK Web Design for Trades & Local Businesses"
         description="NorthSummit builds websites for tradespeople and local businesses across the UK. One person, direct communication, honest pricing."
         path="/about"
+        jsonLd={personSchema}
       />
 
       {/* Hero */}
