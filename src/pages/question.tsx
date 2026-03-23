@@ -18,6 +18,7 @@ export default function Question() {
         title="Ask a Quick Question"
         description="Send us a quick question and we'll get back to you within 24 hours."
         path="/question"
+        noIndex
       />
 
       <section className="py-20">

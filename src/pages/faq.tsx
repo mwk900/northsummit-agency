@@ -136,6 +136,15 @@ export default function FAQ() {
               </a>{" "}
               and we&apos;ll talk it through.
             </p>
+            <p className="text-text-secondary mt-4">
+              Looking for something more specific? See our pages for{" "}
+              <Link href="/web-design-for-plumbers" className="text-accent hover:underline">plumbers</Link>,{" "}
+              <Link href="/web-design-for-electricians" className="text-accent hover:underline">electricians</Link>,{" "}
+              <Link href="/web-design-for-roofers" className="text-accent hover:underline">roofers</Link>,{" "}
+              <Link href="/web-design-for-builders" className="text-accent hover:underline">builders</Link>,{" "}
+              <Link href="/web-design-for-landscapers" className="text-accent hover:underline">landscapers</Link>, and{" "}
+              <Link href="/web-design-for-cleaners" className="text-accent hover:underline">cleaners</Link>.
+            </p>
           </motion.div>
 
           <motion.div
@@ -156,6 +165,9 @@ export default function FAQ() {
           <p className="text-text-secondary mb-8">
             Book a free call and ask us anything. No pressure, no commitment.
             Or if you already have a website, <Link href="/audit" className="text-accent font-medium hover:underline">request a free audit</Link> and we&apos;ll tell you what we&apos;d improve.
+            You can also browse our{" "}
+            <Link href="/portfolio" className="text-accent font-medium hover:underline">trade website examples</Link>{" "}
+            if you want to see how the pages are structured in practice.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

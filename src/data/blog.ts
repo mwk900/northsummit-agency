@@ -17,6 +17,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "A clear breakdown of website costs in the UK for 2026. What tradespeople and local businesses actually pay for web design - from DIY builders to custom-built sites.",
     date: "2026-03-23",
+    dateModified: "2026-03-23",
     readingTime: "8 min read",
     tags: ["pricing", "web design", "small business"],
     content: `If you run a trade or local service business in the UK and you have been searching for "how much does a website cost" - you have probably noticed that the answers vary wildly. Some agencies quote thousands. Some freelancers say a few hundred. And website builders like Wix advertise monthly plans starting at under twenty pounds.
@@ -156,6 +157,12 @@ Ask these questions before hiring anyone:
 4. What are the ongoing costs after launch?
 5. How do you handle changes and updates after the site goes live?
 
+## Where Trade Businesses Should Start
+
+If you want to compare pricing against real page structures, browse our [trade website examples](/portfolio) and look at how we approach [plumber website design](/web-design-for-plumbers), [electrician website design](/web-design-for-electricians), [roofer website design](/web-design-for-roofers), and [builder website design](/web-design-for-builders).
+
+If you already have a site and you are unsure whether it is underperforming, start with a [free website audit](/audit) before paying for a rebuild.
+
 ## The Bottom Line
 
 A good website for a UK trade business does not need to cost a fortune. What matters is that it loads fast on mobile, shows up in local Google searches, makes it obvious what you do, and makes it easy for customers to contact you.
@@ -172,6 +179,7 @@ Whatever you spend, make sure the site is mobile-friendly, has proper SEO founda
     description:
       "97% of customers search online before hiring a tradesperson. Find out why plumbers, electricians, roofers, builders, and local businesses need a website - and what happens without one.",
     date: "2026-03-16",
+    dateModified: "2026-03-23",
     readingTime: "7 min read",
     tags: ["trades", "getting started", "local business"],
     content: `If you are a plumber, electrician, roofer, builder, landscaper, or any other tradesperson in the UK - you have probably asked yourself whether you actually need a website. You get work through word of mouth. You are busy enough. Maybe you have a Facebook page and that seems to do the job.
@@ -293,6 +301,12 @@ Good technical SEO for a trades website means:
 
 This is not something that happens overnight. Rankings take time - usually a few months before you start seeing real results. But a website with solid SEO foundations from day one will keep improving over time, bringing in more and more local customers through organic search.
 
+## Where To Start
+
+If you know the sort of work you want more of, start with a clear commercial page for [plumbers](/web-design-for-plumbers), [electricians](/web-design-for-electricians), [roofers](/web-design-for-roofers), [builders](/web-design-for-builders), or [landscapers](/web-design-for-landscapers).
+
+Then strengthen it with [local SEO for trades](/blog/local-seo-for-trades), make sure your [Google Business Profile is set up properly](/blog/google-business-profile-for-trades), and compare your structure against real [trade website examples](/portfolio).
+
 ## The Bottom Line
 
 If you are a tradesperson or local service business in the UK - a plumber, electrician, roofer, builder, landscaper, decorator, cleaner, barber, personal trainer, or any other local service - having a website in 2026 is not optional. It is how customers find you, how they decide to trust you, and how they get in touch.
@@ -307,6 +321,7 @@ That is what turns a website from a cost into an investment that pays for itself
     description:
       "Comparing Wix, Squarespace, WordPress, and custom-built websites for UK tradespeople. Honest pros and cons to help you decide what works best for your business.",
     date: "2026-03-09",
+    dateModified: "2026-03-23",
     readingTime: "9 min read",
     tags: ["comparison", "web design", "trades"],
     content: `If you are a plumber, electrician, builder, roofer, or any other tradesperson in the UK looking to get a website - you have probably come across names like Wix, Squarespace, and WordPress. They all promise easy, affordable websites that you can build yourself.
@@ -438,6 +453,12 @@ For a tradesperson on a very tight budget who just needs something basic up quic
 - You want to own everything and not be tied to a platform
 - You are a plumber, electrician, roofer, builder, landscaper, or other trade that needs to rank for "[service] near me" searches
 
+## See The Difference In Practice
+
+If you want to compare these options against real page structures, browse our [trade website examples](/portfolio) or look at what we build for [plumbers](/web-design-for-plumbers), [electricians](/web-design-for-electricians), [roofers](/web-design-for-roofers), and [cleaners](/web-design-for-cleaners).
+
+If your current site already exists and you are not sure whether it needs a full rebuild, start with a [free website audit](/audit) before changing platforms.
+
 ## The Bottom Line
 
 There is no single right answer for everyone. Wix and Squarespace are fine for getting something basic online quickly. WordPress is good for content-heavy sites that need flexibility. A custom-built website is the strongest option for trades and local businesses that need to rank on Google and convert visitors into phone calls.
@@ -452,6 +473,7 @@ Whatever you choose, make sure you own it, make sure it works on phones, and mak
     description:
       "Your website gets visitors but no phone calls or enquiries? Here are the most common reasons UK trade and local business websites fail to convert - and practical fixes for each.",
     date: "2026-03-02",
+    dateModified: "2026-03-23",
     readingTime: "8 min read",
     tags: ["conversion", "troubleshooting", "local business"],
     content: `You have a website. Maybe you paid good money for it. It looks decent enough. But the phone is not ringing. The contact form sits empty. Customers are not getting in touch through your site.
@@ -595,15 +617,18 @@ Your Google Business Profile and your website work together. The profile gets yo
 
 ## How to Tell If Your Website Is Actually Working
 
-A website that generates enquiries should give you measurable results. Set up Google Analytics (it is free) and track:
+You do not need invasive tracking scripts to spot whether a local-service website is working. Start with the signals you can see directly:
 
-- How many visitors your site gets each month
-- Where they come from (Google search, social media, direct)
-- Which pages they visit most
-- How many contact form submissions you receive
-- How many calls come through your website
+- How many quote requests, calls, or messages you get each month
+- Which services or pages lead to the best-fit enquiries
+- Whether your site is appearing more often in Google Search Console for the services and areas you care about
+- Whether customers mention specific pages, services, or articles when they contact you
 
-If you are getting traffic but no enquiries, you have a conversion problem (issues 3 to 5 above). If you are not getting traffic at all, you have a visibility problem (issues 1, 6, and 7).
+If you are getting impressions but very few enquiries, you probably have a conversion problem. If you are getting very little visibility at all, you probably have a search-positioning problem.
+
+## If You Want A Faster Diagnosis
+
+If you want an outside view, [request a free website audit](/audit). It also helps to compare your current structure against pages built for [plumbers](/web-design-for-plumbers), [electricians](/web-design-for-electricians), [roofers](/web-design-for-roofers), and [builders](/web-design-for-builders), plus our guides to [local SEO for trades](/blog/local-seo-for-trades) and [Google Business Profile setup for trade businesses](/blog/google-business-profile-for-trades).
 
 ## The Bottom Line
 
@@ -621,6 +646,7 @@ And if your current website is beyond saving - outdated, slow, not mobile-friend
     description:
       "Find out what features a tradesman website needs to turn visitors into paying customers. A practical guide for plumbers, electricians, roofers, builders, and local service businesses in the UK.",
     date: "2026-02-24",
+    dateModified: "2026-03-23",
     readingTime: "7 min read",
     tags: ["web design", "trades", "conversion"],
     content: `When a potential customer lands on your website, they are not admiring the design. They are trying to answer a few simple questions as fast as possible:
@@ -771,7 +797,9 @@ A good trades website does not need to be complicated or expensive. It needs to 
 
 If your website ticks all seven boxes, it will do what a website should do for a trade business - bring in phone calls, enquiries, and bookings from customers in your area who are actively looking for your services.
 
-If it does not tick all seven, now you know what to work on first.`,
+If it does not tick all seven, now you know what to work on first.
+
+If you want to see how those ideas translate into real page structures, browse our [trade website examples](/portfolio), compare our pages for [plumbers](/web-design-for-plumbers), [electricians](/web-design-for-electricians), [roofers](/web-design-for-roofers), and [kitchen & bathroom fitters](/web-design-for-kitchen-and-bathroom-fitters), or [request a free website audit](/audit) if your current site is underperforming.`,
   },
   {
     slug: "why-mobile-friendly-website-matters",
@@ -933,5 +961,435 @@ Use this to audit your own site:
 - Google Search Console shows no mobile usability errors
 
 If you tick every box, your mobile experience is solid. If you do not - now you know where to start.`,
+  },
+  {
+    slug: "local-seo-for-trades",
+    title: "Local SEO for Trades: What Actually Helps Plumbers, Electricians and Roofers Rank",
+    description:
+      "A practical guide to local SEO for UK trades. Service pages, Google Business Profile, internal links, trust signals, and what actually helps plumbers, electricians, roofers, builders, and landscapers win more enquiries.",
+    date: "2026-03-23",
+    dateModified: "2026-03-23",
+    readingTime: "8 min read",
+    tags: ["local SEO", "trades", "search"],
+    content: `If you run a trade business in the UK and want more enquiries from Google, local SEO matters. But most advice on the topic is either too vague to use or too spammy to trust.
+
+This guide keeps it simple. If you are a plumber, electrician, roofer, builder, landscaper, cleaner, or another local service business, these are the things that actually help.
+
+## 1. Start With A Proper Service Page
+
+Local SEO does not start with tricks. It starts with a page that clearly explains what you do.
+
+If you want to rank for plumbing work, you need a page that is clearly about plumbing. If you want to rank for roofing, you need a page that is clearly about roofing. The same applies to electricians, builders, landscapers, and other trades.
+
+That is why we build separate commercial pages for [plumbers](/web-design-for-plumbers), [electricians](/web-design-for-electricians), [roofers](/web-design-for-roofers), [builders](/web-design-for-builders), and [landscapers](/web-design-for-landscapers) rather than trying to force everything into one vague homepage.
+
+Your service page should make four things obvious:
+
+- What you do
+- Who it is for
+- Where you work
+- How to get in touch
+
+If the page is vague, the SEO will be vague too.
+
+## 2. Keep Your Website Structure Honest
+
+One strong service page is better than ten weak ones. Local SEO does not improve because you create a pile of thin pages with swapped town names.
+
+For most trade businesses, the right approach is:
+
+- A clear homepage
+- A dedicated page for each main service or trade focus
+- A contact page
+- A proof page such as [trade website examples](/portfolio)
+- A few supporting articles that answer real customer questions
+
+That structure helps both search engines and visitors. It is also much easier to maintain than dozens of filler pages.
+
+## 3. Use Location Signals Naturally
+
+You do need to tell Google where you work. But that does not mean stuffing your town name into every sentence.
+
+Better location signals include:
+
+- A clear service-area explanation in the page copy
+- Your base location and your wider coverage area
+- Consistent business details across your site and listings
+- A supporting local page if you genuinely have a strong local connection, like our [Nottingham web design page](/web-design-nottingham)
+
+If your business works across a region or nationwide, say that clearly. If you mainly serve a tighter area, say that clearly too. The key is accuracy, not volume.
+
+## 4. Get Your Google Business Profile Right
+
+For most trades, your [Google Business Profile](/blog/google-business-profile-for-trades) is one of the strongest local SEO assets you have.
+
+Your website and GBP should support each other:
+
+- The profile helps you show up in the map pack
+- The website helps customers understand the service and trust the business
+- The internal links on your site help Google understand which pages matter most
+
+Treat your website and GBP as one system, not two separate jobs.
+
+## 5. Make Internal Linking Work For You
+
+Internal links are one of the easiest wins for trade websites.
+
+If your homepage mentions roofing, link to your roofing page. If a blog post talks about poor lead generation, link to your [website audit page](/audit). If a guide compares DIY builders with custom sites, link to relevant trade pages and your [portfolio](/portfolio).
+
+Good internal linking helps with:
+
+- Discovery
+- Relevance
+- Topical signals
+- Moving visitors from information to enquiry
+
+What does not help is dumping random link lists into the footer and hoping for the best. The link needs to make sense in context.
+
+## 6. Show Proof That Supports Local Intent
+
+Local SEO is not only about keywords. It is also about trust.
+
+A customer searching for a trade service wants to know:
+
+- Are you real?
+- Do you work in their area?
+- Do you do the type of job they need?
+- Do you look credible enough to contact?
+
+Useful proof elements include:
+
+- Real service descriptions
+- Coverage information
+- Project examples
+- Photos of completed work
+- Reviews or testimonials when you have them
+- Clear contact details
+
+If you do not yet have testimonials or review snippets, do not invent them. Use honest proof you really have, and strengthen it over time.
+
+## 7. Support Commercial Pages With The Right Content
+
+A good trade page can rank on its own, but it gets stronger when you support it with relevant content.
+
+For example:
+
+- A plumbing page can be supported by articles about lead generation, website costs, and GBP setup
+- A roofing page can be supported by content about mobile-first UX and trust signals
+- A builder page can be supported by articles about project galleries and better enquiry forms
+
+That is the role of supporting content. It should make the money pages stronger, not drift off into unrelated topics.
+
+## 8. Keep Mobile UX Tight
+
+Local SEO and mobile UX are tied together. If the page loads badly, buries the phone number, or makes the next step unclear, rankings are only half the problem. The real problem is lost enquiries.
+
+Make sure your site:
+
+- Loads quickly on mobile
+- Uses readable text
+- Keeps the contact path obvious
+- Makes buttons easy to tap
+- Does not hide key information behind awkward menus or clutter
+
+If you want a deeper look at that side of things, read our guide on [why mobile-friendly websites matter](/blog/why-mobile-friendly-website-matters).
+
+## 9. Measure Local SEO In Business Terms
+
+The real test is not whether you found a slightly better checklist. It is whether the site brings in better work.
+
+For a trade business, the useful questions are:
+
+- Are more of the right people finding the site?
+- Are they landing on the right service page?
+- Are they calling, messaging, or asking for quotes?
+- Are you getting better-fit enquiries from the areas you want?
+
+That is the standard local SEO should be judged against.
+
+## The Bottom Line
+
+Local SEO for trades is not about gaming Google. It is about making your business easier to understand, easier to trust, and easier to contact.
+
+Start with strong service pages, keep the structure honest, support it with a solid Google Business Profile, and use internal links to reinforce the pages that matter most.
+
+If you want help figuring out what to improve first, [request a free website audit](/audit) or compare your current setup against our pages for [plumbers](/web-design-for-plumbers), [electricians](/web-design-for-electricians), [roofers](/web-design-for-roofers), and [builders](/web-design-for-builders).`,
+  },
+  {
+    slug: "google-business-profile-for-trades",
+    title: "Google Business Profile for Trades: What UK Plumbers, Electricians and Roofers Need To Get Right",
+    description:
+      "How to improve a Google Business Profile for a UK trade business. Categories, service areas, photos, reviews, website links, and common mistakes for plumbers, electricians, roofers, builders, cleaners, and landscapers.",
+    date: "2026-03-23",
+    dateModified: "2026-03-23",
+    readingTime: "7 min read",
+    tags: ["Google Business Profile", "local SEO", "trades"],
+    content: `A Google Business Profile is one of the most important local SEO assets a trade business can have. When someone searches for a plumber, electrician, roofer, cleaner, or builder near them, the map pack often gets the first click.
+
+But a lot of trade businesses leave performance on the table because the profile is incomplete, inconsistent, or disconnected from the website.
+
+Here is what actually matters.
+
+## 1. Pick The Right Primary Category
+
+Your primary category tells Google what type of business you are. It needs to match your main service, not just something vague.
+
+Examples:
+
+- Plumber
+- Electrician
+- Roofing contractor
+- Builder
+- Landscaper
+- House cleaning service
+
+If your main category is too broad or too generic, you weaken the profile from the start.
+
+## 2. Keep Your Business Details Consistent
+
+Your business name, phone number, website, and service-area information should line up across:
+
+- Google Business Profile
+- Your website
+- Any major directories you use
+
+Consistency helps Google trust the information. It also helps customers trust the business.
+
+If your site and profile tell slightly different stories about what you do or where you work, it creates friction.
+
+## 3. Link To The Right Website Page
+
+Do not just think of the website field as a box to fill in. Think about where the searcher should land next.
+
+In many cases, the homepage is fine. But if your business depends heavily on one service, it can make more sense to strengthen the relevant commercial page as well through the rest of your site structure.
+
+That is why we build clear pages for [plumbers](/web-design-for-plumbers), [electricians](/web-design-for-electricians), [roofers](/web-design-for-roofers), [builders](/web-design-for-builders), and other trades. The stronger the site structure behind the profile, the better the overall local search picture.
+
+## 4. Define Your Service Area Properly
+
+If you are a service-area business, your profile needs to reflect that accurately.
+
+Do not pretend to be based everywhere. Do not list areas you do not serve. Do not multiply fake local presence signals.
+
+Instead:
+
+- Set the real service areas you cover
+- Make sure the website explains that coverage clearly
+- Keep your messaging consistent between profile and site
+
+If you have a genuine local base plus wider UK coverage, present both honestly. That is the approach we use with our supporting [Nottingham page](/web-design-nottingham) while keeping the core positioning UK-wide.
+
+## 5. Add Real Photos
+
+Photos matter more than many businesses realise.
+
+For a trade profile, useful photos include:
+
+- Work in progress
+- Completed jobs
+- Vehicles with branding if relevant
+- Team members on site
+- Before-and-after images where appropriate
+
+The goal is not to look polished for the sake of it. The goal is to look real, active, and trustworthy.
+
+## 6. Get More Reviews The Right Way
+
+Reviews are one of the strongest trust signals in local search. They influence both rankings and click behaviour.
+
+The sensible approach is simple:
+
+- Ask happy customers at the right time
+- Make it easy for them to leave a review
+- Keep the request natural and low-friction
+- Reply professionally when reviews come in
+
+Do not fake reviews. Do not buy them. Do not script them into sounding identical. The long-term risk is not worth it.
+
+## 7. Keep Your Services And Updates Active
+
+Google gives you room to add service information and profile updates. Use that space to reinforce what you actually do.
+
+This can help clarify:
+
+- Core services
+- Seasonal work
+- New offers or availability
+- Recent projects
+
+It does not need to be constant. It just needs to show that the business is active and the profile is being looked after.
+
+## 8. Make Sure The Website Supports The Profile
+
+A good GBP does not rescue a weak website. The two need to work together.
+
+Your site should back up the profile with:
+
+- Clear service pages
+- Strong contact paths
+- Mobile-friendly design
+- Proof and trust signals
+- Internal links that point to the pages that matter
+
+If the website is vague, slow, or poorly structured, the profile has less to work with. That is why local SEO is bigger than profile setup alone. Read our guide to [local SEO for trades](/blog/local-seo-for-trades) if you want the broader picture.
+
+## 9. Common Google Business Profile Mistakes
+
+The problems we see most often are:
+
+- Wrong category
+- Half-finished profile information
+- Inconsistent phone numbers or coverage details
+- Weak or outdated website pages
+- No real photos
+- No review process
+- No clear link between profile and service pages
+
+Each one looks small on its own. Together, they make the business easier to overlook.
+
+## The Bottom Line
+
+For plumbers, electricians, roofers, builders, landscapers, cleaners, and other local service businesses, your Google Business Profile is a major part of how people find you.
+
+Get the basics right, keep it honest, and make sure your website backs it up with strong service pages and a clear next step.
+
+If you want help spotting the weak points, [request a free website audit](/audit) or compare your current setup against our [trade website examples](/portfolio) and dedicated pages for [roofers](/web-design-for-roofers), [cleaners](/web-design-for-cleaners), and [landscapers](/web-design-for-landscapers).`,
+  },
+  {
+    slug: "trade-website-examples",
+    title: "Trade Website Examples: What A High-Converting Trades Website Should Include",
+    description:
+      "Trade website examples for plumbers, electricians, roofers, builders, landscapers, painters, kitchen and bathroom fitters, and cleaners. See what a high-converting trade website should include.",
+    date: "2026-03-23",
+    dateModified: "2026-03-23",
+    readingTime: "7 min read",
+    tags: ["examples", "web design", "trades"],
+    content: `If you search for trade website examples, you usually end up with two disappointing options: generic inspiration galleries with no commercial thinking behind them, or agency portfolios that tell you nothing about why the page structure works.
+
+For a real trade business, the question is not "does this look nice?" The question is "will this help more of the right people get in touch?"
+
+That is the standard worth using.
+
+## What Makes A Good Trade Website Example Useful?
+
+A useful example should show more than colour palettes and hero sections. It should help you understand:
+
+- What the page is trying to achieve
+- Which type of customer it is built for
+- How the site handles proof, trust, and contact
+- What makes the structure right for that trade
+
+That is why our [portfolio](/portfolio) is built around commercial use, not just visuals. The examples are there to show how different trades need different structures.
+
+## Plumber Website Examples
+
+A strong plumber website should make urgent contact easy.
+
+That usually means:
+
+- Click-to-call contact paths
+- Clear emergency and non-emergency service sections
+- Trust signals like Gas Safe details where relevant
+- Coverage information that makes sense
+- Fast mobile performance
+
+See our full page on [plumber website design](/web-design-for-plumbers) if plumbing is the main service you want to target.
+
+## Electrician Website Examples
+
+An electrician website needs to look credible quickly. Domestic and commercial customers both want confidence that the business is qualified, organised, and easy to deal with.
+
+The best electrician examples usually include:
+
+- Certification-first trust signals
+- Clear service pages
+- Strong quote or contact paths
+- Mobile-first layouts
+- Enough detail to support higher-trust enquiries
+
+Our [electrician website design page](/web-design-for-electricians) shows how that can be structured.
+
+## Roofer Website Examples
+
+Roofing websites often need to support both urgent repair intent and larger planned work.
+
+That means the site should balance:
+
+- Immediate contact options
+- Project proof
+- Service clarity
+- Local trust signals
+- A strong mobile experience
+
+Our page on [roofer website design](/web-design-for-roofers) is built around that type of search intent.
+
+## Builder Website Examples
+
+Builder websites need more depth than many other trade sites because the jobs are larger and the buying decision is slower.
+
+Useful builder examples tend to include:
+
+- Project-led proof
+- Better service breakdowns
+- Enquiry forms that help qualify scope
+- Credibility signals for higher-value work
+- A layout that supports longer consideration without feeling bloated
+
+See our page on [builder website design](/web-design-for-builders) for a practical example of that structure.
+
+## Landscaper And Decorator Examples
+
+Landscapers and painters/decorators both depend heavily on visual proof, but the service positioning still matters.
+
+The strongest examples usually combine:
+
+- Real project imagery
+- Clear descriptions of the services
+- Local-search support
+- A simple route to a quote
+- A mobile layout that still makes the visuals persuasive
+
+You can compare our pages for [landscapers](/web-design-for-landscapers) and [painters & decorators](/web-design-for-painters-and-decorators) to see how the same principles adapt to different trades.
+
+## Kitchen, Bathroom, And Cleaning Business Examples
+
+Not every trade website needs the same level of detail.
+
+- [Kitchen and bathroom fitter websites](/web-design-for-kitchen-and-bathroom-fitters) need stronger project proof and a structure that supports larger-ticket enquiries.
+- [Cleaning business websites](/web-design-for-cleaners) need clear service menus, local clarity, and a very simple route to a booking or quote.
+
+The right structure depends on how people buy that service.
+
+## What All Good Trade Websites Have In Common
+
+Even though the details change by trade, the best examples all share a few traits:
+
+- Clear H1 and service positioning
+- Strong mobile usability
+- Visible contact paths
+- Real proof where available
+- Internal links that help users move to the next relevant page
+- Copy that sounds like a real business, not agency filler
+
+Those basics do more for enquiries than over-designed layouts ever will.
+
+## How To Use Examples Without Copying Blindly
+
+Looking at examples is useful. Copying them word-for-word is not.
+
+The right way to use trade website examples is to ask:
+
+- What problem is this page solving?
+- Which part of the structure would help my trade?
+- What proof would matter to my customers?
+- What would I need to change for my service mix and area?
+
+That gives you something practical to work from instead of just another screenshot board.
+
+## The Bottom Line
+
+The best trade website examples are not the prettiest ones. They are the ones that make the business clearer, more trustworthy, and easier to contact.
+
+If you want to compare your current site against that standard, browse our [trade website examples](/portfolio), look at the dedicated pages for [plumbers](/web-design-for-plumbers), [builders](/web-design-for-builders), and [cleaners](/web-design-for-cleaners), or [request a free website audit](/audit) if you want a practical outside view.`,
   },
 ];

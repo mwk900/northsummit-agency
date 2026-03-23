@@ -10,6 +10,8 @@ interface SEOHeadProps {
   publishedTime?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noIndex?: boolean;
+  canonical?: string | false;
+  ogUrl?: string | false;
 }
 
 export default function SEOHead({
@@ -21,20 +23,24 @@ export default function SEOHead({
   publishedTime,
   jsonLd,
   noIndex,
+  canonical,
+  ogUrl,
 }: SEOHeadProps) {
   const seo = generateSEO({ title, description, path, image, type, publishedTime });
+  const canonicalHref = canonical === false ? null : canonical ?? seo.url;
+  const openGraphUrl = ogUrl === false ? null : ogUrl ?? seo.openGraph.url;
 
   return (
     <Head>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <meta name="robots" content={noIndex ? "noindex,follow" : "index,follow"} />
-      <link rel="canonical" href={seo.url} />
+      {canonicalHref && <link rel="canonical" href={canonicalHref} />}
 
       {/* Open Graph */}
       <meta property="og:title" content={seo.openGraph.title} />
       <meta property="og:description" content={seo.openGraph.description} />
-      <meta property="og:url" content={seo.openGraph.url} />
+      {openGraphUrl && <meta property="og:url" content={openGraphUrl} />}
       <meta property="og:image" content={seo.openGraph.image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />

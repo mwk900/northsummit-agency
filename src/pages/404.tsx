@@ -5,7 +5,13 @@ import SEOHead from '@/components/SEOHead';
 export default function Custom404() {
   return (
     <>
-      <SEOHead title="Page Not Found" description="The page you're looking for doesn't exist." noIndex />
+      <SEOHead
+        title="Page Not Found"
+        description="The page you're looking for doesn't exist."
+        noIndex
+        canonical={false}
+        ogUrl={false}
+      />
 
       <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center px-4">

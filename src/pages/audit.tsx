@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 import SEOHead from "@/components/SEOHead";
 import ContactForm from "@/components/ContactForm";
 
@@ -19,6 +20,13 @@ export default function Audit() {
             <div className="w-20 h-1 rounded-full bg-accent mb-4" />
             <p className="text-text-secondary">
               Send your website link and a few details about your business. We&apos;ll review it and reply with clear, practical improvements you can act on. You can use them whether you work with us or not.
+            </p>
+            <p className="text-text-secondary mt-4">
+              We most often audit sites for{" "}
+              <Link href="/web-design-for-plumbers" className="text-accent hover:underline">plumbers</Link>,{" "}
+              <Link href="/web-design-for-electricians" className="text-accent hover:underline">electricians</Link>,{" "}
+              <Link href="/web-design-for-roofers" className="text-accent hover:underline">roofers</Link>,{" "}
+              <Link href="/web-design-for-builders" className="text-accent hover:underline">builders</Link>, and other local service businesses that are not getting enough enquiries.
             </p>
           </motion.div>
 
@@ -45,6 +53,13 @@ export default function Audit() {
               </li>
             </ul>
             <p className="mt-3 text-xs text-text-secondary">Typical turnaround: 24-48 hours. No spam, no hard sell.</p>
+            <p className="mt-3 text-xs text-text-secondary">
+              If your current site is getting traffic but not leads, start with our{" "}
+              <Link href="/blog/website-not-getting-enquiries" className="text-accent hover:underline">
+                guide to fixing a website that is not getting enquiries
+              </Link>
+              .
+            </p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>

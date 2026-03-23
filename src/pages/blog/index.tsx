@@ -21,8 +21,8 @@ export default function Blog() {
   return (
     <>
       <SEOHead
-        title="Blog - Web Design Tips for Trades & Small Businesses"
-        description="Practical advice on websites, SEO, and getting more customers online. Written for plumbers, electricians, builders, roofers, and local service businesses across the UK."
+        title="SEO & Web Design Advice for Trades & Small Businesses"
+        description="Practical SEO and website advice for plumbers, electricians, roofers, builders, cleaners, and local businesses across the UK."
         path="/blog"
       />
 
@@ -34,13 +34,37 @@ export default function Blog() {
             className="max-w-3xl mb-14"
           >
             <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">
-              Blog
+              SEO and website advice for trades and local businesses
             </h1>
             <div className="w-20 h-1 rounded-full bg-accent mb-6" />
             <p className="text-lg text-text-secondary leading-relaxed">
               Straightforward advice on websites, local SEO, and getting more
               customers online. Written for tradespeople and local businesses
-              across the UK - no jargon, no fluff.
+              across the UK with a strong focus on lead generation, clearer
+              service pages, and getting found for the right searches.
+            </p>
+            <p className="text-text-secondary leading-relaxed mt-4">
+              Start with our pages for{" "}
+              <Link href="/web-design-for-plumbers" className="text-accent hover:underline">
+                plumbers
+              </Link>
+              ,{" "}
+              <Link href="/web-design-for-electricians" className="text-accent hover:underline">
+                electricians
+              </Link>
+              ,{" "}
+              <Link href="/web-design-for-roofers" className="text-accent hover:underline">
+                roofers
+              </Link>
+              ,{" "}
+              <Link href="/web-design-for-builders" className="text-accent hover:underline">
+                builders
+              </Link>
+              , and{" "}
+              <Link href="/web-design-for-landscapers" className="text-accent hover:underline">
+                landscapers
+              </Link>
+              {" "}if you want to see the commercial pages these articles support.
             </p>
           </motion.div>
 
@@ -104,9 +128,17 @@ export default function Blog() {
               href="/portfolio"
               className="text-accent font-medium hover:underline"
             >
-              portfolio
+              trade website examples
             </Link>{" "}
-            or get in touch for a free quote.
+            , explore our pages for{" "}
+            <Link href="/web-design-for-cleaners" className="text-accent font-medium hover:underline">
+              cleaners
+            </Link>{" "}
+            and{" "}
+            <Link href="/web-design-for-painters-and-decorators" className="text-accent font-medium hover:underline">
+              painters &amp; decorators
+            </Link>
+            , or get in touch for a free quote.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link

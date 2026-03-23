@@ -125,9 +125,8 @@ function renderMarkdown(content: string) {
 }
 
 function formatInline(text: string) {
-  // Bold
   const parts: (string | React.ReactElement)[] = [];
-  const regex = /\*\*(.+?)\*\*/g;
+  const regex = /(\*\*.+?\*\*|\[[^\]]+\]\([^)]+\))/g;
   let lastIndex = 0;
   let match;
 
@@ -135,11 +134,44 @@ function formatInline(text: string) {
     if (match.index > lastIndex) {
       parts.push(text.slice(lastIndex, match.index));
     }
-    parts.push(
-      <strong key={match.index} className="font-semibold text-text-primary">
-        {match[1]}
-      </strong>
-    );
+
+    const token = match[0];
+    const boldMatch = token.match(/^\*\*(.+?)\*\*$/);
+    const linkMatch = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+
+    if (boldMatch) {
+      parts.push(
+        <strong key={match.index} className="font-semibold text-text-primary">
+          {boldMatch[1]}
+        </strong>
+      );
+    } else if (linkMatch) {
+      const [, label, href] = linkMatch;
+      const isInternal = href.startsWith("/");
+
+      parts.push(
+        isInternal ? (
+          <Link
+            key={match.index}
+            href={href}
+            className="text-accent font-medium hover:underline"
+          >
+            {label}
+          </Link>
+        ) : (
+          <a
+            key={match.index}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent font-medium hover:underline"
+          >
+            {label}
+          </a>
+        )
+      );
+    }
+
     lastIndex = regex.lastIndex;
   }
 

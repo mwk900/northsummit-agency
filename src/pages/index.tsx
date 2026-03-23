@@ -141,7 +141,7 @@ export default function Home() {
     <>
       <SEOHead
         title="Web Design for Trades & Local Businesses UK"
-        description="Web design for plumbers, electricians, roofers, and local businesses across the UK. Fast, mobile-first websites built to turn local searches into calls. Based in Nottingham, working UK-wide."
+        description="Web design for trades, local service businesses, and small businesses across the UK. Fast, mobile-first websites built to turn local searches into calls, quote requests, and bookings."
         jsonLd={[generateOrganizationSchema(), generateWebSiteSchema(), generateLocalBusinessSchema(), generateServiceOfferSchema()]}
       />
 
@@ -217,7 +217,7 @@ export default function Home() {
           variants={fadeIn}
           className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-4"
         >
-          Websites that turn local searches into calls.
+          Web design for trades and local businesses across the UK.
         </motion.h1>
 
         <motion.p
@@ -227,7 +227,7 @@ export default function Home() {
           variants={fadeIn}
           className="text-base sm:text-lg text-text-secondary max-w-xl mb-2"
         >
-          Fast, mobile-first sites for trades and local businesses across the UK. Built to get you found and get you called.
+          Websites for plumbers, electricians, roofers, builders, landscapers, cleaners, and small local businesses. Built to turn local searches into calls, quote requests, and bookings.
         </motion.p>
 
         <motion.p
@@ -270,7 +270,7 @@ export default function Home() {
           variants={fadeIn}
           className="text-xs text-text-secondary mt-2"
         >
-          <Link href="/web-design-for-roofers" className="hover:text-accent transition-colors">Roofers</Link> · <Link href="/web-design-for-plumbers" className="hover:text-accent transition-colors">Plumbers</Link> · <Link href="/web-design-for-electricians" className="hover:text-accent transition-colors">Electricians</Link> · Gyms · Salons · Local businesses
+          <Link href="/web-design-for-roofers" className="hover:text-accent transition-colors">Roofers</Link> · <Link href="/web-design-for-plumbers" className="hover:text-accent transition-colors">Plumbers</Link> · <Link href="/web-design-for-electricians" className="hover:text-accent transition-colors">Electricians</Link> · <Link href="/web-design-for-builders" className="hover:text-accent transition-colors">Builders</Link> · <Link href="/web-design-for-landscapers" className="hover:text-accent transition-colors">Landscapers</Link> · <Link href="/web-design-for-painters-and-decorators" className="hover:text-accent transition-colors">Painters &amp; decorators</Link> · <Link href="/web-design-for-kitchen-and-bathroom-fitters" className="hover:text-accent transition-colors">Kitchen &amp; bathroom fitters</Link> · <Link href="/web-design-for-cleaners" className="hover:text-accent transition-colors">Cleaners</Link>
         </motion.p>
 
         <motion.p
@@ -352,7 +352,7 @@ export default function Home() {
       viewport={{ once: true }}
       className="text-2xl sm:text-3xl font-bold text-text-primary mb-6"
     >
-      Websites for real local businesses
+      Web design for trades and local businesses
     </motion.h2>
 
     {/* Paragraph 1 */}
@@ -363,7 +363,7 @@ export default function Home() {
       transition={{ delay: 0.1 }}
       className="text-lg text-text-secondary leading-relaxed mb-4"
     >
-      We’re an independent web design agency working with trades and service businesses across the UK.
+      We&apos;re an independent web design agency working with trades, local service businesses, and small businesses across the UK.
     </motion.p>
 
     {/* Paragraph 2 */}
@@ -374,9 +374,7 @@ export default function Home() {
       transition={{ delay: 0.15 }}
       className="text-lg text-text-secondary leading-relaxed"
     >
-      Our goal is simple. Help you get found locally and make it easy for customers to contact you.
-      We focus on fast loading, mobile friendly websites with clear calls to action so when someone
-      needs your service, you’re the obvious choice.
+      Our goal is simple. Help you show up when people search for your service, look trustworthy on every screen, and make it easier for the right customer to enquire. We focus on fast-loading, mobile-first websites with clear structure, useful internal pages, and calls to action that work for real local searches.
     </motion.p>
 
   </div>
@@ -386,8 +384,8 @@ export default function Home() {
       <section id="portfolio" className="py-20" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Recent web design projects</h2>
-            <p className="text-text-secondary max-w-2xl mx-auto">Example builds showing the kind of sites we create. These are demo projects, not past client work. They demonstrate layout, speed, and how we think about getting people to pick up the phone.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">Trade website examples and recent projects</h2>
+            <p className="text-text-secondary max-w-2xl mx-auto">Example builds showing the kind of sites we create for trades and local businesses. These are demo projects, not past client work. They demonstrate layout, speed, and how we structure pages to turn searches into calls and enquiries.</p>
           </motion.div>
           <motion.div
             variants={stagger}
@@ -444,8 +442,8 @@ export default function Home() {
       <section className="py-12" style={{ backgroundColor: "var(--secondary-bg)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-3">Web design built for your trade</h2>
-            <p className="text-text-secondary max-w-2xl mx-auto">Every trade has different customers and different problems. We build websites tailored to how your specific customers search and what makes them pick up the phone.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-3">Web design built for your trade or service business</h2>
+            <p className="text-text-secondary max-w-2xl mx-auto">Every trade has different customers, objections, and search behaviour. We build websites around how your customers actually look for a plumber, electrician, roofer, builder, cleaner, or other local service.</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -468,7 +466,12 @@ export default function Home() {
             ))}
           </motion.div>
           <p className="text-center mt-4 text-sm text-text-secondary">
-            Based in Nottinghamshire, working UK-wide.{" "}
+            Also supporting{" "}
+            <Link href="/web-design-for-builders" className="text-accent hover:underline">builders</Link>,{" "}
+            <Link href="/web-design-for-landscapers" className="text-accent hover:underline">landscapers</Link>,{" "}
+            <Link href="/web-design-for-painters-and-decorators" className="text-accent hover:underline">painters &amp; decorators</Link>,{" "}
+            <Link href="/web-design-for-kitchen-and-bathroom-fitters" className="text-accent hover:underline">kitchen &amp; bathroom fitters</Link>, and{" "}
+            <Link href="/web-design-for-cleaners" className="text-accent hover:underline">cleaners</Link>. Based in Nottinghamshire, working UK-wide.{" "}
             <Link href="/web-design-nottingham" className="text-accent hover:underline">See our Nottingham page</Link>.
           </p>
         </div>

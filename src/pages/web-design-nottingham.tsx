@@ -214,7 +214,10 @@ export default function WebDesignNottingham() {
               See dedicated pages for{" "}
               <Link href="/web-design-for-plumbers" className="text-accent hover:underline">plumber web design</Link>,{" "}
               <Link href="/web-design-for-electricians" className="text-accent hover:underline">electrician web design</Link>, and{" "}
-              <Link href="/web-design-for-roofers" className="text-accent hover:underline">roofer web design</Link> - or browse the{" "}
+              <Link href="/web-design-for-roofers" className="text-accent hover:underline">roofer web design</Link>,{" "}
+              <Link href="/web-design-for-builders" className="text-accent hover:underline">builder web design</Link>,{" "}
+              <Link href="/web-design-for-landscapers" className="text-accent hover:underline">landscaper web design</Link>, and{" "}
+              <Link href="/web-design-for-cleaners" className="text-accent hover:underline">cleaner web design</Link> - or browse the{" "}
               <Link href="/portfolio" className="text-accent hover:underline">full portfolio</Link> to see the kind of sites we build.
             </p>
           </motion.div>
