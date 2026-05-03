@@ -1,0 +1,113 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="800" y1="0" x2="800" y2="610" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#081826" />
+      <stop offset="0.5" stop-color="#123451" />
+      <stop offset="1" stop-color="#2F6381" />
+    </linearGradient>
+    <linearGradient id="sea" x1="800" y1="610" x2="800" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A2841" />
+      <stop offset="1" stop-color="#06131E" />
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1120 430) rotate(90) scale(120 220)">
+      <stop offset="0" stop-color="#5FE4D0" stop-opacity="0.9" />
+      <stop offset="1" stop-color="#5FE4D0" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#173E56" />
+      <stop offset="1" stop-color="#091A29" />
+    </linearGradient>
+    <linearGradient id="panelShine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#53E0D5" stop-opacity="0.45" />
+      <stop offset="1" stop-color="#53E0D5" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="tealLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00D4A1" />
+      <stop offset="1" stop-color="#5FE4D0" stop-opacity="0.15" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#06131E" />
+  <rect width="1600" height="610" fill="url(#sky)" />
+  <rect y="610" width="1600" height="390" fill="url(#sea)" />
+  <ellipse cx="1120" cy="430" rx="260" ry="84" fill="url(#sunGlow)" />
+  <line x1="0" y1="610.5" x2="1600" y2="610.5" stroke="#98B7C8" stroke-opacity="0.35" />
+
+  <path d="M0 650C120 642 210 664 338 653C466 642 559 621 697 631C847 642 906 676 1031 672C1178 667 1249 625 1372 631C1494 637 1540 656 1600 652V1000H0V650Z" fill="#081A28" />
+  <path d="M0 702C156 693 267 719 397 707C534 695 625 670 772 681C943 693 995 733 1129 728C1278 722 1338 689 1459 693C1534 696 1574 706 1600 710" stroke="#60E5DB" stroke-opacity="0.2" stroke-width="2" />
+  <path d="M0 742C131 733 220 756 352 747C514 736 611 713 740 720C875 728 954 758 1078 753C1228 746 1308 719 1451 724C1517 726 1565 734 1600 738" stroke="#60E5DB" stroke-opacity="0.14" stroke-width="2" />
+
+  <g opacity="0.92">
+    <rect x="131" y="734" width="238" height="126" rx="10" transform="rotate(-12 131 734)" fill="url(#panel)" stroke="#2B6687" />
+    <path d="M165 745L390 698" stroke="#5FE4D0" stroke-opacity="0.15" />
+    <path d="M155 782L380 734" stroke="#5FE4D0" stroke-opacity="0.15" />
+    <path d="M147 819L372 771" stroke="#5FE4D0" stroke-opacity="0.15" />
+    <path d="M139 856L364 808" stroke="#5FE4D0" stroke-opacity="0.15" />
+    <path d="M210 718L244 878" stroke="#5FE4D0" stroke-opacity="0.14" />
+    <path d="M270 705L304 865" stroke="#5FE4D0" stroke-opacity="0.14" />
+    <path d="M330 692L364 852" stroke="#5FE4D0" stroke-opacity="0.14" />
+    <path d="M131 734L369 686V715L160 760L131 734Z" fill="url(#panelShine)" />
+  </g>
+
+  <g opacity="0.75">
+    <rect x="276" y="790" width="205" height="107" rx="10" transform="rotate(-12 276 790)" fill="url(#panel)" stroke="#2B6687" />
+    <path d="M302 800L495 758" stroke="#5FE4D0" stroke-opacity="0.15" />
+    <path d="M294 833L487 791" stroke="#5FE4D0" stroke-opacity="0.15" />
+    <path d="M286 866L479 824" stroke="#5FE4D0" stroke-opacity="0.15" />
+    <path d="M354 774L383 911" stroke="#5FE4D0" stroke-opacity="0.14" />
+    <path d="M404 762L433 899" stroke="#5FE4D0" stroke-opacity="0.14" />
+    <path d="M454 750L483 887" stroke="#5FE4D0" stroke-opacity="0.14" />
+  </g>
+
+  <g opacity="0.55">
+    <line x1="1113" y1="452" x2="1113" y2="640" stroke="#D5E5ED" stroke-width="8" stroke-linecap="round" />
+    <circle cx="1113" cy="452" r="11" fill="#F3F9FC" />
+    <path d="M1113 452L1113 357" stroke="#F3F9FC" stroke-width="7" stroke-linecap="round" />
+    <path d="M1113 452L1035 487" stroke="#F3F9FC" stroke-width="7" stroke-linecap="round" />
+    <path d="M1113 452L1185 499" stroke="#F3F9FC" stroke-width="7" stroke-linecap="round" />
+  </g>
+
+  <g opacity="0.78">
+    <line x1="1248" y1="402" x2="1248" y2="642" stroke="#E6F1F7" stroke-width="10" stroke-linecap="round" />
+    <circle cx="1248" cy="402" r="14" fill="#F8FBFD" />
+    <path d="M1248 402L1248 278" stroke="#F8FBFD" stroke-width="8" stroke-linecap="round" />
+    <path d="M1248 402L1146 448" stroke="#F8FBFD" stroke-width="8" stroke-linecap="round" />
+    <path d="M1248 402L1341 462" stroke="#F8FBFD" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <g opacity="0.46">
+    <line x1="1384" y1="474" x2="1384" y2="638" stroke="#CDDDE6" stroke-width="7" stroke-linecap="round" />
+    <circle cx="1384" cy="474" r="10" fill="#F2F7FA" />
+    <path d="M1384 474L1384 391" stroke="#F2F7FA" stroke-width="6" stroke-linecap="round" />
+    <path d="M1384 474L1315 506" stroke="#F2F7FA" stroke-width="6" stroke-linecap="round" />
+    <path d="M1384 474L1448 515" stroke="#F2F7FA" stroke-width="6" stroke-linecap="round" />
+  </g>
+
+  <g transform="translate(120 122)">
+    <text x="0" y="0" fill="#E0EDF4" font-family="Arial, sans-serif" font-size="28" letter-spacing="8">RENEWABLE ENERGY</text>
+    <text x="0" y="104" fill="#F4FAFD" font-family="Georgia, Times New Roman, serif" font-size="92" font-weight="700">Meridian</text>
+    <text x="0" y="196" fill="#F4FAFD" font-family="Georgia, Times New Roman, serif" font-size="92" font-weight="700">Energy Solutions</text>
+    <text x="0" y="258" fill="#63E7D7" font-family="Arial, sans-serif" font-size="30" letter-spacing="4">SOLAR FARMS  /  ONSHORE WIND  /  BATTERY STORAGE</text>
+    <rect x="0" y="300" width="770" height="2" rx="1" fill="url(#tealLine)" />
+    <text x="0" y="352" fill="#C1D4DE" font-family="Arial, sans-serif" font-size="34">From feasibility through grid connection, with project</text>
+    <text x="0" y="398" fill="#C1D4DE" font-family="Arial, sans-serif" font-size="34">highlights, UK coverage, and a clean-energy visual identity.</text>
+
+    <g transform="translate(0 474)">
+      <rect width="182" height="122" rx="20" fill="#0B2233" fill-opacity="0.9" stroke="#1E556A" />
+      <text x="26" y="44" fill="#62E5D5" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">SERVICE MIX</text>
+      <text x="26" y="92" fill="#F7FBFD" font-family="Georgia, Times New Roman, serif" font-size="42" font-weight="700">4</text>
+    </g>
+
+    <g transform="translate(208 474)">
+      <rect width="222" height="122" rx="20" fill="#0B2233" fill-opacity="0.9" stroke="#1E556A" />
+      <text x="26" y="44" fill="#62E5D5" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">PROJECT TYPES</text>
+      <text x="26" y="92" fill="#F7FBFD" font-family="Georgia, Times New Roman, serif" font-size="42" font-weight="700">Solar / Wind / BESS</text>
+    </g>
+
+    <g transform="translate(456 474)">
+      <rect width="244" height="122" rx="20" fill="#0B2233" fill-opacity="0.9" stroke="#1E556A" />
+      <text x="26" y="44" fill="#62E5D5" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">POSITIONING</text>
+      <text x="26" y="92" fill="#F7FBFD" font-family="Georgia, Times New Roman, serif" font-size="42" font-weight="700">UK Developer</text>
+    </g>
+  </g>
+</svg>

@@ -275,5 +275,16 @@ export const siteConfig = {
       imageAlt: 'Trent Valley PrintWorks website with dedicated service pages, work samples with finish specs, and quick-select quote form',
       link: 'https://printcompany.northsummit.agency/',
     },
+    {
+      id: 'renewables',
+      title: 'Meridian Energy Solutions',
+      trade: 'Renewable Energy',
+      shortDesc: 'Cinematic clean-energy hero, solar and wind project cards, and a UK coverage map that reinforces a national developer position.',
+      description:
+        'Cinematic coastal hero, service sections for solar farms, onshore wind, battery storage, and hybrid projects, plus impact-led project cards and a UK coverage map. Built to position the brand as a credible renewable energy developer from feasibility through grid connection.',
+      image: '/projects/renewables.svg',
+      imageAlt: 'Meridian Energy Solutions renewable energy website with coastal hero illustration, wind turbines, solar panels, and UK project coverage',
+      link: 'https://renewables.northsummit.agency/',
+    },
   ],
 } as const;
