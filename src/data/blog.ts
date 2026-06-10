@@ -16,8 +16,8 @@ export const blogPosts: BlogPost[] = [
     title: "How Much Does a Website Cost for a Small Business in the UK?",
     description:
       "A clear breakdown of website costs in the UK for 2026. What tradespeople and local businesses actually pay for web design - from DIY builders to custom-built sites.",
-    date: "2026-03-23",
-    dateModified: "2026-03-23",
+    date: "2026-06-10",
+    dateModified: "2026-06-10",
     readingTime: "8 min read",
     tags: ["pricing", "web design", "small business"],
     content: `If you run a trade or local service business in the UK and you have been searching for "how much does a website cost" - you have probably noticed that the answers vary wildly. Some agencies quote thousands. Some freelancers say a few hundred. And website builders like Wix advertise monthly plans starting at under twenty pounds.
@@ -178,8 +178,8 @@ Whatever you spend, make sure the site is mobile-friendly, has proper SEO founda
     title: "Does Your Trade Business Really Need a Website in 2026?",
     description:
       "97% of customers search online before hiring a tradesperson. Find out why plumbers, electricians, roofers, builders, and local businesses need a website - and what happens without one.",
-    date: "2026-03-16",
-    dateModified: "2026-03-23",
+    date: "2026-04-15",
+    dateModified: "2026-04-15",
     readingTime: "7 min read",
     tags: ["trades", "getting started", "local business"],
     content: `If you are a plumber, electrician, roofer, builder, landscaper, or any other tradesperson in the UK - you have probably asked yourself whether you actually need a website. You get work through word of mouth. You are busy enough. Maybe you have a Facebook page and that seems to do the job.
@@ -320,8 +320,8 @@ That is what turns a website from a cost into an investment that pays for itself
     title: "Wix vs Custom Website - Which Is Right for Your Trade Business?",
     description:
       "Comparing Wix, Squarespace, WordPress, and custom-built websites for UK tradespeople. Honest pros and cons to help you decide what works best for your business.",
-    date: "2026-03-09",
-    dateModified: "2026-03-23",
+    date: "2026-04-01",
+    dateModified: "2026-04-01",
     readingTime: "9 min read",
     tags: ["comparison", "web design", "trades"],
     content: `If you are a plumber, electrician, builder, roofer, or any other tradesperson in the UK looking to get a website - you have probably come across names like Wix, Squarespace, and WordPress. They all promise easy, affordable websites that you can build yourself.
@@ -472,8 +472,8 @@ Whatever you choose, make sure you own it, make sure it works on phones, and mak
     title: "Why Your Website Is Not Getting You Enquiries (And How to Fix It)",
     description:
       "Your website gets visitors but no phone calls or enquiries? Here are the most common reasons UK trade and local business websites fail to convert - and practical fixes for each.",
-    date: "2026-03-02",
-    dateModified: "2026-03-23",
+    date: "2026-03-18",
+    dateModified: "2026-03-18",
     readingTime: "8 min read",
     tags: ["conversion", "troubleshooting", "local business"],
     content: `You have a website. Maybe you paid good money for it. It looks decent enough. But the phone is not ringing. The contact form sits empty. Customers are not getting in touch through your site.
@@ -645,8 +645,8 @@ And if your current website is beyond saving - outdated, slow, not mobile-friend
     title: "What Makes a Good Trades Website? 7 Things Your Customers Are Looking For",
     description:
       "Find out what features a tradesman website needs to turn visitors into paying customers. A practical guide for plumbers, electricians, roofers, builders, and local service businesses in the UK.",
-    date: "2026-02-24",
-    dateModified: "2026-03-23",
+    date: "2026-03-04",
+    dateModified: "2026-03-04",
     readingTime: "7 min read",
     tags: ["web design", "trades", "conversion"],
     content: `When a potential customer lands on your website, they are not admiring the design. They are trying to answer a few simple questions as fast as possible:
@@ -806,7 +806,7 @@ If you want to see how those ideas translate into real page structures, browse o
     title: "Why a Mobile-Friendly Website Is Non-Negotiable for Local Businesses in 2026",
     description:
       "Over 70% of local searches happen on phones. If your website does not work on mobile, you are losing customers every single day. Here is why mobile matters and what to do about it.",
-    date: "2026-02-17",
+    date: "2026-02-18",
     readingTime: "8 min read",
     tags: ["mobile", "web design", "local SEO"],
     content: `Here is a number that should change how you think about your website: over 70% of people searching for local services in the UK are doing it on their phone. Not a laptop. Not a desktop. A phone.
@@ -967,8 +967,8 @@ If you tick every box, your mobile experience is solid. If you do not - now you 
     title: "Local SEO for Trades: What Actually Helps Plumbers, Electricians and Roofers Rank",
     description:
       "A practical guide to local SEO for UK trades. Service pages, Google Business Profile, internal links, trust signals, and what actually helps plumbers, electricians, roofers, builders, and landscapers win more enquiries.",
-    date: "2026-03-23",
-    dateModified: "2026-03-23",
+    date: "2026-05-27",
+    dateModified: "2026-05-27",
     readingTime: "8 min read",
     tags: ["local SEO", "trades", "search"],
     content: `If you run a trade business in the UK and want more enquiries from Google, local SEO matters. But most advice on the topic is either too vague to use or too spammy to trust.
@@ -1120,8 +1120,8 @@ If you want help figuring out what to improve first, [request a free website aud
     title: "Google Business Profile for Trades: What UK Plumbers, Electricians and Roofers Need To Get Right",
     description:
       "How to improve a Google Business Profile for a UK trade business. Categories, service areas, photos, reviews, website links, and common mistakes for plumbers, electricians, roofers, builders, cleaners, and landscapers.",
-    date: "2026-03-23",
-    dateModified: "2026-03-23",
+    date: "2026-05-13",
+    dateModified: "2026-05-13",
     readingTime: "7 min read",
     tags: ["Google Business Profile", "local SEO", "trades"],
     content: `A Google Business Profile is one of the most important local SEO assets a trade business can have. When someone searches for a plumber, electrician, roofer, cleaner, or builder near them, the map pack often gets the first click.
@@ -1260,8 +1260,8 @@ If you want help spotting the weak points, [request a free website audit](/audit
     title: "Trade Website Examples: What A High-Converting Trades Website Should Include",
     description:
       "Trade website examples for plumbers, electricians, roofers, builders, landscapers, painters, kitchen and bathroom fitters, and cleaners. See what a high-converting trade website should include.",
-    date: "2026-03-23",
-    dateModified: "2026-03-23",
+    date: "2026-04-29",
+    dateModified: "2026-04-29",
     readingTime: "7 min read",
     tags: ["examples", "web design", "trades"],
     content: `If you search for trade website examples, you usually end up with two disappointing options: generic inspiration galleries with no commercial thinking behind them, or agency portfolios that tell you nothing about why the page structure works.
