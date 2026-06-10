@@ -24,6 +24,9 @@ The contact form uses [Resend](https://resend.com) to send emails.
 RESEND_API_KEY=re_your_api_key_here
 ```
 
+Contact form enquiries are sent to `hello@northsummit.agency` from `hello@northsummit.agency`.
+Resend requires `northsummit.agency` to be verified before it will send these emails.
+
 3. Run `npm run dev` and test the form at `/contact`
 
 ### Production (Vercel)
@@ -31,16 +34,18 @@ RESEND_API_KEY=re_your_api_key_here
 1. Go to your Vercel project settings
 2. Navigate to **Settings > Environment Variables**
 3. Add `RESEND_API_KEY` with your production API key
-4. Redeploy
+4. Verify `northsummit.agency` in Resend
+5. Redeploy
 
 ### Production (Netlify)
 
 1. Go to your Netlify site settings
 2. Navigate to **Site configuration > Environment variables**
 3. Add `RESEND_API_KEY` with your production API key
-4. Trigger a redeploy
+4. Verify `northsummit.agency` in Resend
+5. Trigger a redeploy
 
-> **Note:** For Resend to send from a custom domain (e.g., `hello@northsummit.agency`), verify your domain in the Resend dashboard. Until then, use the default `onboarding@resend.dev` sender.
+> **Note:** Resend will reject emails to normal recipients until your sending domain is verified.
 
 ## Portfolio Screenshots
 

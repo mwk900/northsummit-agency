@@ -3,6 +3,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW = 60 * 1000;
+const CONTACT_TO_EMAIL = 'hello@northsummit.agency';
+const CONTACT_FROM_EMAIL = 'hello@northsummit.agency';
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -31,10 +34,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL;
-  const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL;
-  if (!RESEND_API_KEY || !CONTACT_TO_EMAIL || !CONTACT_FROM_EMAIL) {
+  const RESEND_API_KEY = process.env.RESEND_API_KEY?.trim();
+  const configurationErrors = [
+    !RESEND_API_KEY ? 'RESEND_API_KEY is missing' : null,
+    !EMAIL_PATTERN.test(CONTACT_TO_EMAIL) ? 'contact recipient email is invalid' : null,
+    !EMAIL_PATTERN.test(CONTACT_FROM_EMAIL) ? 'CONTACT_FROM_EMAIL is invalid' : null,
+  ].filter(Boolean);
+
+  if (configurationErrors.length) {
+    console.error(`Contact form email service is not configured correctly: ${configurationErrors.join(', ')}.`);
     return res.status(503).json({ error: 'Service unavailable' });
   }
 
@@ -85,7 +93,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!name || typeof name !== 'string' || !name.trim()) {
     return res.status(400).json({ error: 'Name is required' });
   }
-  if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!email || typeof email !== 'string' || !EMAIL_PATTERN.test(email)) {
     return res.status(400).json({ error: 'Valid email is required' });
   }
   if (!message || typeof message !== 'string' || message.trim().length < 10) {
